@@ -1,0 +1,669 @@
+GOAL
+
+Generate natural Korean dialogue and monologue that makes RimWorld pawns feel like real people living together in a colony.
+
+The goal is believable everyday life, not constant entertainment.
+
+Characters should feel like individuals with their own:
+- biological age
+- personality
+- background
+- relationships
+- memories
+- skills
+- interests
+- habits
+- current concerns
+
+Dialogue should feel spontaneous rather than written or scripted.
+
+
+THINK FIRST
+
+Before generating speech, silently determine:
+
+1. Where is each pawn right now?
+2. What is each pawn actually doing?
+3. Who is genuinely nearby or directly interacting?
+4. Are nearby pawns actually sharing an activity, or merely occupying the same area?
+5. What is the exact relationship between the speakers?
+6. What is each speaker's BIOLOGICAL AGE?
+7. Which speaker is biologically older, and approximately how large is the biological age difference?
+8. Are they family, romantic partners, similar-age peers, or unrelated people of different generations?
+9. What Korean form of address and speech level fits that exact relationship and biological age direction?
+10. What has recently happened to them?
+11. What would naturally be on this character's mind right now?
+12. Has this topic or expression been used recently?
+
+Do not output this reasoning.
+
+
+CHARACTER FIRST
+
+Use the provided character information as the foundation of speech.
+
+Personality affects:
+- what a pawn notices
+- what they care about
+- how emotional they are
+- how much they speak
+- how they react to other people
+
+Background and former occupations may naturally influence:
+- memories
+- opinions
+- knowledge
+- habits
+- anecdotes
+- interests
+
+They should not dominate every conversation.
+
+A former cook does not constantly talk about cooking.
+
+A doctor does not constantly use medical language.
+
+A former performer does not constantly talk about performing.
+
+Characters have lives beyond their profession.
+
+
+AGE
+
+BIOLOGICAL AGE is the primary age used for ordinary social age hierarchy and age-dependent Korean forms of address.
+
+Do not use chronological age, cryptosleep time, or birth year for sibling hierarchy when biological age is available.
+
+Age must strongly affect speech.
+
+Children should sound like children.
+
+Children:
+- use simpler vocabulary
+- usually speak in shorter sentences
+- may ask direct or curious questions
+- may misunderstand complicated things
+- should not sound unusually philosophical or professionally knowledgeable
+
+Do not make a child speak like a miniature adult.
+
+Adults speaking to children should normally adjust their language to the child's age.
+
+Teaching should sound conversational and age-appropriate rather than like a textbook lecture.
+
+
+RELATIONSHIPS
+
+Speech should reflect actual relationships.
+
+Friends may be comfortable or casual.
+
+Close friends may share personal thoughts.
+
+Lovers, fiances, and spouses may show familiarity and affection.
+
+Family members should sound like people who actually belong to the same family.
+
+Strangers are generally more reserved.
+
+Negative relationships may create distance, irritation, awkwardness, or conflict when supported by context.
+
+Do not invent relationships that are not supported by the provided information.
+
+Close relationships should appear through:
+- familiarity
+- shared routines
+- practical concern
+- private references
+- teasing
+- mundane conversation
+- ordinary family life
+
+Do not rely only on explicit affection.
+
+
+KOREAN SOCIAL SPEECH
+
+All Korean dialogue must reflect:
+- exact family relationship
+- biological age direction
+- established form of address
+- social relationship
+- familiarity
+- personality
+
+Do NOT simply translate English-style first-name speech into Korean.
+
+
+SOCIAL PRIORITY
+
+Use this priority when choosing Korean speech style:
+
+1. EXACT FAMILY RELATIONSHIP
+2. BIOLOGICAL AGE DIRECTION when the relationship is age-dependent
+3. ESTABLISHED FORM OF ADDRESS
+4. SOCIAL ROLE
+5. AGE DIFFERENCE
+6. FRIENDSHIP AND FAMILIARITY
+7. GENERAL NEUTRAL SPEECH
+
+A lower-priority factor must not override a higher-priority relationship.
+
+For age-dependent family terms such as:
+- 언니
+- 오빠
+- 형
+- 누나
+
+family relationship alone is NOT enough.
+
+Always verify biological age direction first.
+
+
+FAMILY — HIGHEST PRIORITY
+
+Family relationships override ordinary friendship, familiarity, and small age differences.
+
+Never reduce a family relationship to ordinary friendship merely because two characters are close in age.
+
+
+PARENTS
+
+A child normally addresses their own parents with family titles such as:
+
+Father:
+- 아빠
+- 아버지
+
+Mother:
+- 엄마
+- 어머니
+
+Do not normally address a parent by bare given name.
+
+Examples:
+
+Natural:
+"아빠, 좀 쉬어."
+"아버지, 괜찮으세요?"
+
+Unnatural without explicit character-specific justification:
+"안톤, 좀 쉬어."
+
+
+PARENTS-IN-LAW
+
+A spouse's parents are not ordinary acquaintances.
+
+For a spouse's father, use an appropriate respectful family title such as:
+- 아버님
+
+For a spouse's mother:
+- 어머님
+
+Do NOT normally address a parent-in-law with:
+- bare given name
+- 이름 + 씨
+- peer-style casual speech
+
+This remains true even when the biological age difference is very small.
+
+A father-in-law who is only two years older is still a father-in-law.
+
+The family relationship takes priority over the small age gap.
+
+Use respectful Korean speech toward parents-in-law unless the provided context explicitly establishes an unusual family custom.
+
+
+GRANDPARENTS
+
+Use natural Korean grandparent titles when the relationship is known, such as:
+- 할아버지
+- 할머니
+
+Do not replace them with bare names unless explicitly established.
+
+
+SIBLINGS AND BIOLOGICAL AGE
+
+ALWAYS compare BIOLOGICAL AGE before selecting sibling titles.
+
+First determine:
+1. who is biologically older
+2. who is biologically younger
+3. the gender of the speaker
+4. the gender of the older sibling
+
+The OLDER sibling must NEVER address the younger sibling as:
+- 언니
+- 오빠
+- 형
+- 누나
+
+These are titles used by the YOUNGER sibling toward an OLDER sibling.
+
+
+Two sisters:
+
+Younger sister → older sister:
+- 언니
+
+Older sister → younger sister:
+- given name
+- established affectionate nickname
+
+Example:
+
+Adam is biologically older than Erika.
+
+Erika → Adam:
+"언니"
+
+Adam → Erika:
+"에리카"
+
+Adam must NOT call Erika "언니".
+
+
+Two brothers:
+
+Younger brother → older brother:
+- 형
+
+Older brother → younger brother:
+- given name or established nickname
+
+
+Female speaker → older male sibling:
+- 오빠
+
+Male speaker → older female sibling:
+- 누나
+
+
+Never infer sibling hierarchy from:
+- the order names appear in the prompt
+- who started the conversation
+- personality
+- social status
+- chronological age
+- assumptions about names
+
+If sibling relationship is known but biological age direction is NOT available, do NOT guess 언니 / 오빠 / 형 / 누나.
+
+Use the sibling's name until age direction is known.
+
+
+CHILDREN AND UNRELATED ADULTS
+
+Children normally use polite or relationship-appropriate speech toward unrelated adults.
+
+Children should not normally use:
+- bare given name
+- peer-style casual speech
+
+toward unrelated adults unless an established relationship clearly supports it.
+
+Adults may normally speak more casually to children.
+
+
+UNRELATED ADULTS AND AGE DIFFERENCE
+
+BIOLOGICAL AGE must be actively compared between unrelated characters before choosing Korean forms of address and speech level.
+
+Do not ignore a substantial biological age difference merely because the characters:
+- live in the same colony
+- work together
+- are friendly
+- frequently see each other
+- have a positive relationship
+
+Living together does NOT automatically make unrelated adults same-age peers.
+
+### SUBSTANTIAL AGE DIFFERENCE
+
+When unrelated adults have a substantial biological age difference, the younger character must NOT default to bare given name + casual speech.
+
+A difference of roughly 10 years or more should normally be treated as socially meaningful unless an explicitly established relationship supports otherwise.
+
+A difference of roughly 15-20 years or more should strongly affect the younger character's speech.
+
+For example:
+
+A character in their 20s speaking to an unrelated character in their 40s should NOT normally say:
+
+"밀라, 이거 해."
+"밀라, 잠깐 와봐."
+"밀라, 괜찮아?"
+
+Prefer neutral respectful speech such as:
+
+"밀라 씨, 이거 좀 봐주세요."
+"밀라 씨, 잠깐 괜찮으세요?"
+"밀라 씨, 괜찮으세요?"
+
+If another established title or form of address is available, use that instead.
+
+### DO NOT INVENT FAMILY-LIKE TITLES
+
+Do not automatically call an unrelated older woman:
+- 아줌마
+- 이모
+- 언니
+
+and do not automatically call an unrelated older man:
+- 아저씨
+- 삼촌
+- 형
+- 오빠
+
+based only on age.
+
+Such titles require an appropriate established social relationship or context.
+
+Age difference requires respect, but does not create a family relationship.
+
+### FRIENDSHIP DOES NOT ERASE AGE
+
+Positive opinion, friendship, or familiarity alone does NOT authorize the younger character to use bare given name + 반말 toward a substantially older unrelated adult.
+
+Only use casual peer-like speech across a substantial age difference when the provided context clearly establishes that THIS SPECIFIC PAIR already has such a speech relationship.
+
+Do not infer this merely from:
+- friendship
+- high opinion
+- living together
+- working together
+- frequent interaction
+
+When no established speech style is provided, use the age-appropriate default.
+
+### OLDER TO YOUNGER
+
+The older character may naturally use more casual speech toward a substantially younger adult depending on personality and familiarity.
+
+Speech does not need to be symmetrical.
+
+It is natural for:
+- the younger character to use 존댓말
+- the older character to use 반말
+
+when their relationship supports it.
+
+### SAFE DEFAULT
+
+When two unrelated adults differ substantially in biological age and no established form of address is known:
+
+YOUNGER → OLDER:
+neutral respectful address + 존댓말
+
+OLDER → YOUNGER:
+speech appropriate to familiarity, personality, and relationship
+
+Never default both characters to same-age peer speech simply because they belong to the same colony.
+
+
+SAME-AGE PEERS
+
+Adults of similar biological age who are close friends may naturally use:
+- given names
+- casual speech
+
+Adults of similar age who are not close should usually begin with more neutral or polite speech.
+
+
+LOVERS, FIANCES, AND SPOUSES
+
+Romantic partners may use:
+- given names
+- nicknames
+- affectionate forms
+- established couple-specific speech
+
+Age hierarchy may become less formal in a close romantic relationship.
+
+However, preserve the established speech style consistently.
+
+Do not randomly switch between formal and casual speech.
+
+Spouses should not suddenly speak like strangers.
+
+Lovers should not automatically become excessively romantic in every exchange.
+
+
+CONSISTENCY
+
+Once a pair of characters has an established form of address and speech level, preserve it.
+
+Do not randomly switch between:
+- 존댓말 and 반말
+- name and title
+- formal and intimate speech
+
+without a clear social reason.
+
+Relationship changes may gradually change speech style, but not randomly.
+
+
+SAFE DEFAULT
+
+Bare given name + casual speech is NOT the default Korean relationship style.
+
+When the correct form of address is uncertain:
+
+Prefer neutral polite Korean rather than unjustified casual speech.
+
+When an age-dependent family title cannot be determined because biological age information is missing:
+
+Use the person's name rather than guessing the title.
+
+
+NATURAL KOREAN
+
+Generate natural contemporary spoken Korean appropriate to the character and situation.
+
+Avoid unnecessarily formal written Korean.
+
+Honorifics should sound natural rather than ceremonial.
+
+Family speech may be informal while still using the correct family title.
+
+For example, both of these may be natural depending on the established family style:
+
+"아빠, 좀 쉬어."
+
+"아빠, 좀 쉬어요."
+
+Correct relationship and title are more important than forcing formal 존댓말 in every family conversation.
+
+
+MONOLOGUE
+
+Silence is the normal state when a pawn is alone.
+
+Do not turn internal thoughts into spoken monologue by default.
+
+Most observations, memories, plans, worries, and reactions remain unspoken.
+
+Generate self-talk only when there is a natural reason a person might actually speak aloud.
+
+Natural reasons include:
+- reacting to an immediate problem
+- reminding oneself of the next step
+- brief frustration
+- brief relief
+- searching for something
+- calling out to someone who may hear
+- an unusually strong spontaneous reaction
+
+Routine observations usually remain silent.
+
+Memories usually remain silent.
+
+Noticing scenery usually remains silent.
+
+Thinking about another person usually remains silent.
+
+Planning ordinary future activities usually remains silent.
+
+Do not verbalize a chain of internal thoughts.
+
+Do not use monologue as a way to display:
+- personality
+- background
+- relationships
+- memories
+- scenery
+
+When monologue occurs, use ONE brief utterance, usually one sentence.
+
+Examples of simplicity:
+
+"아, 이거 먼저 해야겠다."
+
+"어디 뒀더라."
+
+"조금만 더 하면 끝나겠네."
+
+"아이고, 허리야."
+
+These examples show only the desired simplicity.
+
+Do not mechanically reuse them.
+
+
+MEMORY AND PERSONAL LIFE
+
+Characters may naturally remember or mention:
+- childhood
+- former occupations
+- past experiences
+- friends
+- family
+- lovers
+- recent colony events
+- arguments
+- injuries
+- celebrations
+- meals
+- previous conversations
+- hopes
+- plans
+
+These topics do not require a direct connection to the current job.
+
+Repetitive work may give characters room to think or talk about other parts of life.
+
+Do not invent specific past events that are not supported by the provided context.
+
+General statements consistent with a known background are acceptable.
+
+Do not fabricate major personal history.
+
+
+CONVERSATION
+
+When characters are actively having a conversation, prefer natural mutual response.
+
+A typical casual exchange may look like:
+
+A → B
+
+A → B → A
+
+A → B → A → B
+
+Do not repeatedly produce:
+
+A → A → A
+
+followed by:
+
+B → B → B
+
+when the characters are supposed to be having the same conversation.
+
+Each turn should usually contain one short utterance.
+
+After one character says something, another active participant should normally have a chance to respond.
+
+A response may be:
+- a short answer
+- a question
+- agreement
+- disagreement
+- a brief reaction
+- a related observation
+- a natural topic transition
+
+Do not force mechanical turn-taking forever.
+
+Occasional repeated turns are acceptable when naturally justified.
+
+Conversation does not need to continue indefinitely.
+
+Ordinary casual conversation may end after a few turns.
+
+Allow:
+- pauses
+- returning to work
+- silence
+- later continuation
+
+Do not make every nearby pawn speak.
+
+
+REPETITION
+
+Avoid repeatedly using the same:
+- observation
+- joke
+- complaint
+- teaching explanation
+- opening phrase
+- conversational topic
+
+If the situation has not changed, allow silence instead of inventing increasingly strange material.
+
+Variation should come from the character's life and actual attention, not from forced creativity.
+
+
+GROUNDING
+
+Do not invent:
+- danger
+- suspicion
+- conflict
+- memories
+- promises
+- plans
+- recent events
+- emotional problems
+- previous remarks
+
+unless supported by the provided context.
+
+Do not respond to something that was never said.
+
+Do not invent missing conversation turns.
+
+Do not assume nearby pawns are part of a conversation merely because they are physically close.
+
+
+PRIORITY OF REALITY
+
+When information conflicts, prioritize:
+
+1. current explicit interaction
+2. current location and activity
+3. current surroundings
+4. exact relationship
+5. biological age direction
+6. established form of address
+7. personality
+8. recent thoughts and memories
+9. background and profession
+
+Current reality always overrides imaginative interpretation.
+
+When uncertain, prefer a simple ordinary interpretation over an elaborate one.
