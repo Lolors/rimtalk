@@ -32,10 +32,11 @@ Before writing EACH social line:
 1. identify the actual speaker from JSON `name`
 2. identify every person directly addressed in that line
 3. read the ACTUAL SPEAKER'S explicit relationship label for each recipient
-4. if a family relationship exists, lock the correct family title FIRST
-5. only if age hierarchy is relevant, compare biological ages when both are available
-6. choose Korean speech level
-7. compose the sentence only after these checks
+4. resolve the DIRECTION of the relationship
+5. if a family relationship exists, lock the family-specific address behavior FIRST
+6. only if age hierarchy is relevant, compare biological ages when both are available
+7. choose Korean speech level
+8. compose the sentence only after these checks
 
 FAMILY TITLE LOCK — HARD CONSTRAINT
 
@@ -44,6 +45,9 @@ Explicit family relationships override names, age-gap politeness rules, friendsh
 Map explicit Korean relationship labels directly:
 - 어머니 / 엄마 / mother → 엄마 or 어머니
 - 아버지 / 아빠 / father → 아빠 or 아버지
+- 딸 / daughter → use child's given name or established family nickname; DO NOT use 이름+씨/님 by default
+- 아들 / son → use child's given name or established family nickname; DO NOT use 이름+씨/님 by default
+- 자녀 / child → use child's given name or established family nickname; DO NOT use 이름+씨/님 by default
 - 장인 / 시아버지 / spouse's father → 아버님
 - 장모 / 시어머니 / spouse's mother → 어머님
 - 할머니 / grandmother → 할머니
@@ -51,17 +55,26 @@ Map explicit Korean relationship labels directly:
 - 배우자 / 남편 / 아내 / spouse → established couple-style address
 - 자매 / 형제 / sister / brother → apply sibling rules using biological age direction
 
-If the ACTUAL SPEAKER'S profile says recipient X is `어머니`, then direct address to X MUST be `엄마` or `어머니`.
-The following are forbidden for that line:
-- X
-- X 씨
-- X 님
+PARENT ↔ CHILD DIRECTION — HARD RULE
 
-This prohibition also applies when several people are addressed in one sentence.
+Do not confuse these directions:
+
+If speaker's relations say `X(어머니)`:
+- X is speaker's mother
+- speaker → X: 엄마 / 어머니
+- NOT X / X 씨 / X 님
+
+If speaker's relations say `X(딸)` or `X(아들)`:
+- X is speaker's child
+- speaker → X: normally X's given name or established family nickname
+- NOT X 씨 / X 님
+
+A parent does not become socially unrelated to their child just because the child is an adult.
+Do not apply the unrelated-adult safe default to a known son or daughter.
 
 Example logic only:
-If speaker A's own relations say B(어머니), A → B must use 엄마/어머니.
-If speaker C has no family relation to B, C must NOT copy A's family title and instead use C's own relationship to B.
+If Lydia's own relations say Mila(어머니), Lydia → Mila must use 엄마/어머니.
+If Mila's own relations say Lydia(딸), Mila → Lydia should normally use 리디아, not 리디아 씨.
 
 Do not generalize one pawn's relationship to another pawn.
 Do not treat all speakers in one response as having the primary pawn's relationships.
@@ -72,7 +85,8 @@ Immediately before finalizing EACH line:
 - read the JSON `name` again
 - verify the recipient against THAT SPEAKER'S own Social relationships
 - scan every vocative/direct form of address
-- replace any accidental bare-name or 이름+씨/님 form with the correct kinship title when family relation is explicit
+- if recipient is speaker's parent, replace accidental name/씨/님 with the correct parental title
+- if recipient is speaker's child, remove accidental 씨/님 and use the child's given name or established family form
 
 Even if recent chat history used the wrong form, current speaker-specific relationship data overrides it.
 
