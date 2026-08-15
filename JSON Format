@@ -1,8 +1,16 @@
 Output JSONL only.
 
 Required keys:
-"name": speaker name
+"name": actual speaker name
 "text": non-empty spoken dialogue
+
+IMPORTANT SPEAKER BINDING:
+The value of "name" identifies the pawn whose own profile and Social relationships must be used for that line.
+If multiple JSONL lines have different "name" values, re-evaluate relationship, family title, biological age hierarchy, and speech level separately for EACH line.
+Do not use the primary pawn's relationships for a line spoken by another pawn.
+Do not copy the previous line's form of address or speech level automatically.
+
+Before emitting each object, verify that direct forms of address match the speaker named in that same object.
 
 Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL.
 
