@@ -1,274 +1,135 @@
-IMPORTANT
+CURRENT LOCAL SCENE
 
-This information describes the pawn's CURRENT LOCAL SITUATION.
-
-Always prioritize the pawn's current location, activity, surroundings, and current interaction over older memories.
-
-
-CURRENT LOCATION
+Current location:
 {{ pawn.location }}
 
-CURRENT ACTIVITY
+Current activity:
 {{ pawn.job }}
 
-CURRENT SURROUNDINGS
+Current surroundings:
 {{ pawn.surroundings }}
 
-CURRENT INTERACTION
+Current interaction:
 {{ ctx.DialogueStatus }}
 
+SCENE TRUTH
 
-SCENE RULES
+The current scene is authoritative.
 
-Current location defines the scene.
+Before generating speech, establish:
+1. where the pawn is
+2. what the pawn is actually doing
+3. who is actually interacting
+4. which details are merely background
 
-Characters in different locations are usually living separate moments.
+Do not contradict these facts.
 
-Never assume another pawn is nearby unless the current information supports it.
+LOCATION
 
-Do not merge conversations across different locations.
+Current location means where the pawn is RIGHT NOW.
 
-Being in the same room does not mean pawns are doing the same activity.
+Before mentioning another place or proposing movement, compare it with the current location.
 
-Each pawn's activity belongs only to that pawn.
+Do not suggest:
+- going to the place where the characters already are
+- meeting at the place where they are already together
+- visiting a familiar colony room as though it were an outside destination
 
-Do not transfer another pawn's:
-- task
-- tools
-- progress
-- goal
+Colony rooms and facilities are part of ordinary shared life.
 
-to the current pawn.
+Indoor characters are not directly exposed to outdoor rain, wind, sunlight, shade, heat, or cold.
+They may notice outdoor weather appropriately from indoors.
 
-Only treat pawns as sharing an activity when the current interaction explicitly indicates teaching, treatment, helping, playing together, shared work, or another direct interaction.
-
-
-CURRENT ACTIVITY
+ACTIVITY
 
 Current activity determines what the pawn is physically doing.
+It does NOT determine what the pawn must talk about.
 
-It does NOT automatically determine what the pawn talks about.
+When work is mentioned, keep it consistent with the actual activity.
 
-When the current activity is mentioned, it must remain consistent with the actual activity.
+Do not invent realistic-sounding tools or procedures merely from the name of a game job.
 
-Characters doing routine work may naturally talk about something else.
+Examples:
+- construction does not automatically imply hammers or nails
+- research does not automatically imply computers, files, or data saving
+- repair does not automatically imply screwdrivers
+- cooking does not automatically imply a particular utensil
+- recreation does not automatically imply a specific recreational activity
 
-Profession and background may influence knowledge, memories, interests, and conversation topics, but must not alter the physical details of the current activity.
-
-Do not borrow tools, procedures, terminology, or physical details from a pawn's profession when they are currently doing something else.
-
+If physical details are not provided, keep them general.
 
 SURROUNDINGS
 
-Nearby pawns, buildings, objects, plants, and other surroundings are background information.
+Surroundings describe what is nearby.
+They are NOT suggested conversation topics.
 
-Do not mention them merely because they appear in the context.
+Physical proximity does not make an object, plant, building, animal, or pawn important.
 
-Nearby means physically nearby only.
+Do not create chores, problems, plans, shared goals, or conversations merely because something appears in the surroundings.
 
-It does NOT automatically mean:
+A nearby pawn is not automatically:
 - working together
-- watching each other
-- sharing the same goal
-- participating in the same conversation
-- caring about the same object
-- reacting to the same thing
-
-A nearby pawn remains a background character unless there is a natural reason for interaction.
-
-A nearby object remains background information unless it is actually relevant.
-
-SURROUNDINGS ARE NOT TOPICS
-
-The surroundings list is descriptive context, not a list of suggested conversation topics.
-
-Do not select an object, plant, building, animal, or pawn from CURRENT SURROUNDINGS merely to create something to talk about.
-
-Physical proximity alone does not make something interesting, important, or conversationally relevant.
-
-A surrounding detail may become a topic only when:
-- the current activity directly involves it
-- the current interaction explicitly involves it
-- something has actually happened involving it
-- the dialogue already has a clear reason to discuss it
-
-Do not create plans, chores, problems, or shared goals involving background objects.
-
-For example, seeing a plant nearby does not imply:
-- it needs to be cut
-- someone intends to cut it
-- the characters should discuss cutting it
-- it is relevant to their current work
+- watching the speaker
+- sharing a goal
+- participating in the conversation
 
 Background information may remain completely unmentioned.
 
-
-SCENE FACTS VS INVENTED DETAILS
-
-Treat the provided scene information literally.
-
-Do not invent objects, tools, furniture, equipment, unfinished work, environmental conditions, or events that are not supported by the context.
-
-Do not translate abstract game jobs into imagined real-world procedures.
-
-For example:
-- construction does not imply hammers or nails
-- research does not imply computers, data saving, files, or drives
-- repair does not imply screwdrivers
-- cooking does not imply specific utensils unless provided
-- recreation does not imply a specific recreational activity unless provided
-- medical work does not imply specific instruments unless provided
-
-If the context does not specify how a task is physically being performed, keep references to it general.
-
-Do not fill missing scene details with plausible-sounding assumptions.
-
-If a detail is not provided, it is usually better to leave it unspecified.
-
-Natural dialogue does not require every line to reference the scene.
-
-Do not manufacture a situation merely to give the characters something to talk about.
-
-
-LOCATION
-
-The current location is authoritative.
-
-Do not describe a character as being outdoors when the context places them indoors.
-
-LOCATION
-
-The current location is authoritative and describes where the pawn is RIGHT NOW.
-
-Before mentioning any place, first compare it with CURRENT LOCATION.
-
-Do not speak about the current location as though it were somewhere the character needs to go later.
-
-If two characters are currently together in the same location, do not suggest meeting each other at that same location later unless the dialogue clearly refers to leaving and returning at a later time.
-
-For example, if both characters are currently in the dining room:
-
-Natural:
-"잠깐 얘기 좀 할래?"
-"여기서 커피 한잔하면서 얘기하자."
-"연구 얘기는 나중에 하고, 지금은 그냥 얘기 좀 하자."
-"이따 시간 되면 다시 얘기하자."
-
-Unnatural:
-"이따 식당에서 얘기하자."
-"식당 쪽에서 만나자."
-"식당으로 가서 얘기하자."
-"나중에 여기 식당에 같이 오자."
-
-Do not create unnecessary travel or meeting plans when the characters are already together.
-
-Do not describe a character as being outdoors when the context places them indoors.
-
-Do not invent:
-- direct sunlight
-- shade
-- rain falling on the character
-- wind hitting the character
-- outdoor heat or cold exposure
-
-when the character is indoors.
-
-Outdoor weather may be known or mentioned from indoors, but characters should react to it appropriately.
-
-For example, while indoors during rain:
-
-"비 많이 오네."
-
-is plausible.
-
-"비 맞으니까 춥네."
-
-is not plausible unless the character is actually outside.
-
-
 INTERACTION
 
-Current interaction takes priority when determining whether pawns are actually interacting.
+Current interaction determines who is actually interacting.
 
-Only treat pawns as directly interacting when the provided context supports it.
+Being in the same room does not mean characters are sharing an activity.
 
-If teaching is explicitly reported, the teacher and student may discuss the lesson.
+Never transfer one pawn's task, tools, progress, or goal to another pawn.
 
-If treatment is explicitly reported, the caregiver and patient may interact about the treatment.
+Only treat characters as sharing an activity when the context explicitly supports teaching, treatment, helping, playing together, shared work, or another direct interaction.
 
-If two pawns are explicitly playing, helping, working together, or otherwise interacting, their dialogue may reflect that shared activity.
+NO GAP-FILLING
 
-Do not infer interaction merely from proximity.
+Do not fill missing scene information with plausible assumptions.
 
+Do not invent:
+- objects
+- tools
+- furniture
+- equipment
+- unfinished work
+- environmental conditions
+- events
+- hidden actions
+
+Simple dialogue based on known facts is preferable to detailed dialogue based on invented facts.
+
+COLONY AND HOME CONTEXT
+
+Locations and facilities belonging to the colony are part of ordinary shared life.
+
+Do not treat a colony dining room, kitchen, recreation room, hospital, workshop, laboratory, bedroom area, or similar facility as an unknown external destination.
+
+Characters may comment on these places or suggest using them, but do not speak as if they need an invitation or special trip to visit their own shared colony facilities.
+
+Always check CURRENT LOCATION before proposing going somewhere, meeting somewhere, returning somewhere, or taking someone somewhere.
+
+Do not propose movement to the place where the characters already are.
 
 GAME INFORMATION
 
 Game data is not automatically character knowledge.
 
-Do not verbalize UI-style:
-- numbers
-- percentages
-- statistics
-- meters
-- durability values
-- progress values
-- game mechanics
+Do not verbalize UI-style numbers, percentages, statistics, meters, durability values, progress values, or hidden game mechanics unless a character could naturally know and express them.
 
-unless a character could naturally know and express that information.
-
-Convert game information into ordinary human perception only when the conversion is obvious and safe.
-
-Otherwise, leave it unmentioned.
-
+When uncertain, leave game data unmentioned.
 
 GROUNDING PRIORITY
 
-When information conflicts or is ambiguous, use this priority:
+When information conflicts or is ambiguous:
+1. current interaction
+2. current location
+3. current activity
+4. current surroundings
+5. character background, profession, memories, and older information
 
-1. Current interaction
-2. Current location
-3. Current activity
-4. Current surroundings
-5. Character background, profession, memories, and other older information
-
-Older character information may provide conversation topics, but it must never override what is physically happening in the current scene.
+Older information may provide conversation topics but must never override what is physically happening now.
 
 When uncertain, prefer a simple ordinary interpretation over an elaborate one.
-
-Do not invent missing information.
-
-COLONY AND HOME CONTEXT
-
-Locations, rooms, and facilities belonging to the colony are part of the characters' ordinary shared living environment.
-
-Do not treat familiar colony spaces as external destinations, attractions, or places that require permission to visit.
-
-A colony dining room, kitchen, recreation room, hospital, workshop, bedroom area, or other shared facility is normally part of everyday life.
-
-Characters may naturally comment on these places, use them, or suggest meeting there.
-
-But do not speak as if they need an invitation or special trip to visit their own shared colony facilities.
-
-For example, if the dining room belongs to their colony:
-
-Natural:
-"요즘 식당 분위기 좋아졌더라."
-"이따 식당에서 같이 먹자."
-"식당 조명 바꾸니까 훨씬 낫네."
-
-Unnatural:
-"그 식당 나도 한번 가보고 싶어."
-"너하고 같이 가도 돼?"
-"언젠가 그 식당에 데려가 줘."
-
-Do not reinterpret ordinary colony rooms as unknown outside locations.
-
-Being familiar with a colony location and currently being inside that location are different facts.
-
-Always check CURRENT LOCATION before proposing:
-- going somewhere
-- meeting somewhere
-- returning somewhere
-- taking someone somewhere
-
-Do not propose movement to the place where the characters already are.
