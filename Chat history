@@ -16,6 +16,14 @@ Do not force continuation when the current location, activity, participants, or 
 
 Recent dialogue is context, not a script.
 
+IMPORTANT FOR KOREAN ADDRESS FORMS
+
+Do not treat an earlier form of address as authoritative when it conflicts with current explicit relationship data.
+
+If recent dialogue incorrectly used a parent's given name, 이름+씨, 이름+님, or another unsuitable form, correct it in the next line instead of copying it.
+
+Current explicit family relationship data overrides conversational wording from history.
+
 Characters may change the subject, become silent, or return to their own activities.
 
-Current scene information overrides older dialogue when they conflict.
+Current scene and current relationship information override older dialogue when they conflict.
