@@ -1,8 +1,14 @@
-CURRENT CHARACTERS
+CHARACTER DATA FOR THIS GENERATION
 
-Use the information available for the current speaker and any other pawns included by RimTalk.
+IMPORTANT: One API response may contain dialogue lines spoken by DIFFERENT pawns.
 
-CURRENT SPEAKER
+`pawn` is the primary/current pawn supplied by RimTalk. It is NOT automatically the speaker of every output line.
+
+For EACH output line, the JSON `name` field determines the actual speaker. Use the profile belonging to THAT named pawn when selecting relationships, family titles, age hierarchy, and speech level.
+
+Never use one pawn's Social relationships to decide how a different pawn should address someone.
+
+PRIMARY PAWN
 
 Name:
 {{ pawn.name }}
@@ -47,10 +53,13 @@ Equipment:
 {{ pawn.equipment }}
 
 {{ if pawns }}
-OTHER PAWNS AVAILABLE TO THE CURRENT CONTEXT
+CHARACTER TABLE
+
+The following entries belong to the individual named in each entry.
+For a line spoken by that pawn, use THAT pawn's Social relationships, not the primary pawn's.
 
 {{ for p in pawns }}
-Name: {{ p.name }}
+CHARACTER: {{ p.name }}
 Biological age: {{ p.age }}
 Gender: {{ p.gender }}
 Role: {{ p.role }}
@@ -60,11 +69,32 @@ Social relationships: {{ p.social }}
 {{ end }}
 {{ end }}
 
+SPEAKER PROFILE BINDING — HARD RULE
+
+Before composing every dialogue line:
+
+1. Decide the speaker name that will be written in JSON `name`.
+2. Find that SAME pawn in CHARACTER TABLE. If the speaker is the primary pawn, use PRIMARY PAWN.
+3. Read THAT SPEAKER'S Social relationships.
+4. Find the recipient inside THAT SPEAKER'S relationships.
+5. Use that relationship direction to choose the Korean form of address.
+6. Never borrow relationship information from another character's entry.
+
+Example of relationship direction:
+If Lydia's own entry says `Mila(어머니)`, then Mila is Lydia's mother.
+When LYDIA speaks directly to Mila, Lydia must use `엄마` or `어머니`.
+This does NOT mean every other pawn must call Mila `엄마`.
+
+If Harris's own entry says `Mila(친구)` or otherwise shows no family relation, Harris must use Harris's own relationship and age rules instead.
+
+The SAME recipient can require DIFFERENT forms of address from different speakers.
+That is normal Korean social speech.
+
 RELATIONSHIP LABEL INTERPRETATION
 
 A relationship shown inside a pawn's own `Social relationships` is from THAT PAWN'S perspective.
 
-Examples of interpretation:
+Examples:
 - `X(어머니)` means X is this pawn's mother.
 - `X(아버지)` means X is this pawn's father.
 - `X(딸)` means X is this pawn's daughter.
@@ -73,23 +103,13 @@ Examples of interpretation:
 - `X(배우자)` means X is this pawn's spouse.
 
 Do not reverse the direction of a relationship label.
-Do not ignore a relationship label merely because another pawn has a different relationship to the same person.
+Do not generalize one pawn's relationship to everyone else.
 
-KOREAN SOCIAL INTERPRETATION
+KOREAN FAMILY ADDRESS — HARD OVERRIDE
 
-For every social line:
-1. Identify the actual speaker.
-2. Identify every actual recipient.
-3. Use the SPEAKER'S Social relationships to determine the relationship to each recipient.
-4. If an explicit family relationship exists, choose the family title FIRST.
-5. Only when the relationship requires age hierarchy, compare biological ages when available.
-6. Then choose Korean speech level.
+When the ACTUAL SPEAKER'S relationship entry explicitly identifies the recipient as family, that family relation overrides generic names, politeness defaults, friendship, and age-gap rules.
 
-EXPLICIT RELATIONSHIP OVERRIDE
-
-Relationship labels in the speaker's Social relationships are authoritative for forms of address.
-
-Map these labels directly when the speaker addresses that person:
+Map explicit relationship labels when directly addressing that person:
 - 어머니 / mother → 엄마 or 어머니
 - 아버지 / father → 아빠 or 아버지
 - 장인 / 시아버지 / spouse's father → 아버님
@@ -99,21 +119,19 @@ Map these labels directly when the speaker addresses that person:
 - 배우자 / 남편 / 아내 / spouse → established couple-style address
 - 자매 / 형제 / sister / brother → sibling title rules using biological age when available
 
-Never replace a known family title with 이름+씨, 이름+님, or a bare given name merely because the recipient is older, friendly, or part of a group conversation.
+For a known parent, direct address by bare name, 이름+씨, or 이름+님 is forbidden unless an unusual family convention is explicitly provided.
 
-If Social relationships says `X(어머니)`, do NOT directly address X as `X`, `X 씨`, or `X 님`.
-Use 엄마 or 어머니.
+If the actual speaker's relationship says `X(어머니)`, direct address must be `엄마` or `어머니`, NOT `X`, `X 씨`, or `X 님`.
+This remains true inside a group-address sentence.
 
-This also applies when several recipients are addressed in one sentence.
+AGE RULES
 
-AGE RULES APPLY ONLY AFTER RELATIONSHIP TYPE IS KNOWN
+Use age rules only after the ACTUAL SPEAKER'S exact relationship to the recipient is known.
 
-Do not rely on Social relationships alone for age hierarchy, but DO rely on it for explicit relationship type.
+For unrelated adults, compare biological ages when both are available.
+If the actual speaker is substantially younger than an unrelated older adult and no explicit mutual-casual relationship is established, use respectful Korean.
 
-For unrelated adults, compare biological ages when available.
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established, use respectful Korean.
-
-Do not treat friendship, positive opinion, living together, working together, or frequent interaction as proof of mutual casual speech.
+Friendship, positive opinion, living together, working together, or frequent interaction does not automatically authorize mutual 반말.
 
 CHARACTER CONTEXT
 
@@ -136,6 +154,6 @@ Treat provided character information as authoritative.
 
 Do not invent personality traits, preferences, fears, habits, relationships, memories, ages, or personal history merely to make dialogue more interesting.
 
-If another pawn's biological age is unavailable, do not invent it.
-If the exact relationship is explicitly available in Social relationships, use it even when age is unavailable.
-Only use a socially safe neutral form when BOTH a relationship-specific title and an established form of address are unavailable.
+If the intended speaker does not have an available profile, do not borrow another pawn's relationship data.
+If biological age is unavailable, do not invent it.
+If an exact relationship is explicitly available for the actual speaker, use it even when age is unavailable.
