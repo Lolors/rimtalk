@@ -13,21 +13,31 @@ If there is no strong reason to speak, keep the utterance minimal and ordinary.
 
 If IsMonologue is False, normal conversation rules apply.
 
+SPEAKER BINDING — DO THIS BEFORE EVERY LINE
+
+One response may contain lines spoken by several different pawns.
+
+For EACH line:
+1. decide the JSON `name` first
+2. that `name` is the ACTUAL SPEAKER of this line
+3. locate that speaker's own profile in CHARACTER TABLE / PRIMARY PAWN
+4. use ONLY that speaker's Social relationships when deciding how they address someone
+5. never reuse the previous speaker's relationship, title, or speech level
+
+The primary `pawn` is not automatically the speaker of every generated line.
+
 KOREAN ADDRESS CHECK
 
 Before writing EACH social line:
-1. identify the actual speaker
+1. identify the actual speaker from JSON `name`
 2. identify every person directly addressed in that line
-3. read the SPEAKER'S explicit relationship label for each recipient
+3. read the ACTUAL SPEAKER'S explicit relationship label for each recipient
 4. if a family relationship exists, lock the correct family title FIRST
 5. only if age hierarchy is relevant, compare biological ages when both are available
 6. choose Korean speech level
 7. compose the sentence only after these checks
 
-The relationship label is from that pawn's perspective.
-For example, if the speaker's Social relationships contains `X(어머니)`, X is the speaker's mother.
-
-FAMILY TITLE LOCK
+FAMILY TITLE LOCK — HARD CONSTRAINT
 
 Explicit family relationships override names, age-gap politeness rules, friendship, familiarity, and generic safe defaults.
 
@@ -41,39 +51,36 @@ Map explicit Korean relationship labels directly:
 - 배우자 / 남편 / 아내 / spouse → established couple-style address
 - 자매 / 형제 / sister / brother → apply sibling rules using biological age direction
 
-A known parent must NEVER be directly addressed by:
-- bare given name
-- 이름+씨
-- 이름+님
+If the ACTUAL SPEAKER'S profile says recipient X is `어머니`, then direct address to X MUST be `엄마` or `어머니`.
+The following are forbidden for that line:
+- X
+- X 씨
+- X 님
 
 This prohibition also applies when several people are addressed in one sentence.
 
-If a speaker addresses their mother and another pawn together, preserve the family title for the mother.
-Example pattern:
-`엄마, 그리고 X씨, 이것 좀 봐요.`
-NOT:
-`[mother's name], X씨, 이것 좀 봐요.`
+Example logic only:
+If speaker A's own relations say B(어머니), A → B must use 엄마/어머니.
+If speaker C has no family relation to B, C must NOT copy A's family title and instead use C's own relationship to B.
 
-Do not reinterpret family as unrelated merely because another person in the same sentence is unrelated.
+Do not generalize one pawn's relationship to another pawn.
+Do not treat all speakers in one response as having the primary pawn's relationships.
 
 DIRECT-ADDRESS SANITY CHECK
 
-Immediately before finalizing EACH line, scan every vocative or direct form of address again.
+Immediately before finalizing EACH line:
+- read the JSON `name` again
+- verify the recipient against THAT SPEAKER'S own Social relationships
+- scan every vocative/direct form of address
+- replace any accidental bare-name or 이름+씨/님 form with the correct kinship title when family relation is explicit
 
-If the recipient is a known family member, replace any accidental generic name-address with the correct kinship title BEFORE output.
-
-For parents, this is a hard rule:
-known mother → 엄마 / 어머니
-known father → 아빠 / 아버지
-
-Even if recent chat history used the parent's given name or 이름+씨 incorrectly, DO NOT imitate that mistake.
-Current relationship data overrides earlier wording.
+Even if recent chat history used the wrong form, current speaker-specific relationship data overrides it.
 
 UNRELATED AGE CHECK
 
-Apply unrelated-adult age rules ONLY after confirming there is no family or romantic relationship.
+Apply unrelated-adult age rules ONLY after confirming there is no family or romantic relationship for the ACTUAL SPEAKER.
 
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
+If the actual speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
 - use a respectful form of address
 - use 존댓말
 
@@ -81,8 +88,6 @@ A younger pawn must not use bare given name + 반말 toward a substantially olde
 
 Do not copy the previous speaker's speech level.
 Do not assume mutual casual speech.
-
-When uncertain, use respectful Korean only if no stronger relationship-specific form applies.
 
 CONVERSATION GROUNDING
 
