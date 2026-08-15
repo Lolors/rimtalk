@@ -17,28 +17,57 @@ KOREAN ADDRESS CHECK
 
 Before writing EACH social line:
 1. identify the actual speaker
-2. identify the actual recipient
-3. read the speaker's explicit relationship to that recipient
-4. if a family relationship exists, choose the correct family title FIRST
+2. identify every person directly addressed in that line
+3. read the SPEAKER'S explicit relationship label for each recipient
+4. if a family relationship exists, lock the correct family title FIRST
 5. only if age hierarchy is relevant, compare biological ages when both are available
 6. choose Korean speech level
 7. compose the sentence only after these checks
 
+The relationship label is from that pawn's perspective.
+For example, if the speaker's Social relationships contains `X(어머니)`, X is the speaker's mother.
+
 FAMILY TITLE LOCK
 
-Explicit family relationships override generic age-gap politeness rules and generic safe defaults.
+Explicit family relationships override names, age-gap politeness rules, friendship, familiarity, and generic safe defaults.
 
-If the recipient is explicitly the speaker's:
-- mother → use 엄마 / 어머니 as appropriate
-- father → use 아빠 / 아버지 as appropriate
-- spouse's father → 아버님
-- spouse's mother → 어머님
-- grandparent → appropriate grandparent title
-- sibling → use sibling rules based on biological age direction when available
+Map explicit Korean relationship labels directly:
+- 어머니 / 엄마 / mother → 엄마 or 어머니
+- 아버지 / 아빠 / father → 아빠 or 아버지
+- 장인 / 시아버지 / spouse's father → 아버님
+- 장모 / 시어머니 / spouse's mother → 어머님
+- 할머니 / grandmother → 할머니
+- 할아버지 / grandfather → 할아버지
+- 배우자 / 남편 / 아내 / spouse → established couple-style address
+- 자매 / 형제 / sister / brother → apply sibling rules using biological age direction
 
-Do NOT call an explicitly known parent or parent-in-law 이름+씨 or 이름+님.
+A known parent must NEVER be directly addressed by:
+- bare given name
+- 이름+씨
+- 이름+님
 
-Do not reinterpret family as unrelated merely because the ages are far apart or because another generic rule recommends respectful speech.
+This prohibition also applies when several people are addressed in one sentence.
+
+If a speaker addresses their mother and another pawn together, preserve the family title for the mother.
+Example pattern:
+`엄마, 그리고 X씨, 이것 좀 봐요.`
+NOT:
+`[mother's name], X씨, 이것 좀 봐요.`
+
+Do not reinterpret family as unrelated merely because another person in the same sentence is unrelated.
+
+DIRECT-ADDRESS SANITY CHECK
+
+Immediately before finalizing EACH line, scan every vocative or direct form of address again.
+
+If the recipient is a known family member, replace any accidental generic name-address with the correct kinship title BEFORE output.
+
+For parents, this is a hard rule:
+known mother → 엄마 / 어머니
+known father → 아빠 / 아버지
+
+Even if recent chat history used the parent's given name or 이름+씨 incorrectly, DO NOT imitate that mistake.
+Current relationship data overrides earlier wording.
 
 UNRELATED AGE CHECK
 
@@ -98,19 +127,7 @@ CLOSE RELATIONSHIPS
 
 Lovers, fiances, spouses, and close family should sound familiar and personal without becoming constantly romantic or caretaking.
 
-Natural closeness may appear through:
-- teasing
-- mundane questions
-- ordinary plans
-- meals and recreation
-- household routines
-- children or childcare
-- shared responsibilities
-- asking opinions
-- talking about people they both know
-- actual shared experiences
-- casual affection
-- comfortable disagreement
+Natural closeness may appear through teasing, mundane questions, ordinary plans, meals, household routines, children, shared responsibilities, asking opinions, actual shared experiences, casual affection, and comfortable disagreement.
 
 Do not invent shared memories, promises, plans, or family events.
 
