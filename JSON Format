@@ -1,0 +1,7 @@
+Output JSONL.
+Required keys: "name", "text".
+{{ if settings.ApplyMoodAndSocialEffects }}
+Optional keys (Include only if social interaction occurs):
+"act": Insult, Slight, Chat, Kind
+"target": targetName
+{{ end }}
