@@ -60,32 +60,51 @@ Social relationships: {{ p.social }}
 {{ end }}
 {{ end }}
 
+RELATIONSHIP LABEL INTERPRETATION
+
+A relationship shown inside a pawn's own `Social relationships` is from THAT PAWN'S perspective.
+
+Examples of interpretation:
+- `X(어머니)` means X is this pawn's mother.
+- `X(아버지)` means X is this pawn's father.
+- `X(딸)` means X is this pawn's daughter.
+- `X(아들)` means X is this pawn's son.
+- `X(자매)` or `X(형제)` means X is this pawn's sibling.
+- `X(배우자)` means X is this pawn's spouse.
+
+Do not reverse the direction of a relationship label.
+Do not ignore a relationship label merely because another pawn has a different relationship to the same person.
+
 KOREAN SOCIAL INTERPRETATION
 
 For every social line:
 1. Identify the actual speaker.
-2. Identify the actual recipient.
-3. Read the speaker's Social relationships and determine the exact relationship to that recipient.
+2. Identify every actual recipient.
+3. Use the SPEAKER'S Social relationships to determine the relationship to each recipient.
 4. If an explicit family relationship exists, choose the family title FIRST.
 5. Only when the relationship requires age hierarchy, compare biological ages when available.
 6. Then choose Korean speech level.
 
 EXPLICIT RELATIONSHIP OVERRIDE
 
-Relationship labels in Social relationships are authoritative for forms of address.
+Relationship labels in the speaker's Social relationships are authoritative for forms of address.
 
-If the current speaker's Social relationships identifies the recipient as:
-- mother / 어머니 → use 엄마 or 어머니 as appropriate
-- father / 아버지 → use 아빠 or 아버지 as appropriate
-- parent-in-law → use the appropriate Korean in-law title
-- grandparent → use 할아버지 / 할머니 as appropriate
-- spouse / lover / fiance → use an established intimate form rather than unrelated-adult defaults
-- sibling → apply sibling title rules using biological age when available
+Map these labels directly when the speaker addresses that person:
+- 어머니 / mother → 엄마 or 어머니
+- 아버지 / father → 아빠 or 아버지
+- 장인 / 시아버지 / spouse's father → 아버님
+- 장모 / 시어머니 / spouse's mother → 어머님
+- 할머니 / grandmother → 할머니
+- 할아버지 / grandfather → 할아버지
+- 배우자 / 남편 / 아내 / spouse → established couple-style address
+- 자매 / 형제 / sister / brother → sibling title rules using biological age when available
 
-Never replace a known family title with 이름+씨, 이름+님, or a generic polite form merely because the recipient is older.
+Never replace a known family title with 이름+씨, 이름+님, or a bare given name merely because the recipient is older, friendly, or part of a group conversation.
 
-Example principle:
-If Social relationships says `X(어머니)`, X is the speaker's mother for address selection. Do not call X `X 씨`.
+If Social relationships says `X(어머니)`, do NOT directly address X as `X`, `X 씨`, or `X 님`.
+Use 엄마 or 어머니.
+
+This also applies when several recipients are addressed in one sentence.
 
 AGE RULES APPLY ONLY AFTER RELATIONSHIP TYPE IS KNOWN
 
