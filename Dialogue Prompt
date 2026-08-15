@@ -18,12 +18,31 @@ KOREAN ADDRESS CHECK
 Before writing EACH social line:
 1. identify the actual speaker
 2. identify the actual recipient
-3. determine their exact relationship
-4. compare biological ages when both are available
-5. choose the Korean form of address and speech level before composing the sentence
+3. read the speaker's explicit relationship to that recipient
+4. if a family relationship exists, choose the correct family title FIRST
+5. only if age hierarchy is relevant, compare biological ages when both are available
+6. choose Korean speech level
+7. compose the sentence only after these checks
 
-Do not copy the previous speaker's speech level.
-Do not assume mutual casual speech.
+FAMILY TITLE LOCK
+
+Explicit family relationships override generic age-gap politeness rules and generic safe defaults.
+
+If the recipient is explicitly the speaker's:
+- mother → use 엄마 / 어머니 as appropriate
+- father → use 아빠 / 아버지 as appropriate
+- spouse's father → 아버님
+- spouse's mother → 어머님
+- grandparent → appropriate grandparent title
+- sibling → use sibling rules based on biological age direction when available
+
+Do NOT call an explicitly known parent or parent-in-law 이름+씨 or 이름+님.
+
+Do not reinterpret family as unrelated merely because the ages are far apart or because another generic rule recommends respectful speech.
+
+UNRELATED AGE CHECK
+
+Apply unrelated-adult age rules ONLY after confirming there is no family or romantic relationship.
 
 If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
 - use a respectful form of address
@@ -31,9 +50,10 @@ If the speaker is substantially younger than an unrelated adult and no explicit 
 
 A younger pawn must not use bare given name + 반말 toward a substantially older unrelated adult merely because they are friendly or live in the same colony.
 
-Family relationships take priority over general age rules.
+Do not copy the previous speaker's speech level.
+Do not assume mutual casual speech.
 
-When uncertain, use respectful Korean rather than unjustified casual speech.
+When uncertain, use respectful Korean only if no stronger relationship-specific form applies.
 
 CONVERSATION GROUNDING
 
