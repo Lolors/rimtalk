@@ -77,15 +77,17 @@ Before composing every dialogue line:
 2. Find that SAME pawn in CHARACTER TABLE. If the speaker is the primary pawn, use PRIMARY PAWN.
 3. Read THAT SPEAKER'S Social relationships.
 4. Find the recipient inside THAT SPEAKER'S relationships.
-5. Use that relationship direction to choose the Korean form of address.
+5. Use that relationship DIRECTION to choose the Korean form of address.
 6. Never borrow relationship information from another character's entry.
 
 Example of relationship direction:
 If Lydia's own entry says `Mila(어머니)`, then Mila is Lydia's mother.
 When LYDIA speaks directly to Mila, Lydia must use `엄마` or `어머니`.
-This does NOT mean every other pawn must call Mila `엄마`.
 
-If Harris's own entry says `Mila(친구)` or otherwise shows no family relation, Harris must use Harris's own relationship and age rules instead.
+If Mila's own entry says `Lydia(딸)`, then Lydia is Mila's daughter.
+When MILA speaks directly to Lydia, Mila should normally use `리디아` or an established family nickname, NOT `리디아 씨` or `리디아 님`.
+
+These are two different directions of the same family relationship.
 
 The SAME recipient can require DIFFERENT forms of address from different speakers.
 That is normal Korean social speech.
@@ -112,6 +114,9 @@ When the ACTUAL SPEAKER'S relationship entry explicitly identifies the recipient
 Map explicit relationship labels when directly addressing that person:
 - 어머니 / mother → 엄마 or 어머니
 - 아버지 / father → 아빠 or 아버지
+- 딸 / daughter → normally the child's given name or established family nickname; NEVER default to 이름+씨/님
+- 아들 / son → normally the child's given name or established family nickname; NEVER default to 이름+씨/님
+- 자녀 / child → normally the child's given name or established family nickname; NEVER default to 이름+씨/님
 - 장인 / 시아버지 / spouse's father → 아버님
 - 장모 / 시어머니 / spouse's mother → 어머님
 - 할머니 / grandmother → 할머니
@@ -121,8 +126,9 @@ Map explicit relationship labels when directly addressing that person:
 
 For a known parent, direct address by bare name, 이름+씨, or 이름+님 is forbidden unless an unusual family convention is explicitly provided.
 
-If the actual speaker's relationship says `X(어머니)`, direct address must be `엄마` or `어머니`, NOT `X`, `X 씨`, or `X 님`.
-This remains true inside a group-address sentence.
+For a known child, a parent should normally use the child's given name, nickname, or another familiar family form. Do NOT apply unrelated-adult politeness to the child merely because the child is an adult.
+
+If the actual speaker's relationship says `X(딸)` or `X(아들)`, direct address should normally be `X`, NOT `X 씨` or `X 님`.
 
 AGE RULES
 
