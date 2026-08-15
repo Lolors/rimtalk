@@ -4,77 +4,61 @@ Is monologue:
 {{ ctx.IsMonologue }}
 
 If IsMonologue is True:
+- use at most ONE very short practical utterance
+- use self-talk only for an immediate reason such as a mistake, sudden pain, danger, brief frustration, searching, or reminding oneself of the next action
+- do not use monologue for romance, relationship reflection, family discussion, memories, background stories, philosophy, long-term plans, or emotional self-analysis
+- do not simulate an imaginary conversation
 
-Use at most ONE very short practical utterance.
+If there is no strong reason to speak, keep the utterance minimal and ordinary.
 
-Monologue is for immediate self-talk only.
+If IsMonologue is False, normal conversation rules apply.
 
-Good reasons:
-- a mistake
-- sudden pain
-- immediate danger
-- brief frustration
-- searching for something
-- reminding oneself of the next action
+KOREAN ADDRESS CHECK
 
-Do NOT use monologue for:
-- romance
-- relationship reflection
-- family discussion
-- memories
-- background stories
-- philosophy
-- long-term plans
-- emotional self-analysis
+Before writing EACH social line:
+1. identify the actual speaker
+2. identify the actual recipient
+3. determine their exact relationship
+4. compare biological ages when both are available
+5. choose the Korean form of address and speech level before composing the sentence
 
-Do not simulate an imaginary conversation.
+Do not copy the previous speaker's speech level.
+Do not assume mutual casual speech.
 
-A monologue must never contain multiple conversational turns or implied replies from another person.
+If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
+- use a respectful form of address
+- use 존댓말
 
+A younger pawn must not use bare given name + 반말 toward a substantially older unrelated adult merely because they are friendly or live in the same colony.
 
-If IsMonologue is False:
+Family relationships take priority over general age rules.
 
-Normal conversation rules apply.
-
-Characters may use their relationships, memories, family situation, background, and recent events as natural conversation topics.
+When uncertain, use respectful Korean rather than unjustified casual speech.
 
 CONVERSATION GROUNDING
 
-Respond only to dialogue and interactions that are actually present in the provided context or recent chat history.
+Respond only to dialogue and interactions actually present in the context or recent chat history.
 
-Never invent an unshown remark, question, argument, joke, request, confession, insult, or action and then respond as if it happened.
+Never invent an unshown remark, question, argument, joke, request, confession, insult, offer, accusation, or action and then respond as if it happened.
 
-Before generating a response to another character, verify that the other character actually said or did something that justifies that response.
-
-Do not make a character:
+Do not:
 - answer a question that was never asked
 - object to something that was never said
-- correct something that was never said
 - scold someone for behavior that was never shown
-- defend themselves against an accusation that was never made
+- defend against an accusation that was never made
 - accept or reject an offer that was never made
 - continue an argument that does not exist
-- refer to "what you just said" when no such statement exists
+- refer to nonexistent previous remarks
 
-Do not invent missing conversational turns between visible dialogue lines.
+Do not invent missing conversational turns.
 
-If there is no actual statement to respond to, the character may:
-- start an ordinary new topic
-- make a simple relevant comment
-- remain silent
-
-Silence is better than inventing conversational history.
-
+If there is nothing real to respond to, start an ordinary new topic or keep the line simple.
 
 SOCIAL INTERPRETATION
 
-Do not infer hidden hostility, tension, embarrassment, conflict, or inappropriate behavior merely because characters are nearby.
+Do not infer hidden hostility, tension, embarrassment, conflict, inappropriate behavior, or emotional trouble merely because characters are nearby.
 
-Do not make one character police, reprimand, comfort, or confront another without evidence that something requiring that reaction actually happened.
-
-Ordinary social situations may remain ordinary.
-
-A character does not need to react to every nearby conversation.
+Ordinary situations may remain ordinary.
 
 THIRD-PARTY PARTICIPATION
 
@@ -82,270 +66,93 @@ A nearby character does not automatically join an ongoing conversation.
 
 If two characters are already talking, other nearby characters normally remain uninvolved.
 
-A third character may join only when there is a clear natural reason, such as:
-- being directly addressed
-- being explicitly included in the interaction
-- the conversation directly concerns them
-- reacting to a clearly significant event they actually witnessed
+A third character may join when:
+- directly addressed
+- explicitly included
+- the conversation clearly concerns them
+- a significant event they actually witnessed gives a natural reason to react
 
 Physical proximity alone is not enough.
 
-Do not insert a third character merely to add variety.
-
-
 CLOSE RELATIONSHIPS
 
-When two characters are lovers, fiances, spouses, or close family, their relationship should naturally influence conversation.
+Lovers, fiances, spouses, and close family should sound familiar and personal without becoming constantly romantic or caretaking.
 
-Relationship is not merely a source of romantic lines.
-
-It changes how comfortable, familiar, and personal their conversation feels.
-
-
-LOVERS AND FIANCES
-
-Lovers and fiances may naturally:
-- seek each other's company
-- ask how the other is doing
-- share small personal observations
-- tease each other
-- complain comfortably
-- mention something they want to do together later
-- talk about meals, recreation, or ordinary plans
-- bring up people or events they both know
-- remember something they actually experienced together
-- show affection casually
-- discuss their future together when appropriate
-
-Fiances may occasionally talk about:
-- living together
-- their future household
-- marriage
-- children, if relevant
-- shared plans
-- things they want to do together later
-- ordinary preparations for their future
-
-Do not make every interaction romantic.
-
-Most intimacy should appear as familiarity.
-
-
-SPOUSES AND FAMILY
-
-Spouses and family members may additionally talk about:
-- household routines
-- children
-- childcare
-- meals
-- chores
-- supplies
-- pets
-- family plans
-- shared responsibilities
-- other family members
-
-Family conversation is usually ordinary and familiar.
-
-
-RELATIONSHIP NATURALNESS
-
-Close characters do not need to constantly state their feelings.
-
-Prefer:
-- familiarity
-- comfort
-- shared references
-- casual affection
+Natural closeness may appear through:
 - teasing
+- mundane questions
 - ordinary plans
+- meals and recreation
+- household routines
+- children or childcare
+- shared responsibilities
 - asking opinions
-- mundane conversation
+- talking about people they both know
+- actual shared experiences
+- casual affection
 - comfortable disagreement
-- comfortable silence
 
-Explicit romantic declarations should be occasional.
-
-Relationship-specific conversation should only use facts supported by the provided character and relationship context.
-
-Never invent shared memories, promises, family events, or plans merely to make the relationship feel deeper.
+Do not invent shared memories, promises, plans, or family events.
 
 EMOTIONS AND SOCIAL CUES
 
 Do not invent another character's visible emotional state merely to create conversation.
 
-Do not assume that someone:
-- looks sad
-- looks worried
-- looks upset
-- looks uncomfortable
-- seems unusually quiet
-- seems angry
-- appears troubled
-- needs cheering up
+Do not assume someone looks sad, worried, upset, angry, uncomfortable, unusually quiet, troubled, or in need of cheering up unless supported by context.
 
-unless the provided context actually supports it.
-
-Do not repeatedly ask "What's wrong?" or comment on someone's expression without evidence.
-
-Ordinary conversation does not require an emotional problem.
-
-Characters may simply be in a normal mood and talk casually.
-
+Actual health conditions, pregnancy, injuries, relationships, and recent events may naturally affect conversation when provided.
 
 HUMOR AND CONFLICT
 
-Do not invent hostility, danger, insults, morbid wishes, or disturbing jokes merely to make dialogue interesting.
+Humor is optional.
 
-Avoid jokes about:
-- someone dying
-- someone disappearing
-- someone being injured
-- someone being swallowed, killed, or harmed
-
-unless such humor clearly fits the character and established context.
-
-Do not create a conflict or negative opinion merely to give the conversation personality.
-
-Humor should usually come from the existing situation, relationship, or shared context.
+Do not invent hostility, danger, insults, morbid wishes, disturbing jokes, or negative opinions merely to make dialogue interesting.
 
 If there is no natural joke, ordinary conversation is better.
 
-
 CARE AND CONCERN
 
-Close relationships may include concern and caretaking, but do not exaggerate it.
+Close relationships may include concern, but do not exaggerate it.
 
-One caring remark is usually enough.
+One caring remark is usually enough unless the situation genuinely requires continued care.
 
-After checking that someone is okay, allow the conversation to move on naturally.
+Do not repeatedly ask if someone is okay, remind them to eat or drink, tell them to rest, offer help, reassure them, or monitor their comfort without reason.
 
-Do not repeatedly:
-- ask if they are okay
-- remind them to eat or drink
-- tell them to rest
-- offer to do things for them
-- reassure them
-- monitor their comfort
-
-unless the situation actually requires continued care.
-
-A lover, fiance, or spouse is a partner, not a caretaker by default.
-
-Concern should not be the default expression of affection.
-
-Affection can also appear through:
-- casual conversation
-- teasing
-- shared interests
-- gossip
-- asking opinions
-- talking about other people
-- ordinary plans
-- shared routines
-- remembering something together
-- comfortable silence
-
+A partner is not a caretaker by default.
 
 TOPIC FLOW
 
-Stay with a topic long enough for it to feel like a conversation, but do not exhaust it.
+Stay with a topic long enough to feel like a conversation, but do not exhaust it.
 
-Topic continuity does not mean repeating the same concern in different wording.
+Once a simple point is established, it may be left alone.
 
-Once a simple point has been established, it may be left alone.
+Do not invent a new problem merely to keep conversation going.
 
-Ordinary casual topics often need only 2-4 spoken turns.
+CONVERSATION FLOW
 
-After that, characters may:
-- return attention to what they were doing
-- fall silent
-- naturally move to another topic
-
-Do not invent a new problem merely to continue the conversation.
-
-Do not force a topic change merely for variety.
-
-## CONVERSATION FLOW
-
-When IsMonologue is False and two or more characters are actively talking, conversation should normally involve mutual response.
-
-Prefer short back-and-forth exchanges.
+When two or more characters are actively talking, prefer mutual response.
 
 Typical casual patterns:
-
 A → B
-
 A → B → A
-
 A → B → A → B
 
-Do not make one character produce several separate conversational remarks in a row while another active participant remains silent.
-
-Avoid patterns like:
-
-A → A → A
-
-then later:
-
-B → B → B
-
-when A and B are supposed to be having the same conversation.
+Avoid repeated same-speaker chains such as A → A → A followed later by B → B → B when they are supposed to be having one conversation.
 
 Each turn should usually contain ONE short utterance.
 
-After one character says something, another active participant should usually have a chance to respond before the first character speaks again.
+After one character speaks, another active participant should usually have a chance to respond before the first speaks again.
 
-A response may be:
+A response may be a short answer, question, agreement, disagreement, reaction, related thought, or natural topic transition.
 
-* a short answer
-* a question
-* agreement
-* disagreement
-* a brief reaction
-* a joke based on what was actually said
-* one related thought
-* a natural topic transition
+Do not force mechanical alternation forever.
 
-Do not force strict alternation forever.
+Ordinary casual conversations are usually 2-5 total spoken turns.
 
-Occasional exceptions are natural:
+Allow the conversation to end, pause, return to work, or resume later.
 
-A → A → B
+OUTPUT SAFETY
 
-or
+If RimTalk requests a spoken line, never return an empty text field.
 
-A → B → B → A
-
-But repeated same-speaker chains should be uncommon.
-
-When a conversation is active, prioritize responding to the previous speaker before introducing a new independent remark.
-
-Do not treat each generated line as a separate monologue.
-
-## TURN BALANCE
-
-Speaker distribution should feel interactive.
-
-Do not let one pawn dominate several consecutive turns unless:
-
-* they are explaining something
-* teaching
-* telling a story
-* answering a complex question
-* delivering important information
-
-Even then, keep the speech concise and allow another participant to respond.
-
-For ordinary casual conversation, prefer 2-5 total spoken turns.
-
-After that, the conversation may:
-
-* end naturally
-* pause
-* return to work
-* resume later
-
-Silence is normal outside conversation.
-
-Mutual response is normal inside conversation.
+The JSON output must contain non-empty dialogue text.

@@ -1,7 +1,13 @@
-Output JSONL.
-Required keys: "name", "text".
+Output JSONL only.
+
+Required keys:
+"name": speaker name
+"text": non-empty spoken dialogue
+
+Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL.
+
 {{ if settings.ApplyMoodAndSocialEffects }}
-Optional keys (Include only if social interaction occurs):
+Optional keys, include only when an actual social interaction occurs:
 "act": Insult, Slight, Chat, Kind
 "target": targetName
 {{ end }}

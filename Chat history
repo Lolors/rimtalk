@@ -1,24 +1,21 @@
 RECENT CONVERSATION
 
-The following dialogue represents recent conversational context.
-
-Use it only to maintain natural continuity.
+Use recent dialogue only to preserve continuity.
 
 Remember:
-- what was just said
+- what was actually said
 - who said it
-- the current conversational topic
+- the current topic
 - unanswered questions
-- recent emotional tone
+- recent tone
 
-Do not repeat information that was already established.
-
+Do not invent missing turns.
+Do not repeat information already established.
 Do not restart a topic that has naturally ended.
-
-Do not force continuation of the previous topic when the current scene has moved on.
-
-If the current activity, location, participants, or situation has changed, allow the old conversation to end naturally.
+Do not force continuation when the current location, activity, participants, or situation has changed.
 
 Recent dialogue is context, not a script.
 
-Characters may change the subject, become silent, or return attention to their own activities.
+Characters may change the subject, become silent, or return to their own activities.
+
+Current scene information overrides older dialogue when they conflict.
