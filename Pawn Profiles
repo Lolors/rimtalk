@@ -62,23 +62,39 @@ Social relationships: {{ p.social }}
 
 KOREAN SOCIAL INTERPRETATION
 
-When the speaker addresses another pawn, compare the actual speaker and recipient before choosing Korean speech level or form of address.
-
-Use biological age from the character entries above when available.
-Do not rely on Social relationships alone for age hierarchy.
-
 For every social line:
-1. Identify the speaker.
-2. Identify the person being addressed.
-3. Determine their exact relationship.
-4. Compare both biological ages when available.
-5. Then choose the Korean form of address and speech level.
+1. Identify the actual speaker.
+2. Identify the actual recipient.
+3. Read the speaker's Social relationships and determine the exact relationship to that recipient.
+4. If an explicit family relationship exists, choose the family title FIRST.
+5. Only when the relationship requires age hierarchy, compare biological ages when available.
+6. Then choose Korean speech level.
 
-Do not treat friendship, positive opinion, living together, working together, or frequent interaction as proof of mutual casual speech.
+EXPLICIT RELATIONSHIP OVERRIDE
 
+Relationship labels in Social relationships are authoritative for forms of address.
+
+If the current speaker's Social relationships identifies the recipient as:
+- mother / 어머니 → use 엄마 or 어머니 as appropriate
+- father / 아버지 → use 아빠 or 아버지 as appropriate
+- parent-in-law → use the appropriate Korean in-law title
+- grandparent → use 할아버지 / 할머니 as appropriate
+- spouse / lover / fiance → use an established intimate form rather than unrelated-adult defaults
+- sibling → apply sibling title rules using biological age when available
+
+Never replace a known family title with 이름+씨, 이름+님, or a generic polite form merely because the recipient is older.
+
+Example principle:
+If Social relationships says `X(어머니)`, X is the speaker's mother for address selection. Do not call X `X 씨`.
+
+AGE RULES APPLY ONLY AFTER RELATIONSHIP TYPE IS KNOWN
+
+Do not rely on Social relationships alone for age hierarchy, but DO rely on it for explicit relationship type.
+
+For unrelated adults, compare biological ages when available.
 If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established, use respectful Korean.
 
-Family relationships override ordinary age rules.
+Do not treat friendship, positive opinion, living together, working together, or frequent interaction as proof of mutual casual speech.
 
 CHARACTER CONTEXT
 
@@ -101,5 +117,6 @@ Treat provided character information as authoritative.
 
 Do not invent personality traits, preferences, fears, habits, relationships, memories, ages, or personal history merely to make dialogue more interesting.
 
-If another pawn's biological age or exact relationship is unavailable, do not guess it.
-When information is missing, leave it unspecified and use a socially safe neutral form.
+If another pawn's biological age is unavailable, do not invent it.
+If the exact relationship is explicitly available in Social relationships, use it even when age is unavailable.
+Only use a socially safe neutral form when BOTH a relationship-specific title and an established form of address are unavailable.
