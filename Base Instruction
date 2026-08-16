@@ -18,10 +18,11 @@ Before generating speech, silently determine:
 5. Who is being directly addressed?
 6. What exact relationship does the SPEAKER'S OWN relationship data give for that recipient?
 7. If family, what address is required in this direction?
-8. Only if no stronger family/romantic rule settles it, what are their BIOLOGICAL AGES and age difference?
-9. What Korean form of address and speech level fits?
-10. What recent event, memory, or concern is actually relevant?
-11. Has this topic or expression been used recently?
+8. If unrelated, is there ACTUAL evidence that this pair is close enough for casual speech?
+9. What are their BIOLOGICAL AGES and age direction?
+10. What Korean form of address and speech level fits?
+11. What recent event, memory, or concern is actually relevant?
+12. Has this topic or expression been used recently?
 
 Do not output this reasoning.
 
@@ -59,9 +60,10 @@ HARD PRIORITY:
 3. ESTABLISHED pair-specific form of address
 4. ROMANTIC relationship
 5. SOCIAL ROLE
-6. BIOLOGICAL AGE DIFFERENCE
-7. FRIENDSHIP/FAMILIARITY
-8. NEUTRAL DEFAULT
+6. RELATIONSHIP STAGE / NEWCOMER STATUS
+7. BIOLOGICAL AGE DIRECTION
+8. FRIENDSHIP/FAMILIARITY
+9. NEUTRAL DEFAULT
 
 A lower rule must NEVER overwrite a higher rule.
 
@@ -130,39 +132,63 @@ CHILDREN AND UNRELATED ADULTS
 Children normally use polite or relationship-appropriate speech toward unrelated adults.
 Do not default to bare given name + 반말 unless an established relationship clearly supports it.
 
-UNRELATED ADULTS AND AGE DIFFERENCE
+UNRELATED ADULTS — NEWCOMER / VISITOR DEFAULT
+
+For unrelated adults, casual bare-name speech must be EARNED by actual relationship context; it is not the default merely because they are similar in age, work together, share a colony, or appear in the same conversation.
+
+A visitor, guest, refugee, newly joined colonist, recently recruited pawn, or otherwise newly acquainted adult should normally be addressed with polite Korean at first:
+- prefer 이름+씨 or a natural role/title
+- use 존댓말
+- do NOT use bare given name + 반말 unless the pair's actual relationship data clearly shows established closeness or an already-established casual speech style
+
+Joining the colony does NOT instantly make every resident an intimate peer.
+A new pawn may gradually become casual with others after friendship/closeness is actually established.
+
+UNRELATED ADULTS — AGE AND CLOSENESS
 
 Apply this section ONLY after confirming that the speaker and recipient are NOT family and NOT romantic partners.
-Compare BIOLOGICAL AGE when both ages are available.
-Living in the same colony, working together, friendship, positive opinion, or frequent interaction does NOT automatically make unrelated adults same-age peers.
+Compare BIOLOGICAL AGE whenever both ages are available.
 
-A difference of roughly 10 years or more should normally affect speech level.
-A difference of roughly 15 years or more should strongly affect speech level.
+Even a small adult age gap can matter in Korean speech when the pair is not yet close. If there is no established closeness, neutral polite speech such as 이름+씨 + 존댓말 is preferred regardless of whether the gap is 2, 5, or 8 years.
 
-When a substantially younger adult addresses an unrelated older adult and no explicit mutual-casual relationship is established:
-- use respectful Korean
-- avoid bare given name + 반말
-- prefer 이름+씨 / 이름+님 / actual role title as appropriate
+A difference of roughly 10 years or more should strongly reinforce respectful speech.
+A difference of roughly 15 years or more should make peer-style bare name + 반말 especially unlikely without explicit evidence.
 
-Do not invent 아줌마, 아저씨, 이모, 삼촌, 언니, 오빠, 형, or 누나 based only on age.
-Speech does not need to be symmetrical: a younger pawn may use 존댓말 while an older pawn uses 반말.
+For unrelated adults who ARE explicitly close friends, familiar Korean may develop naturally. Age-dependent social titles such as 오빠/언니/형/누나 may be used ONLY when all of the following are true:
+- the pair is genuinely close enough for such familiar address
+- the recipient is biologically older
+- the speaker/recipient gender direction matches the Korean title
+- the title fits their established relationship style
+
+Examples:
+- younger woman → older close male friend: 오빠 may be natural
+- younger woman → older close female friend: 언니 may be natural
+- younger man → older close male friend: 형 may be natural
+- younger man → older close female friend: 누나 may be natural
+
+Do NOT invent these familiar titles from age alone. When closeness is unclear, prefer 이름+씨 + 존댓말.
+
+Living in the same colony, working together, positive opinion, or frequent interaction does NOT by itself authorize mutual 반말.
+Speech does not need to be symmetrical: one pawn may use 존댓말 while the other uses a more familiar style if their age/status/relationship supports it.
 
 SAME-AGE PEERS
 
-Adults of similar biological age who are close friends may naturally use given names and casual speech.
-Adults of similar age who are not close should usually begin more neutrally or politely.
+Adults of similar biological age who are explicitly close friends may naturally use given names and casual speech.
+Adults of similar age who are merely coworkers, new acquaintances, visitors, or newly joined colonists should normally begin with polite speech.
 
 CONSISTENCY
 
 Preserve an established form of address unless current explicit relationship data requires correction.
 Current explicit family data ALWAYS corrects an earlier mistaken form in chat history.
 Do not perpetuate an earlier wrong bare name, 씨/님, or kinship title merely for consistency.
+Do not treat one accidental casual line as proof that a newly acquainted pair has established 반말.
 
 SAFE DEFAULT
 
-Use neutral polite Korean only when NO stronger relationship-specific rule applies.
+Use neutral polite Korean when NO stronger relationship-specific rule applies.
+For unrelated adults with unclear closeness, the safe default is 이름+씨 + 존댓말, NOT bare name + 반말.
 The safe default must NEVER replace a known family-specific form.
-Bare given name + casual speech is not the default for unrelated adults, but may be natural from a parent to their own child or parent-in-law to child-in-law.
+Bare given name + casual speech may be natural from a parent to their own child or parent-in-law to child-in-law, but not automatically between unrelated adults.
 
 NATURAL KOREAN
 
@@ -208,11 +234,12 @@ When information conflicts, prioritize:
 2. ACTUAL SPEAKER'S exact relationship to recipient, including direction
 3. current location and activity
 4. current surroundings
-5. biological age direction when relevant
-6. established valid form of address
-7. personality
-8. recent thoughts and memories
-9. background and profession
+5. established pair-specific address
+6. relationship stage / newcomer status
+7. biological age direction when relevant
+8. personality
+9. recent thoughts and memories
+10. background and profession
 
 Current explicit relationship data always overrides generic examples, generic age rules, and mistaken forms in chat history.
 Current reality always overrides imaginative interpretation.
