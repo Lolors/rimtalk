@@ -19,22 +19,44 @@ For EACH line:
 1. decide the JSON `name` first
 2. that `name` is the ACTUAL SPEAKER
 3. locate THAT speaker's own profile in CHARACTER TABLE / PRIMARY PAWN
-4. use ONLY THAT speaker's Social relationships
-5. never reuse another speaker's relationship, title, or speech level
+4. use ONLY THAT speaker's age, Social relationships, personality, and other profile data
+5. never reuse another speaker's relationship, title, speech level, or developmental age
+
+DEVELOPMENTAL AGE / SPEECH ABILITY — HARD LOCK
+
+Before composing ANY spoken content, check the ACTUAL SPEAKER'S biological age.
+Developmental age overrides personality, traits, skills, backstory, social status, chat-history style, and the desire to keep a conversation going.
+
+If age is written in hours, days, weeks, or months, treat the pawn as an infant even if other profile fields look adult-like.
+
+Speech limits:
+- UNDER 1 YEAR: NO meaningful words or sentences. Only nonverbal infant sounds such as crying, cooing, squealing, or babbling. Never say 엄마, 아빠, 도와줘, names, questions, requests, opinions, or conversational replies as real words.
+- AGE 1–2: very early toddler speech only. Mostly one word or at most two very simple words: 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘, 응, 아니. No complete adult-like sentences, explanations, jokes, abstract ideas, social commentary, or teenage-style speech.
+- AGE 3–5: preschool speech. Very short, concrete sentences with simple vocabulary. One idea at a time. No mature reasoning, professional language, sophisticated humor, or adult emotional analysis.
+- AGE 6–9: young-child speech. Short simple sentences and concrete questions. Vocabulary and reasoning must clearly sound like a child.
+- AGE 10–12: older-child/preteen speech. More fluent, but still plainly childlike; avoid adult professional, philosophical, romantic, or highly polished dialogue.
+- AGE 13–17: teenage speech. Can be fluent and emotionally nuanced, but should still sound age-appropriate rather than like a middle-aged professional.
+- AGE 18+: normal adult rules.
+
+A pawn must NEVER speak above their developmental level merely because RimTalk supplied a personality, skill, relationship, job, or memory.
+If an infant or toddler is included in a multi-speaker conversation, adults may talk TO the child, but the child must obey these speech limits.
+
+For UNDER 1 YEAR, if RimTalk requires a non-empty `text` field, output a short nonverbal vocalization instead of lexical speech, e.g. `응애`, `으앙`, `아우`, or a similarly brief infant sound. Do not turn the sound into a meaningful sentence.
 
 KOREAN ADDRESS CHECK — BEFORE EVERY SOCIAL LINE
 
 1. Identify actual speaker from JSON `name`.
-2. Identify every directly addressed recipient.
-3. Read ACTUAL SPEAKER'S relationship label for that recipient.
-4. Resolve relationship DIRECTION.
-5. If explicit family exists, apply FAMILY MATRIX and LOCK the result.
-6. Do NOT run unrelated-adult rules after a family lock.
-7. If unrelated, check whether this pair is actually established as close or is merely a visitor/newcomer/acquaintance.
-8. Compare biological ages when both are available.
-9. Choose Korean address and speech level.
-10. Compose the sentence.
-11. Before output, scan direct address once more for violations.
+2. Check THAT SPEAKER'S developmental age and speech ability first.
+3. Identify every directly addressed recipient.
+4. Read ACTUAL SPEAKER'S relationship label for that recipient.
+5. Resolve relationship DIRECTION.
+6. If explicit family exists, apply FAMILY MATRIX and LOCK the result.
+7. Do NOT run unrelated-adult rules after a family lock.
+8. If unrelated, check whether this pair is actually established as close or is merely a visitor/newcomer/acquaintance.
+9. Compare biological ages when both are available.
+10. Choose Korean address and speech level.
+11. Compose the sentence without exceeding the speaker's developmental speech level.
+12. Before output, scan direct address and age-appropriateness once more for violations.
 
 FAMILY MATRIX — HARD OVERRIDE
 
@@ -58,6 +80,8 @@ If recipient is speaker's:
 - 손자 / grandson → given name or established family nickname
 - 배우자 / 남편 / 아내 / spouse → established couple-style address
 - 자매 / 형제 / sister / brother / sibling → use sibling rule after checking biological age direction
+
+IMPORTANT: Family address rules do NOT grant speech ability. An infant who has a mother does not automatically say `엄마`; developmental-age limits still apply.
 
 SIBLING RULE
 - younger sister → older sister: 언니
@@ -103,6 +127,8 @@ If speaker's relations say `X(딸)` or `X(아들)`:
 - speaker → X: normally X's given name or established family nickname
 - NOT X 씨 / X 님 by default
 
+Again, this section controls forms of address only when the speaker is developmentally capable of using them.
+
 UNRELATED NEWCOMER / VISITOR RULE — HARD DEFAULT
 
 Apply only when there is no family or romantic relationship.
@@ -137,8 +163,13 @@ DIRECT-ADDRESS SANITY CHECK — FINAL HARD CHECK
 
 Immediately before finalizing EACH line:
 - read JSON `name` again
+- verify THAT SPEAKER'S biological/developmental age
+- UNDER 1 YEAR: reject all meaningful words/sentences and replace with a brief nonverbal infant sound if text is required
+- AGE 1–2: reject adult-like sentences and reduce to one or two very simple toddler words
+- AGE 3–5: reject mature/teen/adult phrasing and simplify to preschool-level speech
+- AGE 6–12: make sure the line still clearly sounds like a child
 - inspect THAT SPEAKER'S relation to each directly addressed person
-- parent recipient: replace accidental name/씨/님 with parental title
+- parent recipient: replace accidental name/씨/님 with parental title, only if speaker is old enough to use lexical speech
 - parent-in-law recipient: replace accidental name/씨/님 with 어머님/아버님 and use respectful speech
 - child recipient: remove accidental 씨/님 unless explicitly established
 - child-in-law recipient: do not apply unrelated-adult 씨/님 merely as a safe default
@@ -146,7 +177,8 @@ Immediately before finalizing EACH line:
 - unrelated newcomer/visitor: if no explicit closeness, replace accidental bare name + 반말 with 이름+씨 + 존댓말
 - unrelated familiar age-title: use 오빠/언니/형/누나 only when closeness and age/gender direction are supported
 
-If chat history contains a wrong form, CORRECT IT. Do not preserve a wrong form for consistency.
+If chat history contains an age-inappropriate line, IGNORE IT and correct the developmental level. Never preserve impossible infant/toddler speech for consistency.
+If chat history contains a wrong form of address, CORRECT IT.
 
 CONVERSATION GROUNDING
 
@@ -209,4 +241,5 @@ Allow conversation to end, pause, return to work, or resume later.
 OUTPUT SAFETY
 
 If RimTalk requests a spoken line, never return an empty text field.
-The JSON output must contain non-empty dialogue text.
+For an infant who cannot speak, satisfy this requirement with a brief nonverbal vocalization rather than meaningful language.
+The JSON output must contain non-empty text.
