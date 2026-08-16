@@ -30,10 +30,11 @@ KOREAN ADDRESS CHECK — BEFORE EVERY SOCIAL LINE
 4. Resolve relationship DIRECTION.
 5. If explicit family exists, apply FAMILY MATRIX and LOCK the result.
 6. Do NOT run unrelated-adult rules after a family lock.
-7. Only where needed (especially siblings or unrelated adults), compare biological ages.
-8. Choose speech level.
-9. Compose the sentence.
-10. Before output, scan the direct address once more for violations.
+7. If unrelated, check whether this pair is actually established as close or is merely a visitor/newcomer/acquaintance.
+8. Compare biological ages when both are available.
+9. Choose Korean address and speech level.
+10. Compose the sentence.
+11. Before output, scan direct address once more for violations.
 
 FAMILY MATRIX — HARD OVERRIDE
 
@@ -81,7 +82,6 @@ If speaker's relations say `X(장인)` / `X(father-in-law)` / `X(spouse's father
 If speaker's relations say `X(사위)`:
 - X is speaker's son-in-law
 - speaker → X: normally X's given name or established family form
-- do NOT turn X into an unrelated adult merely because he is an adult
 
 If speaker's relations say `X(며느리)`:
 - X is speaker's daughter-in-law
@@ -103,6 +103,36 @@ If speaker's relations say `X(딸)` or `X(아들)`:
 - speaker → X: normally X's given name or established family nickname
 - NOT X 씨 / X 님 by default
 
+UNRELATED NEWCOMER / VISITOR RULE — HARD DEFAULT
+
+Apply only when there is no family or romantic relationship.
+
+If either person is a visitor, guest, refugee, newly joined colonist, recently recruited pawn, or otherwise a new acquaintance, DO NOT assume instant intimacy.
+
+Unless the pair's actual relationship data clearly shows established closeness or an established casual speech style:
+- use 이름+씨 or a natural role/title
+- use 존댓말
+- do NOT use bare given name + 반말
+
+Simply sharing the same colony or working beside each other does not make unrelated adults close friends.
+A single earlier accidental casual line in chat history does not establish 반말.
+
+UNRELATED AGE / FAMILIAR TITLE RULE
+
+For unrelated adults, compare biological ages whenever possible.
+
+If closeness is unclear, polite Korean is preferred even for a small age gap such as 2–8 years.
+A 10+ year gap strongly reinforces respectful speech.
+
+Age-based familiar titles for unrelated adults are allowed only if the pair is genuinely close AND the recipient is older AND gender direction fits:
+- younger woman → older close man: 오빠
+- younger woman → older close woman: 언니
+- younger man → older close man: 형
+- younger man → older close woman: 누나
+
+Do NOT invent 오빠/언니/형/누나 from age alone.
+If closeness is not clearly established, prefer 이름+씨 + 존댓말.
+
 DIRECT-ADDRESS SANITY CHECK — FINAL HARD CHECK
 
 Immediately before finalizing EACH line:
@@ -113,18 +143,10 @@ Immediately before finalizing EACH line:
 - child recipient: remove accidental 씨/님 unless explicitly established
 - child-in-law recipient: do not apply unrelated-adult 씨/님 merely as a safe default
 - sibling recipient: verify age direction before 언니/오빠/형/누나
+- unrelated newcomer/visitor: if no explicit closeness, replace accidental bare name + 반말 with 이름+씨 + 존댓말
+- unrelated familiar age-title: use 오빠/언니/형/누나 only when closeness and age/gender direction are supported
 
 If chat history contains a wrong form, CORRECT IT. Do not preserve a wrong form for consistency.
-
-UNRELATED AGE CHECK
-
-Apply ONLY after confirming there is NO family or romantic relationship for the actual speaker-recipient pair.
-
-If the actual speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
-- use respectful address
-- use 존댓말
-
-Friendship, positive opinion, working together, or living in the same colony does not authorize peer-style 반말 across a large age gap.
 
 CONVERSATION GROUNDING
 
