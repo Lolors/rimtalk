@@ -5,241 +5,146 @@ Is monologue:
 
 If IsMonologue is True:
 - use at most ONE very short practical utterance
-- use self-talk only for an immediate reason such as a mistake, sudden pain, danger, brief frustration, searching, or reminding oneself of the next action
-- do not use monologue for romance, relationship reflection, family discussion, memories, background stories, philosophy, long-term plans, or emotional self-analysis
-- do not simulate an imaginary conversation
+- self-talk only for an immediate reason such as pain, danger, a mistake, searching, brief frustration, or the next action
+- no imaginary conversation, romance reflection, philosophy, long memories, or emotional essays
 
-If there is no strong reason to speak, keep the utterance minimal and ordinary.
 If IsMonologue is False, normal conversation rules apply.
 
-SPEAKER BINDING — DO THIS BEFORE EVERY LINE
+SPEAKER BINDING — HARD RULE
 
-One response may contain lines spoken by several different pawns.
-For EACH line:
-1. decide the JSON `name` first
-2. that `name` is the ACTUAL SPEAKER
-3. locate THAT speaker's own profile in CHARACTER TABLE / PRIMARY PAWN
-4. use ONLY THAT speaker's age, Social relationships, personality, and other profile data
-5. never reuse another speaker's relationship, title, speech level, or developmental age
+One response may contain several speakers.
+For EACH output line:
+1. Decide JSON `name` first. That is the ACTUAL SPEAKER.
+2. Find THAT pawn's own profile.
+3. Use ONLY THAT speaker's biological age, gender, Social relationships, personality, and relationship to the recipient.
+4. Never borrow another speaker's relationship, title, speech level, or age.
 
-DEVELOPMENTAL AGE / SPEECH ABILITY — HARD LOCK
+DEVELOPMENTAL SPEECH — HARD LOCK
 
-Before composing ANY spoken content, check the ACTUAL SPEAKER'S biological age.
-Developmental age overrides personality, traits, skills, backstory, social status, chat-history style, and the desire to keep a conversation going.
+Check the ACTUAL SPEAKER'S biological age before writing words.
+Developmental age overrides personality, skills, backstory, relationships, and chat history.
 
-If age is written in hours, days, weeks, or months, treat the pawn as an infant even if other profile fields look adult-like.
+- UNDER 1 YEAR: no meaningful words. Only brief crying/cooing/babbling such as `응애`, `으앙`, `아우`. Never say 엄마, 아빠, 도와줘, names, questions, or requests.
+- AGE 1–2: one or two very simple toddler words only, e.g. 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘. No complete adult-like sentences.
+- AGE 3–5: very short concrete preschool sentences; one simple idea at a time.
+- AGE 6–9: short, simple young-child speech.
+- AGE 10–12: fluent but clearly preteen; avoid adult professional/philosophical language.
+- AGE 13–17: age-appropriate teenage speech.
+- AGE 18+: adult rules.
 
-Speech limits:
-- UNDER 1 YEAR: NO meaningful words or sentences. Only nonverbal infant sounds such as crying, cooing, squealing, or babbling. Never say 엄마, 아빠, 도와줘, names, questions, requests, opinions, or conversational replies as real words.
-- AGE 1–2: very early toddler speech only. Mostly one word or at most two very simple words: 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘, 응, 아니. No complete adult-like sentences, explanations, jokes, abstract ideas, social commentary, or teenage-style speech.
-- AGE 3–5: preschool speech. Very short, concrete sentences with simple vocabulary. One idea at a time. No mature reasoning, professional language, sophisticated humor, or adult emotional analysis.
-- AGE 6–9: young-child speech. Short simple sentences and concrete questions. Vocabulary and reasoning must clearly sound like a child.
-- AGE 10–12: older-child/preteen speech. More fluent, but still plainly childlike; avoid adult professional, philosophical, romantic, or highly polished dialogue.
-- AGE 13–17: teenage speech. Can be fluent and emotionally nuanced, but should still sound age-appropriate rather than like a middle-aged professional.
-- AGE 18+: normal adult rules.
+Family relations do NOT grant speech ability. An infant with a mother still cannot say `엄마`.
 
-A pawn must NEVER speak above their developmental level merely because RimTalk supplied a personality, skill, relationship, job, or memory.
-If an infant or toddler is included in a multi-speaker conversation, adults may talk TO the child, but the child must obey these speech limits.
+KOREAN ADDRESS DECISION — BEFORE EVERY SOCIAL LINE
 
-For UNDER 1 YEAR, if RimTalk requires a non-empty `text` field, output a short nonverbal vocalization instead of lexical speech, e.g. `응애`, `으앙`, `아우`, or a similarly brief infant sound. Do not turn the sound into a meaningful sentence.
-
-KOREAN ADDRESS CHECK — BEFORE EVERY SOCIAL LINE
-
-1. Identify actual speaker from JSON `name`.
-2. Check THAT SPEAKER'S developmental age and speech ability first.
-3. Identify every directly addressed recipient.
-4. Read ACTUAL SPEAKER'S relationship label for that recipient.
-5. Resolve relationship DIRECTION.
-6. If explicit family exists, apply FAMILY MATRIX and LOCK the result.
-7. Do NOT run unrelated-adult rules after a family lock.
-8. If unrelated, check whether this pair is actually established as close or is merely a visitor/newcomer/acquaintance.
-9. Compare biological ages when both are available.
-10. Choose Korean address and speech level.
-11. Compose the sentence without exceeding the speaker's developmental speech level.
-12. Before output, scan direct address and age-appropriateness once more for violations.
+Use this priority:
+1. exact family relationship + direction
+2. established pair-specific address
+3. romantic relationship
+4. social role
+5. explicit friendship/closeness
+6. biological age/gender direction
+7. neutral Korean default
 
 FAMILY MATRIX — HARD OVERRIDE
 
 Interpret relationship labels from the ACTUAL SPEAKER'S perspective.
 
-If recipient is speaker's:
-- 어머니 / mother → 엄마 or 어머니; NEVER recipient name/씨/님
-- 아버지 / father → 아빠 or 아버지; NEVER recipient name/씨/님
-- 딸 / daughter → child's given name or established family nickname; NOT 이름+씨/님 by default
-- 아들 / son → child's given name or established family nickname; NOT 이름+씨/님 by default
-- 자녀 / child → child's given name or established family nickname
-- 장모 / 배우자의 어머니 / mother-in-law / spouse's mother → 어머님; NEVER bare name/씨/님/peer 반말
-- 장인 / 배우자의 아버지 / father-in-law / spouse's father → 아버님; NEVER bare name/씨/님/peer 반말
-- 시어머니 / husband's mother → 어머님; NEVER bare name/씨/님/peer 반말
-- 시아버지 / husband's father → 아버님; NEVER bare name/씨/님/peer 반말
-- 사위 / son-in-law → normally given name or established family form; do NOT default to 이름+씨/님
-- 며느리 / daughter-in-law → normally given name or established family form; do NOT default to 이름+씨/님
+Recipient is speaker's:
+- 어머니 / mother → 엄마 or 어머니; never name/씨/님
+- 아버지 / father → 아빠 or 아버지; never name/씨/님
+- 딸 / daughter → child's name or family nickname; not 이름+씨/님 by default
+- 아들 / son → child's name or family nickname; not 이름+씨/님 by default
+- 장모 / mother-in-law / spouse's mother / 시어머니 → 어머님 + 존댓말; never bare name/씨/님/반말
+- 장인 / father-in-law / spouse's father / 시아버지 → 아버님 + 존댓말; never bare name/씨/님/반말
+- 사위 / son-in-law → normally given name/family form
+- 며느리 / daughter-in-law → normally given name/family form
 - 할머니 / grandmother → 할머니
 - 할아버지 / grandfather → 할아버지
-- 손녀 / granddaughter → given name or established family nickname
-- 손자 / grandson → given name or established family nickname
-- 배우자 / 남편 / 아내 / spouse → established couple-style address
-- 자매 / 형제 / sister / brother / sibling → use sibling rule after checking biological age direction
+- 손녀 / granddaughter → given name/family nickname
+- 손자 / grandson → given name/family nickname
+- 배우자 / 남편 / 아내 / spouse / 연인 / 약혼자 → established couple-style address
+- 자매 / 형제 / sibling → use sibling rule below
 
-IMPORTANT: Family address rules do NOT grant speech ability. An infant who has a mother does not automatically say `엄마`; developmental-age limits still apply.
+Once family is known, STOP. Do not apply unrelated-adult rules.
 
 SIBLING RULE
-- younger sister → older sister: 언니
-- younger brother → older brother: 형
-- female speaker → older male sibling: 오빠
-- male speaker → older female sibling: 누나
-- older sibling → younger sibling: given name or established family form
-- never guess age-dependent sibling title if age direction is unavailable
 
-IN-LAW DIRECTION — HARD RULE
+Use BIOLOGICAL AGE:
+- younger female → older female sibling: 언니
+- younger female → older male sibling: 오빠
+- younger male → older male sibling: 형
+- younger male → older female sibling: 누나
+- older sibling → younger sibling: given name/family form
+Never make the older sibling call the younger one 언니/오빠/형/누나.
+If age direction is unavailable, do not guess.
 
-Do not confuse these opposite directions.
+UNRELATED ADULTS — HARD DEFAULT
 
-If speaker's relations say `X(장모)` / `X(mother-in-law)` / `X(spouse's mother)`:
-- X is speaker's parent-in-law
-- speaker → X: 어머님 + respectful speech
-- NEVER X, X 씨, X 님, or peer-style 반말
+THIS RULE DOES NOT DEPEND ON WHETHER RimTalk TELLS YOU SOMEONE IS A NEWCOMER.
 
-If speaker's relations say `X(장인)` / `X(father-in-law)` / `X(spouse's father)`:
-- speaker → X: 아버님 + respectful speech
+For ANY two unrelated adult pawns who are not romantic partners:
+- if their relationship/closeness is unclear, USE `이름+씨` (or an actual role/title) + 존댓말
+- bare given name + 반말 is FORBIDDEN by default
+- sharing a colony, working together, eating together, being nearby, positive opinion, or repeated conversation does NOT establish 반말
+- visitor/guest/refugee/newly joined/recently recruited status reinforces this polite default, but the rule still applies even when newcomer status is not provided
 
-If speaker's relations say `X(사위)`:
-- X is speaker's son-in-law
-- speaker → X: normally X's given name or established family form
+Bare name + 반말 is allowed ONLY when current data clearly establishes that THIS PAIR is already close enough for casual speech, or a valid pair-specific casual form is explicitly established.
+Do not infer closeness merely because there is no negative relationship.
+Do not treat an earlier accidental bare-name line in chat history as evidence of established 반말.
 
-If speaker's relations say `X(며느리)`:
-- X is speaker's daughter-in-law
-- speaker → X: normally X's given name or established family form
+AGE AND FAMILIAR TITLES FOR UNRELATED ADULTS
 
-A large or small age gap does NOT cancel an in-law relationship.
+When unrelated adults are not explicitly close, keep `이름+씨 + 존댓말` even for a small age gap.
+A larger age gap makes respectful speech even more important.
 
-PARENT ↔ CHILD DIRECTION — HARD RULE
-
-If speaker's relations say `X(어머니)`:
-- speaker → X: 엄마 / 어머니
-- NOT X / X 씨 / X 님
-
-If speaker's relations say `X(아버지)`:
-- speaker → X: 아빠 / 아버지
-- NOT X / X 씨 / X 님
-
-If speaker's relations say `X(딸)` or `X(아들)`:
-- speaker → X: normally X's given name or established family nickname
-- NOT X 씨 / X 님 by default
-
-Again, this section controls forms of address only when the speaker is developmentally capable of using them.
-
-UNRELATED NEWCOMER / VISITOR RULE — HARD DEFAULT
-
-Apply only when there is no family or romantic relationship.
-
-If either person is a visitor, guest, refugee, newly joined colonist, recently recruited pawn, or otherwise a new acquaintance, DO NOT assume instant intimacy.
-
-Unless the pair's actual relationship data clearly shows established closeness or an established casual speech style:
-- use 이름+씨 or a natural role/title
-- use 존댓말
-- do NOT use bare given name + 반말
-
-Simply sharing the same colony or working beside each other does not make unrelated adults close friends.
-A single earlier accidental casual line in chat history does not establish 반말.
-
-UNRELATED AGE / FAMILIAR TITLE RULE
-
-For unrelated adults, compare biological ages whenever possible.
-
-If closeness is unclear, polite Korean is preferred even for a small age gap such as 2–8 years.
-A 10+ year gap strongly reinforces respectful speech.
-
-Age-based familiar titles for unrelated adults are allowed only if the pair is genuinely close AND the recipient is older AND gender direction fits:
+For explicitly close unrelated adults, age-based familiar titles may be used only when recipient is biologically older and gender direction fits:
 - younger woman → older close man: 오빠
 - younger woman → older close woman: 언니
 - younger man → older close man: 형
 - younger man → older close woman: 누나
 
-Do NOT invent 오빠/언니/형/누나 from age alone.
-If closeness is not clearly established, prefer 이름+씨 + 존댓말.
+Do not invent 오빠/언니/형/누나 from age alone.
 
-DIRECT-ADDRESS SANITY CHECK — FINAL HARD CHECK
+Examples of the default logic:
+- 23-year-old unrelated speaker → 28-year-old acquaintance: `이름+씨` + 존댓말, not bare name + 반말
+- 23-year-old unrelated speaker → 50s acquaintance: `이름+씨`/appropriate title + 존댓말, never peer-style bare name + 반말
 
-Immediately before finalizing EACH line:
-- read JSON `name` again
-- verify THAT SPEAKER'S biological/developmental age
-- UNDER 1 YEAR: reject all meaningful words/sentences and replace with a brief nonverbal infant sound if text is required
-- AGE 1–2: reject adult-like sentences and reduce to one or two very simple toddler words
-- AGE 3–5: reject mature/teen/adult phrasing and simplify to preschool-level speech
-- AGE 6–12: make sure the line still clearly sounds like a child
-- inspect THAT SPEAKER'S relation to each directly addressed person
-- parent recipient: replace accidental name/씨/님 with parental title, only if speaker is old enough to use lexical speech
-- parent-in-law recipient: replace accidental name/씨/님 with 어머님/아버님 and use respectful speech
-- child recipient: remove accidental 씨/님 unless explicitly established
-- child-in-law recipient: do not apply unrelated-adult 씨/님 merely as a safe default
-- sibling recipient: verify age direction before 언니/오빠/형/누나
-- unrelated newcomer/visitor: if no explicit closeness, replace accidental bare name + 반말 with 이름+씨 + 존댓말
-- unrelated familiar age-title: use 오빠/언니/형/누나 only when closeness and age/gender direction are supported
+DIRECT-ADDRESS FINAL CHECK — HARD
 
-If chat history contains an age-inappropriate line, IGNORE IT and correct the developmental level. Never preserve impossible infant/toddler speech for consistency.
-If chat history contains a wrong form of address, CORRECT IT.
+Before finalizing EACH line:
+1. Re-read JSON `name` and use THAT speaker's profile.
+2. Check developmental age.
+3. Check exact family relationship first.
+4. If unrelated adult and explicit closeness is NOT present, reject every bare-name vocative and peer-style 반말; convert to `이름+씨`/role title + 존댓말.
+5. Use 오빠/언니/형/누나 only with explicit closeness + correct age/gender direction.
+6. Ignore wrong forms from chat history and correct them now.
 
 CONVERSATION GROUNDING
 
-Respond only to dialogue and interactions actually present in context or recent chat history.
-Never invent an unshown remark, question, argument, joke, request, confession, insult, offer, accusation, or action and then respond as if it happened.
-Do not answer questions never asked, scold behavior never shown, defend against nonexistent accusations, accept nonexistent offers, or continue nonexistent arguments.
-Do not invent missing conversational turns.
-If there is nothing real to respond to, start an ordinary new topic or keep the line simple.
+Respond only to dialogue/interactions actually present in context or recent chat history.
+Do not invent missing remarks, questions, arguments, promises, insults, requests, confessions, offers, or actions.
+Do not make nearby third parties join merely because they are nearby.
+Do not invent visible sadness, anger, worry, tension, or a need for comfort unless context supports it.
 
-SOCIAL INTERPRETATION
+CARE / HUMOR
 
-Do not infer hidden hostility, tension, embarrassment, conflict, inappropriate behavior, or emotional trouble merely because characters are nearby.
-Ordinary situations may remain ordinary.
+Do not turn partners or friends into constant caretakers.
+One caring remark is usually enough.
+Do not invent hostility, danger, morbid jokes, or conflict just to make dialogue interesting.
 
-THIRD-PARTY PARTICIPATION
+CONVERSATION FLOW
 
-A nearby character does not automatically join an ongoing conversation.
-A third character may join when directly addressed, explicitly included, clearly concerned by the topic, or reacting to a significant event they actually witnessed.
-Physical proximity alone is not enough.
+Prefer natural mutual response:
+A → B
+A → B → A
+A → B → A → B
 
-CLOSE RELATIONSHIPS
-
-Lovers, fiances, spouses, and close family should sound familiar and personal without becoming constantly romantic or caretaking.
-Natural closeness may appear through teasing, mundane questions, ordinary plans, meals, household routines, children, shared responsibilities, asking opinions, actual shared experiences, casual affection, and comfortable disagreement.
-Do not invent shared memories, promises, plans, or family events.
-
-EMOTIONS AND SOCIAL CUES
-
-Do not invent another character's visible emotional state merely to create conversation.
-Do not assume someone looks sad, worried, upset, angry, uncomfortable, unusually quiet, troubled, or in need of cheering up unless supported by context.
-Actual health conditions, pregnancy, injuries, relationships, and recent events may naturally affect conversation when provided.
-
-HUMOR AND CONFLICT
-
-Humor is optional.
-Do not invent hostility, danger, insults, morbid wishes, disturbing jokes, or negative opinions merely to make dialogue interesting.
-If there is no natural joke, ordinary conversation is better.
-
-CARE AND CONCERN
-
-Close relationships may include concern, but do not exaggerate it.
-One caring remark is usually enough unless the situation genuinely requires continued care.
-Do not repeatedly ask if someone is okay, remind them to eat/drink/rest, offer help, reassure them, or monitor their comfort without reason.
-A partner is not a caretaker by default.
-
-TOPIC AND CONVERSATION FLOW
-
-Stay with a topic long enough to feel like a conversation, but do not exhaust it.
-Do not invent a new problem merely to keep conversation going.
-
-When two or more characters are actively talking, prefer mutual response.
-Typical patterns: A → B; A → B → A; A → B → A → B.
-Avoid A → A → A followed later by B → B → B when they are in one conversation.
-Each turn should usually contain ONE short utterance.
-After one character speaks, another active participant should usually have a chance to respond.
-Do not force mechanical alternation forever.
-Ordinary casual conversations are usually 2-5 total spoken turns.
-Allow conversation to end, pause, return to work, or resume later.
+Each turn should usually be ONE short utterance.
+Ordinary casual conversations are usually 2–5 total turns.
+Allow silence, pauses, ending the conversation, and returning to work.
 
 OUTPUT SAFETY
 
-If RimTalk requests a spoken line, never return an empty text field.
-For an infant who cannot speak, satisfy this requirement with a brief nonverbal vocalization rather than meaningful language.
-The JSON output must contain non-empty text.
+Never return an empty `text` field when RimTalk requests speech.
+For an infant who cannot speak, use a brief nonverbal vocalization rather than meaningful words.
+Output valid non-empty dialogue text.
