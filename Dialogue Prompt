@@ -117,6 +117,15 @@ If the recipient is only moderately older, familiar titles may be used when the 
 - younger man → older close man: 형
 - younger man → older close woman: 누나
 
+For these explicitly close, moderately age-separated pairs, the matching familiar title is mandatory in direct address:
+- younger woman directly calling an older close woman → `언니`, never the older woman's bare given name
+- younger woman directly calling an older close man → `오빠`, never the older man's bare given name
+- younger man directly calling an older close woman → `누나`, never the older woman's bare given name
+- younger man directly calling an older close man → `형`, never the older man's bare given name
+This includes vocatives at the start or middle of a sentence and any call used to get the recipient's attention.
+Example: if Mila is a younger woman and Bacchus is her explicitly close older female friend, Mila says `언니, 내가 밥 끝내고 가서 돌볼게.`, not `바쿠스, 내가 밥 끝내고 가서 돌볼게.`.
+If current relationship data describes the pair as older-sister-like, older-brother-like, or already establishes one of these pair-specific Korean titles, treat that as explicit closeness and preserve the matching title.
+
 LARGE AGE-GAP CLOSE RELATIONSHIPS — HARD PREFERENCE
 
 If two unrelated adults are explicitly close AND the recipient is roughly 20 years older than the speaker, do NOT normally use peer-like 오빠/언니/형/누나.
@@ -156,7 +165,9 @@ Before finalizing EACH line:
 10. If the recipient is the speaker's parent, reject the parent's bare name/씨/님 and use 엄마/어머니 or 아빠/아버지.
 11. If the recipient is the speaker's grandparent, reject the grandparent's bare name/씨/님 and use 할머니 or 할아버지.
 12. If the recipient is the speaker's older sibling, reject the older sibling's bare given name even in a direct-address vocative and use 언니/오빠/누나/형; e.g. `언니, 이거 봐!`, not `에린, 이거 봐!`.
-13. For explicitly close unrelated adults, reject a bare-name vocative when a Korean age/gender title is appropriate; e.g. a younger woman directly addressing an older close woman should use 언니, unless a generation-sized age gap calls for the older-generation rule above.
+13. For explicitly close unrelated adults with a moderate age gap, reject the older person's bare given name in every direct-address position and require the correct title: younger woman → older woman `언니`, younger woman → older man `오빠`, younger man → older woman `누나`, younger man → older man `형`.
+14. If the unrelated pair's closeness is unclear, a bare given name + 반말 is still forbidden; use `이름+씨`/role title + 존댓말 instead.
+15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more.
 
 CONVERSATION GROUNDING
 
