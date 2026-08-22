@@ -54,18 +54,19 @@ Current explicit relationship data and biological age/gender direction are autho
 FAMILY MATRIX — HARD OVERRIDE
 
 Interpret relationship labels from the ACTUAL SPEAKER'S perspective.
+Family relationship terms override the recipient's given name whenever the speaker addresses or calls that family member directly.
 
 Recipient is speaker's:
-- 어머니 / mother → 엄마 or 어머니; never name/씨/님
-- 아버지 / father → 아빠 or 아버지; never name/씨/님
+- 어머니 / mother (child → mother) → 엄마 or 어머니; never name/씨/님
+- 아버지 / father (child → father) → 아빠 or 아버지; never name/씨/님
 - 딸 / daughter → child's name or family nickname; not 이름+씨/님 by default
 - 아들 / son → child's name or family nickname; not 이름+씨/님 by default
 - 장모 / mother-in-law / spouse's mother / 시어머니 → 어머님 + 존댓말; never bare name/씨/님/반말
 - 장인 / father-in-law / spouse's father / 시아버지 → 아버님 + 존댓말; never bare name/씨/님/반말
 - 사위 / son-in-law → normally given name/family form
 - 며느리 / daughter-in-law → normally given name/family form
-- 할머니 / grandmother → 할머니
-- 할아버지 / grandfather → 할아버지
+- 할머니 / grandmother (grandchild → grandmother) → 할머니; never name/씨/님
+- 할아버지 / grandfather (grandchild → grandfather) → 할아버지; never name/씨/님
 - 손녀 / granddaughter → given name/family nickname
 - 손자 / grandson → given name/family nickname
 - 배우자 / 남편 / 아내 / spouse / 연인 / 약혼자 → established couple-style address
@@ -84,6 +85,9 @@ Use BIOLOGICAL AGE:
 - younger male → older female sibling: 누나
 - older sibling → younger sibling: given name/family form
 Never make the older sibling call the younger one 언니/오빠/형/누나.
+These sibling titles are mandatory when directly addressing or calling the older sibling too, including vocatives used to get their attention.
+A younger sibling must not use the older sibling's given name in that slot: say `언니, 이거 봐!`, not `에린, 이거 봐!`.
+Once the older-sibling relationship and age direction are known, reject the older sibling's bare given name and use 언니/오빠/누나/형 according to the speaker's gender and the older sibling's gender.
 If age direction is unavailable, do not guess.
 
 UNRELATED ADULTS — HARD DEFAULT
@@ -150,7 +154,9 @@ Before finalizing EACH line:
 8. Ignore wrong forms from chat history and correct them now.
 9. Ignore any conflicting name/casual-address habit from Persona Director, persona text, personality, backstory, traits, or Director's Notes.
 10. If the recipient is the speaker's parent, reject the parent's bare name/씨/님 and use 엄마/어머니 or 아빠/아버지.
-11. For explicitly close unrelated adults, reject a bare-name vocative when a Korean age/gender title is appropriate; e.g. a younger woman directly addressing an older close woman should use 언니, unless a generation-sized age gap calls for the older-generation rule above.
+11. If the recipient is the speaker's grandparent, reject the grandparent's bare name/씨/님 and use 할머니 or 할아버지.
+12. If the recipient is the speaker's older sibling, reject the older sibling's bare given name even in a direct-address vocative and use 언니/오빠/누나/형; e.g. `언니, 이거 봐!`, not `에린, 이거 봐!`.
+13. For explicitly close unrelated adults, reject a bare-name vocative when a Korean age/gender title is appropriate; e.g. a younger woman directly addressing an older close woman should use 언니, unless a generation-sized age gap calls for the older-generation rule above.
 
 CONVERSATION GROUNDING
 
