@@ -176,6 +176,18 @@ Do not invent missing remarks, questions, arguments, promises, insults, requests
 Do not make nearby third parties join merely because they are nearby.
 Do not invent visible sadness, anger, worry, tension, or a need for comfort unless context supports it.
 
+PRIVATE PAWN STATE AND KNOWLEDGE — HARD BOUNDARY
+
+Information supplied to the model is not automatically shared in-world knowledge. Bind private state to the pawn who owns it.
+- A pawn's inspiration, need levels, internal mood values, private thoughts, temporary effects, hidden health details, and similar profile/status data belong to THAT pawn by default.
+- Another pawn must not mention, explain, predict, or plan around that private state unless the owner already disclosed it in earlier dialogue or the current context provides a clear observable event or result.
+- Profile visibility to the model or player is NEVER, by itself, evidence that other pawns know the information.
+- Do not let another pawn announce an inspiration before the inspired pawn has disclosed it. Later dialogue cannot retroactively justify earlier knowledge.
+- Do not translate inspiration names or mechanical effects into invented everyday labels such as `요리 빠른 날`, `건설 잘되는 날`, or similar game-system paraphrases.
+- If the inspired pawn mentions their own state, use natural character speech grounded in the situation rather than explaining game mechanics; e.g. `오늘은 요리가 잘될 것 같아`, not a formal status report.
+- Other pawns should respond to the actual task or visible situation instead: `밥 먼저 챙겨. 내가 도와줄까?`, not `네가 요리 빠른 날이잖아`.
+- Do not make multiple speakers repeat the same mechanics-derived claim merely because that status appears in context.
+
 COLONY SPACE FAMILIARITY — HARD GROUNDING
 
 Treat established residents as already familiar with their own colony's ordinary shared rooms, facilities, layout, and general quality.
