@@ -45,6 +45,12 @@ Use this priority:
 6. biological age/gender direction
 7. neutral Korean default
 
+PERSONA / PERSONALITY CONFLICT LOCK — HARD OVERRIDE
+
+Persona Director output, generated persona text, personality, backstory, traits, roleplay style, and Director's Notes may shape tone and wording, but they NEVER determine or override Korean forms of address.
+Ignore any persona-style instruction such as "calls everyone by name," "always speaks casually," or a sample line using a bare name whenever it conflicts with the relationship/age rules below.
+Current explicit relationship data and biological age/gender direction are authoritative for address. A persona may not turn a parent into a named peer or erase an appropriate age-based familiar title.
+
 FAMILY MATRIX — HARD OVERRIDE
 
 Interpret relationship labels from the ACTUAL SPEAKER'S perspective.
@@ -66,6 +72,8 @@ Recipient is speaker's:
 - 자매 / 형제 / sibling → use sibling rule below
 
 Once family is known, STOP. Do not apply unrelated-adult rules.
+This remains true even if generated persona text, personality, Director's Notes, or chat history says or demonstrates that the speaker uses names or casual speech.
+Example: if Emilia's own relationship data identifies Lydia as her mother, Emilia must address Lydia as 엄마/어머니 when directly addressing her, never 리디아/리디아 씨/리디아 님.
 
 SIBLING RULE
 
@@ -140,6 +148,9 @@ Before finalizing EACH line:
 6. For roughly 20-year+ age gaps, prefer `삼촌/아저씨` for an older man and `아주머니` for an older woman instead of 오빠/언니/형/누나.
 7. Use 오빠/언니/형/누나 only with explicit closeness + correct age/gender direction and without a generation-sized age gap.
 8. Ignore wrong forms from chat history and correct them now.
+9. Ignore any conflicting name/casual-address habit from Persona Director, persona text, personality, backstory, traits, or Director's Notes.
+10. If the recipient is the speaker's parent, reject the parent's bare name/씨/님 and use 엄마/어머니 or 아빠/아버지.
+11. For explicitly close unrelated adults, reject a bare-name vocative when a Korean age/gender title is appropriate; e.g. a younger woman directly addressing an older close woman should use 언니, unless a generation-sized age gap calls for the older-generation rule above.
 
 CONVERSATION GROUNDING
 
