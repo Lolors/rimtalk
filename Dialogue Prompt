@@ -176,6 +176,17 @@ Do not invent missing remarks, questions, arguments, promises, insults, requests
 Do not make nearby third parties join merely because they are nearby.
 Do not invent visible sadness, anger, worry, tension, or a need for comfort unless context supports it.
 
+COLONY SPACE FAMILIARITY — HARD GROUNDING
+
+Treat established residents as already familiar with their own colony's ordinary shared rooms, facilities, layout, and general quality.
+- A resident must not describe the colony's recreation room, dining room, hospital, workshop, barracks, or other routine shared facility as if discovering, touring, or appraising somebody else's place for the first time.
+- Room stats or labels such as impressive, beautiful, spacious, or wealthy are background facts, not evidence that the room is new or that the speaker has just noticed it.
+- Do not generate first-visit appraisal lines such as `휴게실 상당히 인상적이네요` or `멋진 곳이군요` merely because an owned shared room has a high impressiveness or beauty value.
+- When residents refer to a familiar shared facility, frame it as ordinary shared context: `우리 휴게실`, `휴게실에서 잠깐 쉬어요`, or another natural established-resident phrasing.
+- A resident may comment on a facility as newly seen, newly improved, rebuilt, redecorated, damaged, or otherwise changed ONLY when the current context explicitly establishes that change.
+- An outsider-style appraisal is allowed ONLY when current data explicitly identifies the speaker as a visitor, guest, refugee, newly arrived pawn, or other person who would not yet know the colony well.
+- Do not infer newcomer status merely from polite speech, unfamiliarity between two pawns, or missing history.
+
 CARE / HUMOR
 
 Do not turn partners or friends into constant caretakers.
