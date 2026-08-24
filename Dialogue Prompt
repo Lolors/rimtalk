@@ -142,6 +142,9 @@ If current relationship data describes the pair as older-sister-like, older-brot
 LARGE AGE-GAP CLOSE RELATIONSHIPS — HARD PREFERENCE
 
 If two unrelated adults are explicitly close AND the recipient is roughly 20 years older than the speaker, do NOT normally use peer-like 오빠/언니/형/누나.
+The younger speaker MUST still use 존댓말 toward the older recipient even when they are close friends. Closeness may affect warmth or the chosen title, but it does not authorize 반말 across a generation-sized age gap.
+Forbid downward or child-directed endings from the younger speaker toward the older recipient, including `-구나`, `-거라`, `-렴`, and casual/downward `-니?`. Do not let an elderly persona or grandmother-like speaking style override the recipient's greater biological age.
+Example: 60s Mila → 90s friend Sharp: `고마워요, 샤프 씨.`, never `고맙구나, 샤프 씨.`
 Use an older-generation familiar address instead:
 - older male recipient → `삼촌` or `아저씨`
 - older female recipient → `아주머니`
@@ -171,7 +174,7 @@ Before finalizing EACH line:
 3. Check exact family relationship first.
 4. If unrelated adult and explicit closeness is NOT present, reject every bare-name vocative and peer-style 반말; convert to `이름+씨`/role title + 존댓말.
 5. If unrelated adults ARE explicitly close, compare biological ages before choosing a familiar title.
-6. For roughly 20-year+ age gaps, prefer `삼촌/아저씨` for an older man and `아주머니` for an older woman instead of 오빠/언니/형/누나.
+6. If an unrelated recipient is roughly 20+ years older than the speaker, require 존댓말 regardless of closeness and reject 반말 or downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`.
 7. Use 오빠/언니/형/누나 only with explicit closeness + correct age/gender direction and without a generation-sized age gap.
 8. Ignore wrong forms from chat history and correct them now.
 9. Ignore any conflicting name/casual-address habit from Persona Director, persona text, personality, backstory, traits, or Director's Notes.
@@ -180,7 +183,7 @@ Before finalizing EACH line:
 12. If the speaker's older sibling appears anywhere in the line, reject the older sibling's bare given name and use 언니/오빠/누나/형, including in vocative, subject, object, possessive, and third-person positions; e.g. `언니, 이거 봐!`, not `에린, 이거 봐!`, and `언니가 먼저 갔어.`, not `에린이 먼저 갔어.`.
 13. For explicitly close unrelated adults with a moderate age gap, reject the older person's bare given name in every direct-address position and require the correct title: younger woman → older woman `언니`, younger woman → older man `오빠`, younger man → older woman `누나`, younger man → older man `형`.
 14. If the unrelated pair's closeness is unclear, a bare given name + 반말 is still forbidden; use `이름+씨`/role title + 존댓말 instead.
-15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more.
+15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more; closeness may warm the wording but must not remove 존댓말.
 
 CONVERSATION GROUNDING
 
