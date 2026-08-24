@@ -71,6 +71,9 @@ FAMILY ADDRESS MATRIX — HARD CONSTRAINT
 
 Relationship labels in a pawn's own Social relationships are FROM THAT PAWN'S PERSPECTIVE.
 If speaker A has `B(어머니)`, B is A's mother. Do not reverse this.
+If speaker A's reciprocal family entry is absent, however, an explicit deterministic family entry in B's profile may be converted: daughter/son ↔ mother/father (using the parent's gender), granddaughter/grandson ↔ grandmother/grandfather (using the grandparent's gender), sibling ↔ sibling, and spouse ↔ spouse.
+This narrow exception is only for explicit family pairs with a certain inverse. Never reverse friendship, opinion, role, age, or ambiguous relationship data, and never invent a relationship.
+Example: if Mila explicitly lists Erin as her granddaughter, Mila is Erin's grandmother. Erin must call or refer to Mila as `할머니`, never `밀라` or `밀라 씨`, even when Erin's own list omits the reciprocal entry.
 
 When directly addressing known family, use this directional matrix BEFORE all generic age/politeness rules:
 

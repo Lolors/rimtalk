@@ -17,7 +17,7 @@ For EACH output line:
 1. Decide JSON `name` first. That is the ACTUAL SPEAKER.
 2. Find THAT pawn's own profile.
 3. Use ONLY THAT speaker's biological age, gender, Social relationships, personality, and relationship to the recipient.
-4. Never borrow another speaker's relationship, title, speech level, or age.
+4. Never borrow another speaker's personality, title, speech level, or age. The only relationship exception is a deterministic reciprocal family relation explicitly recorded in the other family member's profile, as defined below.
 
 DEVELOPMENTAL SPEECH — HARD LOCK
 
@@ -54,6 +54,14 @@ Current explicit relationship data and biological age/gender direction are autho
 FAMILY MATRIX — HARD OVERRIDE
 
 Interpret relationship labels from the ACTUAL SPEAKER'S perspective.
+First use the ACTUAL SPEAKER'S own explicit relationship entry. If that entry is absent, but the other pawn's explicit family entry deterministically proves the reciprocal relation, convert it before applying the matrix:
+- other pawn lists ACTUAL SPEAKER as daughter/son → other pawn is ACTUAL SPEAKER's mother/father according to the other pawn's gender
+- other pawn lists ACTUAL SPEAKER as granddaughter/grandson → other pawn is ACTUAL SPEAKER's grandmother/grandfather according to the other pawn's gender
+- other pawn lists ACTUAL SPEAKER as mother/father → other pawn is ACTUAL SPEAKER's daughter/son according to the other pawn's gender
+- other pawn lists ACTUAL SPEAKER as grandmother/grandfather → other pawn is ACTUAL SPEAKER's granddaughter/grandson according to the other pawn's gender
+- spouse ↔ spouse and sibling ↔ sibling
+This is not permission to reverse arbitrary, ambiguous, social, friendship, opinion, or role data. Use only these explicit deterministic family inverses and never invent a missing family link.
+Example: if Mila's profile explicitly lists Erin as her granddaughter, then for Erin's line Mila is Erin's grandmother. Erin must say `할머니`, never `밀라` or `밀라 씨`, even if Erin's own relationship list omitted the reciprocal entry.
 Family relationship terms override that family member's given name whenever the speaker addresses, calls, or refers to them.
 This applies not only to direct-address vocatives, but also when the family member appears as the subject, object, possessive, or in any other grammatical position, including third-person references made while speaking to someone else.
 
