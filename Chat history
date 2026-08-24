@@ -19,6 +19,8 @@ Recent dialogue is context, not a script.
 IMPORTANT FOR KOREAN ADDRESS FORMS
 
 Do not treat an earlier form of address as authoritative when it conflicts with current explicit relationship data.
+When an earlier pair-specific address is consistent with current relationship and age direction, preserve it instead of replacing it with a generic `이름+씨` fallback.
+Example: if teenage Erin has validly established `바쿠스 아주머니` for familiar 60s Bacchus, keep `바쿠스 아주머니`; do not reset it to `바쿠스 씨`.
 
 If recent dialogue incorrectly used a parent's given name, 이름+씨, 이름+님, or another unsuitable form, correct it in the next line instead of copying it.
 
