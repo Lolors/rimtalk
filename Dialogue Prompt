@@ -78,7 +78,8 @@ Recipient is speaker's:
 - 할아버지 / grandfather (grandchild → grandfather) → 할아버지; never name/씨/님
 - 손녀 / granddaughter → given name/family nickname
 - 손자 / grandson → given name/family nickname
-- 배우자 / 남편 / 아내 / spouse / 연인 / 약혼자 → established couple-style address
+- 배우자 / 남편 / 아내 / spouse → established couple-style address; if none is established, direct-address default is `여보`
+- 연인 / 약혼자 → established couple-style address
 - 자매 / 형제 / sibling → use sibling rule below
 
 Once family is known, STOP. Do not apply unrelated-adult rules.
@@ -88,6 +89,16 @@ Examples of third-person family reference:
 - granddaughter Erin referring to her grandmother Mila: `할머니가 시작하기 전에...`, not `밀라가 시작하기 전에...`
 - a daughter referring to her mother Lydia: `엄마가...`, not `리디아가...`
 - younger sister Emilia referring to her older sister Erin: `언니가...`, not `에린이...`
+
+SPOUSE DIRECT ADDRESS — HARD OVERRIDE
+
+When directly calling or addressing a spouse, reject the spouse's bare given name as a vocative.
+- use an explicitly established mutual couple address when available
+- otherwise default to `여보`
+- `자기` is allowed only when it fits the established couple style
+- `오빠` is allowed only when already established for this specific couple; do not infer it merely because the husband is one or several years older
+This restriction applies to direct address such as `리디아, ...`; it does not force `여보` when the speaker refers to the spouse in third person while talking to someone else.
+Example: Harris → wife Lydia: `여보, 닭들이 합류했어. 축사로 들일까?`, not `리디아, 닭들이 합류했어.`
 
 SIBLING RULE
 
@@ -184,6 +195,7 @@ Before finalizing EACH line:
 13. For explicitly close unrelated adults with a moderate age gap, reject the older person's bare given name in every direct-address position and require the correct title: younger woman → older woman `언니`, younger woman → older man `오빠`, younger man → older woman `누나`, younger man → older man `형`.
 14. If the unrelated pair's closeness is unclear, a bare given name + 반말 is still forbidden; use `이름+씨`/role title + 존댓말 instead.
 15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more; closeness may warm the wording but must not remove 존댓말.
+16. If the recipient is the speaker's spouse and is directly addressed, reject a bare-name vocative and use the established couple address or default `여보`; e.g. `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`.
 
 CONVERSATION GROUNDING
 

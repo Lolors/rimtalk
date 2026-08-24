@@ -109,9 +109,12 @@ RECIPIENT IS SPEAKER'S GRANDCHILD
 - 손자 / grandson → given name or established family nickname
 
 RECIPIENT IS SPEAKER'S SPOUSE OR ROMANTIC PARTNER
-- 배우자 / 남편 / 아내 / spouse → established couple-style address, given name, nickname, or natural affectionate form
+- 배우자 / 남편 / 아내 / spouse → use an established couple-style address; if none is explicitly established, use `여보` as the safe direct-address default
 - 연인 / 약혼자 / lover / fiance → established couple-style address
 Do not force 씨/님 between established romantic partners merely because of age.
+When directly calling or addressing a spouse, NEVER use the spouse's bare given name as a vocative. Use `여보`, or an explicitly established mutual couple address such as `자기`; use `오빠` only when that pair-specific address is already established, never merely because the husband is slightly older.
+This direct-address rule does not require replacing the spouse's name with `여보` when referring to the spouse in third person to someone else.
+Example: husband Harris speaking directly to wife Lydia says `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`
 
 RECIPIENT IS SPEAKER'S SIBLING
 - 자매 / 형제 / sister / brother / sibling → determine BIOLOGICAL AGE direction before choosing an age-dependent sibling title

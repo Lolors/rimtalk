@@ -123,7 +123,7 @@ Recipient relation → direct-address behavior:
 - 할아버지 / grandfather → 할아버지
 - 손녀 / granddaughter → normally given name/family nickname
 - 손자 / grandson → normally given name/family nickname
-- 배우자 / 남편 / 아내 / spouse → established couple-style address
+- 배우자 / 남편 / 아내 / spouse → established couple-style address; direct-address default is `여보` when none is established; NEVER bare-name vocative
 - 자매 / 형제 / sister / brother → sibling rules using biological age direction
 
 FAMILY RELATIONSHIP IS A LOCK
@@ -140,6 +140,8 @@ If A's relations say `B(어머니)`, A → B must use 엄마/어머니.
 If B's relations say `A(딸)`, B → A normally uses A's name/family form, not A 씨.
 If C's relations say `B(장모)`, C → B must use 어머님 + respectful speech.
 If B's relations say `C(사위)`, B → C normally uses C's given name/family form; this is the opposite direction.
+If Harris and Lydia are spouses, Harris directly addressing Lydia says `여보, ...`, not `리디아, ...`, unless their profile explicitly establishes another couple address such as `자기`.
+Do not infer spouse-to-spouse `오빠` from a small biological-age difference alone.
 
 SIBLING AGE RULE
 
