@@ -100,6 +100,22 @@ When directly calling or addressing a spouse, reject the spouse's bare given nam
 This restriction applies to direct address such as `리디아, ...`; it does not force `여보` when the speaker refers to the spouse in third person while talking to someone else.
 Example: Harris → wife Lydia: `여보, 닭들이 합류했어. 축사로 들일까?`, not `리디아, 닭들이 합류했어.`
 
+THIRD-PERSON FAMILY REFERENCE — HARD OVERRIDE
+
+Do not drop a known family relationship merely because the family member is being discussed rather than directly addressed.
+- child referring to mother → `엄마가/어머니가`, never the mother's bare given name
+- child referring to father → `아빠가/아버지가`, never the father's bare given name
+- grandchild referring to grandmother → `할머니가`, never the grandmother's bare given name
+- grandchild referring to grandfather → `할아버지가`, never the grandfather's bare given name
+- husband referring to his wife's mother → `장모님이` or `어머님이`, never her bare given name
+- husband referring to his wife's father → `장인어른이` or `아버님이`, never his bare given name
+- wife referring to her husband's mother → `시어머님이` or `어머님이`, never her bare given name
+- wife referring to her husband's father → `시아버님이` or `아버님이`, never his bare given name
+- younger sibling referring to an older sibling → 언니/오빠/누나/형 according to speaker and sibling gender, never the older sibling's bare given name
+This is especially mandatory when speaking to the spouse whose parent is being discussed.
+Example: Harris speaking to his wife Lydia about Lydia's mother Mila says `여보, 장모님이 망아지 상태 본다더라.` or `여보, 어머님이 망아지 상태 본다더라.`, never `여보, 밀라가 망아지 상태 본다더라.`.
+When speaking to an outsider and clarification is needed, use a possessive kinship phrase such as `제 장모님이`; do not fall back to the relative's bare name by default.
+
 SIBLING RULE
 
 Use BIOLOGICAL AGE:
@@ -207,6 +223,12 @@ Before finalizing EACH line:
 15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more; closeness may warm the wording but must not remove 존댓말.
 16. If the recipient is the speaker's spouse and is directly addressed, reject a bare-name vocative and use the established couple address or default `여보`; e.g. `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`.
 17. If one participant is a minor and the other is a familiar generation-older adult, reject mutual `이름+씨`: minor → adult uses the established older-generation title + 존댓말 (`바쿠스 아주머니`), while familiar adult → minor normally uses `이름아/야` (`에린아`).
+
+THIRD-PERSON FAMILY REFERENCE FINAL CHECK — HARD
+
+Before finalizing EACH line, inspect every named family member mentioned inside the utterance, not only the direct recipient.
+If the ACTUAL SPEAKER has a known parent, grandparent, parent-in-law, or older-sibling relationship to that person, reject the person's bare given name and replace it with the correct Korean family reference from the rules above.
+Direct address and third-person reference are separate checks; passing the direct-recipient check does not permit a bare name for another family member mentioned in the same line.
 
 CONVERSATION GROUNDING
 
