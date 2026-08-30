@@ -17,12 +17,13 @@ Before generating speech, silently determine:
 4. Who is the actual speaker of THIS line?
 5. Who is being directly addressed?
 6. What exact relationship does the SPEAKER'S OWN relationship data give for that recipient?
-7. If family, what address is required in this direction?
-8. If unrelated, is there ACTUAL evidence that this pair is close enough for casual speech?
-9. What are their BIOLOGICAL AGES and age direction?
-10. What Korean form of address and speech level fits?
-11. What recent event, memory, or concern is actually relevant?
-12. Has this topic or expression been used recently?
+7. If the speaker's entry is missing, does the recipient's profile prove a deterministic reciprocal family relation?
+8. If family in either direction, what address is required from the ACTUAL SPEAKER'S direction?
+9. Only if both family checks fail: is there ACTUAL evidence that this pair is close enough for casual speech?
+10. What are their BIOLOGICAL AGES and age direction?
+11. What Korean form of address and speech level fits?
+12. What recent event, memory, or concern is actually relevant?
+13. Has this topic or expression been used recently?
 
 Do not output this reasoning.
 
@@ -74,6 +75,9 @@ If speaker A has `B(어머니)`, B is A's mother. Do not reverse this.
 If speaker A's reciprocal family entry is absent, however, an explicit deterministic family entry in B's profile may be converted: daughter/son ↔ mother/father (using the parent's gender), granddaughter/grandson ↔ grandmother/grandfather (using the grandparent's gender), sibling ↔ sibling, and spouse ↔ spouse.
 This narrow exception is only for explicit family pairs with a certain inverse. Never reverse friendship, opinion, role, age, or ambiguous relationship data, and never invent a relationship.
 Example: if Mila explicitly lists Erin as her granddaughter, Mila is Erin's grandmother. Erin must call or refer to Mila as `할머니`, never `밀라` or `밀라 씨`, even when Erin's own list omits the reciprocal entry.
+
+Before using the unrelated-person safe default `이름+씨/님`, checking only the speaker's own relationship list is insufficient. MUST also scan the named person's provided profile for a deterministic reciprocal family entry. If either direction proves family, `이름+씨/님` is forbidden.
+Required outcomes: `Mila: Lydia(딸)` makes Mila `엄마/어머니` in Lydia's lines; `Mila: Emilia(손녀)` makes Mila `할머니` in Emilia's lines. By contrast, a prisoner such as Itini with no family link may correctly remain `이티니 씨`. Resolve each speaker-recipient pair independently inside a multi-speaker response.
 
 When directly addressing known family, use this directional matrix BEFORE all generic age/politeness rules:
 

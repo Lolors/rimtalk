@@ -16,8 +16,9 @@ One response may contain several speakers.
 For EACH output line:
 1. Decide JSON `name` first. That is the ACTUAL SPEAKER.
 2. Find THAT pawn's own profile.
-3. Use ONLY THAT speaker's biological age, gender, Social relationships, personality, and relationship to the recipient.
-4. Never borrow another speaker's personality, title, speech level, or age. The only relationship exception is a deterministic reciprocal family relation explicitly recorded in the other family member's profile, as defined below.
+3. Use THAT speaker's biological age, gender, personality, and own Social relationships.
+4. For relationship resolution, start with the speaker's own entry, then MUST scan every available named pawn profile for an explicit deterministic reciprocal family entry before deciding the pair is unrelated.
+5. Never borrow another speaker's personality, title, speech level, age, friendship, opinion, or arbitrary social data. Only deterministic reciprocal family relations may cross profile direction.
 
 DEVELOPMENTAL SPEECH — HARD LOCK
 
@@ -45,6 +46,8 @@ Use this priority:
 6. biological age/gender direction
 7. neutral Korean default
 
+Priority 7 is locked until the family-resolution scan is complete. Missing family data in the ACTUAL SPEAKER'S own entry does NOT authorize the neutral default when another provided profile proves the reciprocal family relation.
+
 PERSONA / PERSONALITY CONFLICT LOCK — HARD OVERRIDE
 
 Persona Director output, generated persona text, personality, backstory, traits, roleplay style, and Director's Notes may shape tone and wording, but they NEVER determine or override Korean forms of address.
@@ -64,6 +67,21 @@ This is not permission to reverse arbitrary, ambiguous, social, friendship, opin
 Example: if Mila's profile explicitly lists Erin as her granddaughter, then for Erin's line Mila is Erin's grandmother. Erin must say `할머니`, never `밀라` or `밀라 씨`, even if Erin's own relationship list omitted the reciprocal entry.
 Family relationship terms override that family member's given name whenever the speaker addresses, calls, or refers to them.
 This applies not only to direct-address vocatives, but also when the family member appears as the subject, object, possessive, or in any other grammatical position, including third-person references made while speaking to someone else.
+
+FAMILY-RESOLUTION GATE — MUST COMPLETE BEFORE `이름+씨`
+
+For EACH proposed `이름+씨` or `이름+님`, perform this pair-specific audit first:
+1. Check whether the ACTUAL SPEAKER'S own relationships identify that named person as family.
+2. If absent, find that named person's profile and check whether it identifies the ACTUAL SPEAKER as daughter, son, granddaughter, grandson, mother, father, grandmother, grandfather, sibling, or spouse.
+3. Convert any certain reciprocal family relation into the ACTUAL SPEAKER'S direction.
+4. If either check proves family, reject `이름+씨/님`, apply the family title, and do not continue to unrelated-person rules.
+5. Use `이름+씨` only if the completed audit finds no direct or deterministic reciprocal family link.
+
+Concrete required outcomes:
+- Mila lists Lydia as her daughter → Lydia must treat Mila as her mother and say `엄마/어머니`, never `밀라 씨`.
+- Mila lists Emilia as her granddaughter → Emilia must treat Mila as her grandmother and say `할머니`, never `밀라 씨`.
+- Mila has no family relation with prisoner/outsider Itini → family rules do not apply; `이티니 씨` + 존댓말 may be correct.
+The presence of a genuine outsider in the same multi-speaker response must not cause family members in other lines to receive the same `씨` fallback.
 
 Recipient is speaker's:
 - 어머니 / mother (child → mother) → 엄마 or 어머니; never name/씨/님
@@ -208,8 +226,8 @@ DIRECT-ADDRESS FINAL CHECK — HARD
 Before finalizing EACH line:
 1. Re-read JSON `name` and use THAT speaker's profile.
 2. Check developmental age.
-3. Check exact family relationship first.
-4. If unrelated adult and explicit closeness is NOT present, reject every bare-name vocative and peer-style 반말; convert to `이름+씨`/role title + 존댓말.
+3. Complete the family-resolution gate using both the ACTUAL SPEAKER'S entry and every available deterministic reciprocal family entry.
+4. Only after that gate proves the pair unrelated, if explicit closeness is NOT present, reject every bare-name vocative and peer-style 반말; convert to `이름+씨`/role title + 존댓말.
 5. If unrelated adults ARE explicitly close, compare biological ages before choosing a familiar title.
 6. If an unrelated recipient is roughly 20+ years older than the speaker, require 존댓말 regardless of closeness and reject 반말 or downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`.
 7. Use 오빠/언니/형/누나 only with explicit closeness + correct age/gender direction and without a generation-sized age gap.

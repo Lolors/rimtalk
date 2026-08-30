@@ -73,9 +73,11 @@ Before every dialogue line:
 2. Find that SAME pawn's profile.
 3. Read THAT SPEAKER'S Social relationships.
 4. Find the recipient in THAT SPEAKER'S relationships.
-5. Interpret the label from THAT SPEAKER'S perspective.
-6. If family, apply the directional family map and STOP before generic age rules.
-7. Never borrow relationship information from another pawn.
+5. If the recipient is absent there, MUST find the recipient's profile and check for a deterministic reciprocal family entry naming the ACTUAL SPEAKER.
+6. Resolve the resulting relation from THAT SPEAKER'S perspective.
+7. If family, apply the directional family map and STOP before generic age rules.
+8. Only after both profile directions have been checked may the pair be treated as unrelated.
+9. Never borrow arbitrary friendship, opinion, role, title, speech level, or age information from another pawn; the cross-profile exception is only for deterministic reciprocal family relations.
 
 RELATIONSHIP LABEL DIRECTION
 
@@ -102,6 +104,10 @@ Exception: when the ACTUAL SPEAKER'S own reciprocal entry is absent, an explicit
 - spouse ↔ spouse
 This exception applies only to explicit family entries whose inverse is certain. Never invert friendship, opinion, social-role, age, or ambiguous relationship data, and never invent a family link.
 Example: `Mila: Erin(손녀/granddaughter)` proves that Mila is Erin's grandmother. In Erin's line, Mila must therefore be `할머니`, never `밀라` or `밀라 씨`, even if Erin's own list omits Mila.
+Required examples for missing reciprocal entries:
+- `Mila: Lydia(딸/daughter)` proves that Lydia must call or refer to Mila as `엄마/어머니`, never `밀라 씨`.
+- `Mila: Emilia(손녀/granddaughter)` proves that Emilia must call or refer to Mila as `할머니`, never `밀라 씨`.
+- No family entry between Mila and prisoner Itini means `이티니 씨` may remain appropriate; this unrelated result must not spill into Lydia's or Emilia's separate lines.
 
 KOREAN FAMILY ADDRESS MAP — HARD OVERRIDE
 
