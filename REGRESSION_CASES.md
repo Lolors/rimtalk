@@ -7,8 +7,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 - A line spoken by `리디아` has JSON `name` exactly equal to `리디아`.
 - Reject decorated names such as `<리디아->해리스>`, paired names, translated names, roles, and relationship labels.
 - `text` is non-empty and output remains JSONL only.
-- Every object contains exactly `name` and `text`; `act`, `target`, and other optional keys are never emitted, even for socially consequential dialogue.
-- The UI therefore shows only the actual speaker name and never a speaker-to-recipient arrow.
+- When mood and social effects are enabled, `act` and `target` may be included for an actual social interaction; the UI may display its speaker-to-recipient direction.
 
 ## Family and spouse address
 
@@ -33,6 +32,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 ## Knowledge and grounding
 
 - Another pawn does not announce a pawn's inspiration before the owner discloses it or it becomes clearly observable.
+- An item label such as `호화로운 빵` does not imply special eating behavior: a feeder must not say to eat slowly merely because the label contains `호화로운`.
 - Reject invented mechanics labels such as `요리 빠른 날`.
 - Established residents do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
 - Current location prevents suggesting travel to the place where the pawns already are.

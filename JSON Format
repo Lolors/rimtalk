@@ -27,4 +27,8 @@ Also verify that `name` contains one pawn name only and no recipient or relation
 
 Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL.
 
-Every object must contain exactly the two required keys, `name` and `text`. Never output `act`, `target`, or any other optional key, even when mood and social effects are enabled. A dialogue line must always display only its actual speaker name, never a speaker-to-recipient arrow.
+{{ if settings.ApplyMoodAndSocialEffects }}
+Optional keys, include only when an actual social interaction occurs:
+"act": Insult, Slight, Chat, Kind
+"target": targetName
+{{ end }}
