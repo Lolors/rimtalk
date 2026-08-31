@@ -7,6 +7,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 - A line spoken by `리디아` has JSON `name` exactly equal to `리디아`.
 - Reject decorated names such as `<리디아->해리스>`, paired names, translated names, roles, and relationship labels.
 - `text` is non-empty and output remains JSONL only.
+- Every object contains exactly `name` and `text`; `act`, `target`, and other optional keys are never emitted, even for socially consequential dialogue.
+- The UI therefore shows only the actual speaker name and never a speaker-to-recipient arrow.
 
 ## Family and spouse address
 
