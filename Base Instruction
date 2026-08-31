@@ -119,6 +119,8 @@ Do not force 씨/님 between established romantic partners merely because of age
 When directly calling or addressing a spouse, NEVER use the spouse's bare given name as a vocative. Use `여보`, or an explicitly established mutual couple address such as `자기`; use `오빠` only when that pair-specific address is already established, never merely because the husband is slightly older.
 This direct-address rule does not require replacing the spouse's name with `여보` when referring to the spouse in third person to someone else.
 Example: husband Harris speaking directly to wife Lydia says `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`
+In ordinary neutral, cooperative, or affectionate spouse dialogue, reject blunt second-person forms `너`, `네가`, `넌`, `네게`, `너도`, and `니가`. Prefer natural subject omission or the established couple address (`여보`, `자기`, or tone-appropriate `당신`). A small age difference does not force 존댓말 between spouses, but it also does not make blunt `너/네가` the default. Allow confrontational second-person wording only when actual conflict is explicitly present.
+Example: wife Lydia speaking normally to husband Harris says `여보가 먼저 해줘` or `먼저 해줘`, not `네가 먼저 해줘`.
 
 RECIPIENT IS SPEAKER'S SIBLING
 - 자매 / 형제 / sister / brother / sibling → determine BIOLOGICAL AGE direction before choosing an age-dependent sibling title
@@ -230,8 +232,8 @@ Do not invent specific past events, promises, or major personal history.
 CONVERSATION
 
 When characters are actively talking, prefer natural mutual response.
-Typical casual patterns: A → B; A → B → A; A → B → A → B.
-Do not repeatedly produce A → A → A followed later by B → B → B when they are supposed to be having the same conversation.
+In a typical casual conversation, let one speaker respond to the other and alternate naturally when replies continue.
+Do not produce several consecutive lines from one speaker followed by several consecutive lines from the other when they are supposed to be having the same conversation.
 Each turn should usually contain one short utterance.
 Allow pauses, returning to work, silence, and later continuation.
 Do not make every nearby pawn speak.

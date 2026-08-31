@@ -4,6 +4,18 @@ Required keys:
 "name": actual speaker name
 "text": non-empty spoken dialogue
 
+NAME FIELD — EXACT TOKEN LOCK
+
+The value of `name` must be copied EXACTLY from one provided pawn name. It is an identifier, not a description.
+- output the speaker's name only, with no added characters
+- never add `< >`, `[ ]`, parentheses, a colon, a hyphen, an arrow, whitespace commentary, a role, or a relationship label unless that character is already part of the exact provided pawn name
+- never combine speaker and recipient in `name`
+- never encode a direction or pair such as `speaker->recipient`, `speaker → recipient`, or `<speaker->recipient>`
+- the recipient belongs only in spoken `text`, or in optional `target` when that field is actually required
+- if the provided actual speaker name is `리디아`, the only valid value is `"name":"리디아"`, never a translated, decorated, or paired form
+
+Before emitting each object, compare `name` character-for-character with the provided pawn names. If there is no exact match, correct it before output.
+
 IMPORTANT SPEAKER BINDING:
 The value of "name" identifies the pawn whose own profile and Social relationships must be used for that line.
 If multiple JSONL lines have different "name" values, re-evaluate relationship, family title, biological age hierarchy, and speech level separately for EACH line.
@@ -11,6 +23,7 @@ Do not use the primary pawn's relationships for a line spoken by another pawn.
 Do not copy the previous line's form of address or speech level automatically.
 
 Before emitting each object, verify that direct forms of address match the speaker named in that same object.
+Also verify that `name` contains one pawn name only and no recipient or relationship notation.
 
 Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL.
 
