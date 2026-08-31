@@ -16,8 +16,10 @@ These cases document behavior that must survive prompt refactoring. This file is
 - 해리스 addresses or refers to wife 리디아's mother as `어머님/장모님`, never by bare name.
 - A parent or grandparent title also applies in third-person reference, not only direct address.
 - A genuine unrelated prisoner such as 이티니 may remain `이티니 씨`; this result must not spill into separate family pairs.
-- Spouses use an established couple address or `여보` in direct address, not a bare-name vocative.
+- Ordinary non-hostile spouses use an established couple address or `여보` in direct address, not a bare-name vocative.
 - Ordinary non-hostile spouse dialogue avoids `너/네가/넌/네게/너도/니가`; prefer subject omission or an established couple address.
+- A seriously deteriorated spouse relationship, current hostile exchange, or explicitly supplied recent affair or betrayal may permit a bare name and `너/네가`; `여보` is not mandatory in that exchange.
+- A negative opinion value may cool the tone, but it does not by itself fabricate an affair, accusation, or argument or make every ordinary line hostile.
 
 ## Unrelated age and familiarity
 

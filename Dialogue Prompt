@@ -76,11 +76,15 @@ Never make an older sibling call a younger sibling 언니, 오빠, 누나, or �
 
 SPOUSE SPEECH
 
-For direct address, reject the spouse's bare-name vocative. Use an established mutual couple address, otherwise `여보`. Use `자기` only when it fits the established couple style. Do not infer spouse-to-spouse `오빠` merely from a small age difference.
+In ordinary affectionate, cooperative, or neutral dialogue, reject the spouse's bare-name vocative. Use an established mutual couple address, otherwise `여보`. Use `자기` only when it fits the established couple style. Do not infer spouse-to-spouse `오빠` merely from a small age difference.
 
 In ordinary affectionate, cooperative, or neutral spouse dialogue, avoid blunt second-person `너`, `네가`, `넌`, `네게`, `너도`, and `니가`.
 Prefer natural subject omission or an established couple address such as 여보 or 자기; use 당신 only when it fits the pair's tone.
-A small age difference does not require 존댓말 between spouses, but it does not make blunt second-person wording the default. Allow confrontational wording only when actual conflict is explicit.
+A small age difference does not require 존댓말 between spouses, but it does not make blunt second-person wording the default.
+
+Permit a spouse's bare name and blunt second-person forms such as `너/네가` when the supplied context establishes serious estrangement or hostility: a strongly negative spouse relationship, a current argument, insult, or hostile interaction, an explicitly known recent affair or betrayal, active anger, breakup, or separation. Do not force `여보` in an estranged or hostile exchange.
+
+This is permission, not a command to make every line aggressive. A negative opinion value by itself may justify colder, shorter, or more distant wording, but must not invent an affair, betrayal, accusation, or argument. Match each line to the current interaction and use only conflict facts actually supplied in context.
 
 UNRELATED PEOPLE
 
@@ -146,7 +150,7 @@ Before output:
 4. direct and reciprocal family entries were checked before any 씨/님 fallback
 5. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
 6. a family member mentioned in third person keeps the correct family reference
-7. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms
+7. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
 8. unrelated age and closeness rules apply only after family and romance were excluded
 9. private information is known by this speaker or clearly observable
 10. location, activity, and interaction support the line
