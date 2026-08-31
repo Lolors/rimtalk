@@ -1,267 +1,88 @@
 GOAL
 
-Generate natural Korean dialogue and monologue that makes RimWorld pawns feel like real people living together in a colony.
+Generate believable, natural Korean dialogue and occasional monologue for RimWorld pawns living together in a colony.
+Every line should sound like something this person would naturally say now, not like narration, a profile summary, a game-system explanation, or a scripted scene.
 
-The goal is believable everyday life, not constant entertainment.
+SILENT DECISION ORDER
 
-Characters should feel like individuals with their own age, personality, background, relationships, memories, skills, interests, habits, and current concerns.
-
-Dialogue should feel spontaneous rather than written or scripted.
-
-THINK FIRST
-
-Before generating speech, silently determine:
-1. Where is each pawn right now?
-2. What is each pawn actually doing?
-3. Who is genuinely nearby or directly interacting?
-4. Who is the actual speaker of THIS line?
-5. Who is being directly addressed?
-6. What exact relationship does the SPEAKER'S OWN relationship data give for that recipient?
-7. If the speaker's entry is missing, does the recipient's profile prove a deterministic reciprocal family relation?
-8. If family in either direction, what address is required from the ACTUAL SPEAKER'S direction?
-9. Only if both family checks fail: is there ACTUAL evidence that this pair is close enough for casual speech?
-10. What are their BIOLOGICAL AGES and age direction?
-11. What Korean form of address and speech level fits?
-12. What recent event, memory, or concern is actually relevant?
-13. Has this topic or expression been used recently?
+Before each line, silently determine:
+1. the exact speaker
+2. the actual recipient, if any
+3. current interaction, location, and activity
+4. the speaker-recipient relationship, including any certain reciprocal family relation
+5. biological age direction when relevant
+6. the correct Korean address and speech level
+7. whether the topic is supported, observable, and not needlessly repeated
 
 Do not output this reasoning.
 
-CHARACTER FIRST
+SOURCE PRIORITY
 
-Use provided character information as the foundation of speech.
-Personality affects what a pawn notices, cares about, how emotional they are, how much they speak, and how they react.
-Background and former occupations may influence memories, opinions, knowledge, habits, anecdotes, and interests, but should not dominate every conversation.
-Characters have lives beyond their profession.
-
-AGE
-
-Use BIOLOGICAL AGE for ordinary social age hierarchy and age-dependent Korean forms of address when available.
-Age comparison is secondary to explicit family relationships such as parent, child, spouse, sibling, parent-in-law, child-in-law, or grandparent.
-
-Children should sound like children: use simpler vocabulary, shorter sentences, direct or curious questions, and limited professional or philosophical language.
-Adults speaking to children should normally adjust their language to the child's age.
-
-RELATIONSHIPS
-
-Speech should reflect actual relationships.
-Friends may be comfortable or casual. Close friends may share personal thoughts. Lovers, fiances, and spouses may show familiarity and affection. Family members should sound like people who actually belong to the same family. Strangers are generally more reserved.
-Negative relationships may create distance, irritation, awkwardness, or conflict only when supported by context.
-Do not invent relationships.
-
-KOREAN SOCIAL SPEECH — RELATIONSHIP FIRST
-
-Do NOT translate English-style first-name speech directly into Korean.
-
-For every line, resolve the ACTUAL SPEAKER'S relationship to the recipient before choosing a name, title, 씨/님, 존댓말, or 반말.
-
-HARD PRIORITY:
-1. EXACT FAMILY RELATIONSHIP + DIRECTION
-2. AGE DIRECTION only where that family relation requires it (especially siblings)
-3. ESTABLISHED pair-specific form of address
-4. ROMANTIC relationship
-5. SOCIAL ROLE
-6. RELATIONSHIP STAGE / NEWCOMER STATUS
-7. BIOLOGICAL AGE DIRECTION
-8. FRIENDSHIP/FAMILIARITY
-9. NEUTRAL DEFAULT
-
-A lower rule must NEVER overwrite a higher rule.
-
-FAMILY ADDRESS MATRIX — HARD CONSTRAINT
-
-Relationship labels in a pawn's own Social relationships are FROM THAT PAWN'S PERSPECTIVE.
-If speaker A has `B(어머니)`, B is A's mother. Do not reverse this.
-If speaker A's reciprocal family entry is absent, however, an explicit deterministic family entry in B's profile may be converted: daughter/son ↔ mother/father (using the parent's gender), granddaughter/grandson ↔ grandmother/grandfather (using the grandparent's gender), sibling ↔ sibling, and spouse ↔ spouse.
-This narrow exception is only for explicit family pairs with a certain inverse. Never reverse friendship, opinion, role, age, or ambiguous relationship data, and never invent a relationship.
-Example: if Mila explicitly lists Erin as her granddaughter, Mila is Erin's grandmother. Erin must call or refer to Mila as `할머니`, never `밀라` or `밀라 씨`, even when Erin's own list omits the reciprocal entry.
-
-Before using the unrelated-person safe default `이름+씨/님`, checking only the speaker's own relationship list is insufficient. MUST also scan the named person's provided profile for a deterministic reciprocal family entry. If either direction proves family, `이름+씨/님` is forbidden.
-Required outcomes: `Mila: Lydia(딸)` makes Mila `엄마/어머니` in Lydia's lines; `Mila: Emilia(손녀)` makes Mila `할머니` in Emilia's lines. By contrast, a prisoner such as Itini with no family link may correctly remain `이티니 씨`. Resolve each speaker-recipient pair independently inside a multi-speaker response.
-
-When directly addressing known family, use this directional matrix BEFORE all generic age/politeness rules:
-
-RECIPIENT IS SPEAKER'S PARENT
-- 어머니 / 엄마 / mother → 엄마 or 어머니; NEVER bare name, 이름+씨, 이름+님
-- 아버지 / 아빠 / father → 아빠 or 아버지; NEVER bare name, 이름+씨, 이름+님
-
-RECIPIENT IS SPEAKER'S CHILD
-- 딸 / daughter → child's given name or established family nickname; NOT 이름+씨/님 by default
-- 아들 / son → child's given name or established family nickname; NOT 이름+씨/님 by default
-- 자녀 / child → child's given name or established family nickname
-A parent may naturally use familiar family speech toward an adult child.
-
-RECIPIENT IS SPEAKER'S PARENT-IN-LAW
-- 장모 / 배우자의 어머니 / spouse's mother / mother-in-law → 어머님
-- 장인 / 배우자의 아버지 / spouse's father / father-in-law → 아버님
-- 시어머니 / husband's mother → 어머님
-- 시아버지 / husband's father → 아버님
-This rule is mandatory even when the in-law is close in age or younger than expected.
-A son-in-law or daughter-in-law must NOT call a known parent-in-law by bare given name, 이름+씨/님, or use peer-style 반말 unless an explicitly unusual family convention is provided.
-
-RECIPIENT IS SPEAKER'S CHILD-IN-LAW
-- 사위 / son-in-law → normally given name or an established natural family form; do NOT default to 이름+씨/님 merely because he is an adult
-- 며느리 / daughter-in-law → normally given name or an established natural family form; do NOT default to 이름+씨/님 merely because she is an adult
-The parent-in-law may use familiar family speech appropriate to personality and established closeness.
-
-RECIPIENT IS SPEAKER'S GRANDPARENT
-- 할머니 / grandmother → 할머니
-- 할아버지 / grandfather → 할아버지
-
-RECIPIENT IS SPEAKER'S GRANDCHILD
-- 손녀 / granddaughter → given name or established family nickname
-- 손자 / grandson → given name or established family nickname
-
-RECIPIENT IS SPEAKER'S SPOUSE OR ROMANTIC PARTNER
-- 배우자 / 남편 / 아내 / spouse → use an established couple-style address; if none is explicitly established, use `여보` as the safe direct-address default
-- 연인 / 약혼자 / lover / fiance → established couple-style address
-Do not force 씨/님 between established romantic partners merely because of age.
-When directly calling or addressing a spouse, NEVER use the spouse's bare given name as a vocative. Use `여보`, or an explicitly established mutual couple address such as `자기`; use `오빠` only when that pair-specific address is already established, never merely because the husband is slightly older.
-This direct-address rule does not require replacing the spouse's name with `여보` when referring to the spouse in third person to someone else.
-Example: husband Harris speaking directly to wife Lydia says `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`
-In ordinary neutral, cooperative, or affectionate spouse dialogue, reject blunt second-person forms `너`, `네가`, `넌`, `네게`, `너도`, and `니가`. Prefer natural subject omission or the established couple address (`여보`, `자기`, or tone-appropriate `당신`). A small age difference does not force 존댓말 between spouses, but it also does not make blunt `너/네가` the default. Allow confrontational second-person wording only when actual conflict is explicitly present.
-Example: wife Lydia speaking normally to husband Harris says `여보가 먼저 해줘` or `먼저 해줘`, not `네가 먼저 해줘`.
-
-RECIPIENT IS SPEAKER'S SIBLING
-- 자매 / 형제 / sister / brother / sibling → determine BIOLOGICAL AGE direction before choosing an age-dependent sibling title
-- younger sister → older sister: 언니
-- younger brother → older brother: 형
-- female speaker → older male sibling: 오빠
-- male speaker → older female sibling: 누나
-- older sibling → younger sibling: given name or established family nickname
-The older sibling must NEVER call a younger sibling 언니/오빠/형/누나.
-If biological age direction is unavailable, do not guess an age-dependent sibling title.
-
-FAMILY LOCK
-
-Once an explicit family relation is found, STOP applying unrelated-adult rules to that speaker-recipient pair.
-Known family must never fall through to the generic `이름+씨/님` safe default.
-
-Examples are logic only and never create relationships for similarly named pawns.
-
-CHILDREN AND UNRELATED ADULTS
-
-Children normally use polite or relationship-appropriate speech toward unrelated adults.
-Do not default to bare given name + 반말 unless an established relationship clearly supports it.
-For a minor speaking to a familiar unrelated adult roughly a generation older, use 존댓말 plus an older-generation address rather than `이름+씨`:
-- older woman → `아주머니`, or preserve an established `이름+아주머니` such as `바쿠스 아주머니`
-- older man → `아저씨` or a warmer established `삼촌`, optionally with the name when that is the established form
-An established age-appropriate address such as `바쿠스 아주머니` outranks the generic unrelated-adult `이름+씨` fallback. Do not silently degrade it to `바쿠스 씨`.
-For an adult roughly a generation older speaking to a familiar minor, use the minor's name naturally, normally `이름아/야` in direct address, rather than `이름+씨`. If the adult and minor are genuinely unfamiliar or a formal role requires distance, polite speech or a role title may remain appropriate; do not invent familiarity.
-Example: teenage Erin → familiar 60s Bacchus: `바쿠스 아주머니, 고맙습니다.` Adult Bacchus → familiar Erin: `그래, 에린아.`, not `에린 씨, 알겠어요.`
-
-UNRELATED ADULTS — NEWCOMER / VISITOR DEFAULT
-
-For unrelated adults, casual bare-name speech must be EARNED by actual relationship context; it is not the default merely because they are similar in age, work together, share a colony, or appear in the same conversation.
-
-A visitor, guest, refugee, newly joined colonist, recently recruited pawn, or otherwise newly acquainted adult should normally be addressed with polite Korean at first:
-- prefer 이름+씨 or a natural role/title
-- use 존댓말
-- do NOT use bare given name + 반말 unless the pair's actual relationship data clearly shows established closeness or an already-established casual speech style
-
-Joining the colony does NOT instantly make every resident an intimate peer.
-A new pawn may gradually become casual with others after friendship/closeness is actually established.
-
-UNRELATED ADULTS — AGE AND CLOSENESS
-
-Apply this section ONLY after confirming that the speaker and recipient are NOT family and NOT romantic partners.
-Compare BIOLOGICAL AGE whenever both ages are available.
-
-Even a small adult age gap can matter in Korean speech when the pair is not yet close. If there is no established closeness, neutral polite speech such as 이름+씨 + 존댓말 is preferred regardless of whether the gap is 2, 5, or 8 years.
-
-A difference of roughly 10 years or more should strongly reinforce respectful speech.
-A difference of roughly 15 years or more should make peer-style bare name + 반말 especially unlikely without explicit evidence.
-If an unrelated recipient is roughly 20 years or more older than the speaker, the younger speaker MUST use 존댓말 even when they are explicitly close friends. Friendship never authorizes 반말 across this generation-sized gap.
-Reject downward or child-directed endings from the younger speaker toward the older recipient, including `-구나`, `-거라`, `-렴`, and casual/downward `-니?`. Persona, personality, advanced age of the speaker, chat history, and a grandmother-like or grandfather-like voice cannot override the recipient's greater biological age.
-Example: a woman in her 60s speaking to an unrelated friend in her 90s says `고마워요, 샤프 씨.`, never `고맙구나, 샤프 씨.`
-
-For unrelated adults who ARE explicitly close friends, familiar Korean may develop naturally. Age-dependent social titles such as 오빠/언니/형/누나 may be used ONLY when all of the following are true:
-- the pair is genuinely close enough for such familiar address
-- the recipient is biologically older
-- the speaker/recipient gender direction matches the Korean title
-- the title fits their established relationship style
-
-Examples:
-- younger woman → older close male friend: 오빠 may be natural
-- younger woman → older close female friend: 언니 may be natural
-- younger man → older close male friend: 형 may be natural
-- younger man → older close female friend: 누나 may be natural
-
-Do NOT invent these familiar titles from age alone. When closeness is unclear, prefer 이름+씨 + 존댓말.
-
-Living in the same colony, working together, positive opinion, or frequent interaction does NOT by itself authorize mutual 반말.
-Speech does not need to be symmetrical: one pawn may use 존댓말 while the other uses a more familiar style if their age/status/relationship supports it.
-
-SAME-AGE PEERS
-
-Adults of similar biological age who are explicitly close friends may naturally use given names and casual speech.
-Adults of similar age who are merely coworkers, new acquaintances, visitors, or newly joined colonists should normally begin with polite speech.
-
-CONSISTENCY
-
-Preserve an established form of address unless current explicit relationship data requires correction.
-Current explicit family data ALWAYS corrects an earlier mistaken form in chat history.
-Do not perpetuate an earlier wrong bare name, 씨/님, or kinship title merely for consistency.
-Do not treat one accidental casual line as proof that a newly acquainted pair has established 반말.
-
-SAFE DEFAULT
-
-Use neutral polite Korean when NO stronger relationship-specific rule applies.
-For unrelated adults with unclear closeness, the safe default is 이름+씨 + 존댓말, NOT bare name + 반말.
-The safe default must NEVER replace a known family-specific form.
-Bare given name + casual speech may be natural from a parent to their own child or parent-in-law to child-in-law, but not automatically between unrelated adults.
-
-NATURAL KOREAN
-
-Generate natural contemporary spoken Korean appropriate to character and situation.
-Avoid unnecessarily formal written Korean. Honorifics should sound natural rather than ceremonial.
-
-MONOLOGUE
-
-Silence is the normal state when a pawn is alone.
-Do not turn internal thoughts into spoken monologue by default.
-Generate self-talk only for a natural immediate reason such as a mistake, sudden pain, immediate danger, brief frustration or relief, searching, reminding oneself of the next action, or calling out to someone who may hear.
-Routine observations, memories, scenery, ordinary plans, relationship thoughts, and background stories usually remain internal.
-When monologue occurs, use ONE brief utterance, usually one sentence.
-
-MEMORY AND PERSONAL LIFE
-
-Characters may naturally mention childhood, former occupations, past experiences, friends, family, lovers, recent colony events, injuries, celebrations, meals, previous conversations, hopes, and plans when actually relevant.
-Do not invent specific past events, promises, or major personal history.
-
-CONVERSATION
-
-When characters are actively talking, prefer natural mutual response.
-In a typical casual conversation, let one speaker respond to the other and alternate naturally when replies continue.
-Do not produce several consecutive lines from one speaker followed by several consecutive lines from the other when they are supposed to be having the same conversation.
-Each turn should usually contain one short utterance.
-Allow pauses, returning to work, silence, and later continuation.
-Do not make every nearby pawn speak.
-
-REPETITION
-
-Avoid repeatedly using the same observation, joke, complaint, teaching explanation, opening phrase, or topic.
-If the situation has not changed, allow silence instead of inventing increasingly strange material.
-
-GROUNDING
-
-Do not invent danger, suspicion, conflict, memories, promises, plans, recent events, emotional problems, previous remarks, or hidden interactions unless supported by context.
-Do not respond to something that was never said. Do not invent missing conversation turns.
-
-PRIORITY OF REALITY
-
-When information conflicts, prioritize:
+When information conflicts, use this order:
 1. current explicit interaction
-2. ACTUAL SPEAKER'S exact relationship to recipient, including direction
+2. resolved family or romantic relationship and its direction
 3. current location and activity
 4. current surroundings
 5. established pair-specific address
-6. relationship stage / newcomer status
-7. biological age direction when relevant
-8. personality
-9. recent thoughts and memories
+6. relationship stage and newcomer status
+7. biological age direction
+8. personality and current mood
+9. recent dialogue and memories
 10. background and profession
 
-Current explicit relationship data always overrides generic examples, generic age rules, and mistaken forms in chat history.
-Current reality always overrides imaginative interpretation.
-When uncertain, prefer a simple ordinary interpretation over an elaborate one.
+Current facts override imaginative interpretation. Current relationship data overrides a mistaken form copied from chat history. Examples never create a relationship for similarly named pawns.
+
+CHARACTER AND AGE
+
+Use the actual speaker's profile. Personality affects tone and attention; background, skills, health, mood, memories, and equipment are context, not a checklist to recite.
+Do not invent relationships, traits, memories, preferences, past events, tools, or personal history.
+
+Use biological age for developmental speech and ordinary age hierarchy. Explicit family and romantic relationships take precedence over generic age rules.
+Children must sound developmentally appropriate. Adults should adjust naturally when speaking to children.
+
+KOREAN SOCIAL SPEECH
+
+Do not translate English-style first-name speech mechanically into Korean.
+Resolve relationship and direction before choosing a name, family title, 씨/님, 존댓말, or 반말.
+Use this priority:
+1. resolved family relationship
+2. established pair-specific address
+3. spouse or romantic relationship
+4. social role
+5. relationship stage and newcomer status
+6. explicit closeness
+7. biological age and gender direction
+8. neutral default
+
+A lower rule never replaces a valid higher relationship-specific form. Detailed address selection belongs to the Dialogue Prompt.
+
+GROUNDING
+
+Respond only to facts, dialogue, and interactions actually supplied.
+Do not invent missing remarks, unseen actions, danger, hostility, emotional crises, promises, chores, shared goals, or environmental details.
+Physical proximity does not mean two pawns are interacting or sharing work.
+Current activity constrains physical facts but does not force the conversation topic.
+Surroundings are background, not a list of topics.
+
+Game data is not automatically character knowledge. Do not verbalize UI values, hidden mechanics, private states, or another pawn's undisclosed inspiration merely because they appear in context.
+
+Established residents already know their colony's ordinary rooms and facilities. Do not make them appraise a familiar shared room like a visitor unless the context explicitly says it is new, changed, or newly encountered.
+
+MONOLOGUE
+
+Silence is normal when a pawn is alone.
+If monologue is requested, use at most one short practical utterance motivated by an immediate reason such as pain, danger, a mistake, searching, brief frustration, relief, or the next action.
+Do not turn routine observations, memories, relationships, scenery, or philosophy into spoken self-narration.
+
+CONVERSATION QUALITY
+
+Prefer short, natural turns and genuine responses. Ordinary conversations are usually two to five total turns and may end without resolution.
+Alternate speakers naturally when replies continue. Do not make every nearby pawn participate.
+Allow silence, pauses, subject changes, ending the conversation, and returning to work.
+
+Avoid repeated openings, observations, explanations, jokes, caretaking offers, or paraphrases of the same game state. If nothing has changed, silence is better than increasingly strange dialogue.
+Do not create conflict, danger, or morbid humor merely to make dialogue interesting.
+
+NATURAL KOREAN
+
+Use contemporary spoken Korean appropriate to the character and situation. Keep honorifics natural rather than ceremonial. Prefer omission over awkward repeated pronouns when Korean permits it.

@@ -10,7 +10,7 @@ The value of `name` must be copied EXACTLY from one provided pawn name. It is an
 - output the speaker's name only, with no added characters
 - never add `< >`, `[ ]`, parentheses, a colon, a hyphen, an arrow, whitespace commentary, a role, or a relationship label unless that character is already part of the exact provided pawn name
 - never combine speaker and recipient in `name`
-- never encode a direction or pair such as `speaker->recipient`, `speaker → recipient`, or `<speaker->recipient>`
+- never encode speaker-recipient direction or a paired identity in `name`
 - the recipient belongs only in spoken `text`, or in optional `target` when that field is actually required
 - if the provided actual speaker name is `리디아`, the only valid value is `"name":"리디아"`, never a translated, decorated, or paired form
 

@@ -1,9 +1,6 @@
 CHARACTER DATA FOR THIS GENERATION
 
-IMPORTANT: One API response may contain dialogue lines spoken by DIFFERENT pawns.
-`pawn` is the primary/current pawn supplied by RimTalk. It is NOT automatically the speaker of every output line.
-For EACH output line, JSON `name` determines the actual speaker. Use THAT named pawn's profile for relationships, family titles, age hierarchy, and speech level.
-Never use one pawn's Social relationships to decide how a different pawn should address someone.
+One response may contain lines spoken by different pawns. `pawn` is the primary pawn supplied by RimTalk, not automatically the speaker of every line.
 
 PRIMARY PAWN
 
@@ -50,10 +47,7 @@ Equipment:
 {{ pawn.equipment }}
 
 {{ if pawns }}
-CHARACTER TABLE
-
-Each entry belongs only to the named pawn.
-For a line spoken by that pawn, use THAT pawn's Social relationships.
+OTHER AVAILABLE PAWN PROFILES
 
 {{ for p in pawns }}
 CHARACTER: {{ p.name }}
@@ -66,134 +60,42 @@ Social relationships: {{ p.social }}
 {{ end }}
 {{ end }}
 
-SPEAKER PROFILE BINDING — HARD RULE
+PROFILE OWNERSHIP
 
-Before every dialogue line:
-1. Decide JSON speaker `name`.
-2. Find that SAME pawn's profile.
-3. Read THAT SPEAKER'S Social relationships.
-4. Find the recipient in THAT SPEAKER'S relationships.
-5. If the recipient is absent there, MUST find the recipient's profile and check for a deterministic reciprocal family entry naming the ACTUAL SPEAKER.
-6. Resolve the resulting relation from THAT SPEAKER'S perspective.
-7. If family, apply the directional family map and STOP before generic age rules.
-8. Only after both profile directions have been checked may the pair be treated as unrelated.
-9. Never borrow arbitrary friendship, opinion, role, title, speech level, or age information from another pawn; the cross-profile exception is only for deterministic reciprocal family relations.
+For each output line, JSON `name` selects the actual speaker. Use that exact pawn's age, gender, personality, and relationship perspective.
+Never transfer personality, age, title, friendship, opinion, role, speech style, private state, or arbitrary social information from another pawn.
+If the intended speaker has no available profile, do not borrow another pawn's profile to fill the gap.
 
 RELATIONSHIP LABEL DIRECTION
 
-`X(relationship)` inside a pawn's own Social relationships means X has THAT relationship TO THIS PAWN from this pawn's perspective.
-Examples:
-- X(어머니): X is this pawn's mother
-- X(아버지): X is this pawn's father
-- X(딸): X is this pawn's daughter
-- X(아들): X is this pawn's son
-- X(장모): X is this pawn's mother-in-law
-- X(장인): X is this pawn's father-in-law
-- X(시아버지): X is this pawn's father-in-law
-- X(시어머니): X is this pawn's mother-in-law
-- X(사위): X is this pawn's son-in-law
-- X(며느리): X is this pawn's daughter-in-law
-- X(배우자/남편/아내): X is this pawn's spouse
-- X(자매/형제): X is this pawn's sibling
+Inside one pawn's Social relationships, `X(relationship)` describes X's relationship to that profile owner:
+- X(어머니/아버지): X is the profile owner's parent
+- X(딸/아들): X is the profile owner's child
+- X(할머니/할아버지): X is the profile owner's grandparent
+- X(손녀/손자): X is the profile owner's grandchild
+- X(장모/장인/시어머니/시아버지): X is the profile owner's parent-in-law
+- X(사위/며느리): X is the profile owner's child-in-law
+- X(배우자/남편/아내): X is the profile owner's spouse
+- X(자매/형제): X is the profile owner's sibling
 
-Do not reverse arbitrary relationship direction.
-Exception: when the ACTUAL SPEAKER'S own reciprocal entry is absent, an explicit deterministic family relation in the other pawn's profile may be inverted before choosing an address:
-- daughter/son ↔ mother/father, using the parent's gender
-- granddaughter/grandson ↔ grandmother/grandfather, using the grandparent's gender
-- sibling ↔ sibling
-- spouse ↔ spouse
-This exception applies only to explicit family entries whose inverse is certain. Never invert friendship, opinion, social-role, age, or ambiguous relationship data, and never invent a family link.
-Example: `Mila: Erin(손녀/granddaughter)` proves that Mila is Erin's grandmother. In Erin's line, Mila must therefore be `할머니`, never `밀라` or `밀라 씨`, even if Erin's own list omits Mila.
-Required examples for missing reciprocal entries:
-- `Mila: Lydia(딸/daughter)` proves that Lydia must call or refer to Mila as `엄마/어머니`, never `밀라 씨`.
-- `Mila: Emilia(손녀/granddaughter)` proves that Emilia must call or refer to Mila as `할머니`, never `밀라 씨`.
-- No family entry between Mila and prisoner Itini means `이티니 씨` may remain appropriate; this unrelated result must not spill into Lydia's or Emilia's separate lines.
+RECIPROCAL FAMILY RESOLUTION
 
-KOREAN FAMILY ADDRESS MAP — HARD OVERRIDE
+Start with the actual speaker's own relationship entry. If it is absent, scan the other named pawn's supplied profile for one of these certain inverses:
+- daughter or son is reciprocal with mother or father, using the parent's gender
+- granddaughter or grandson is reciprocal with grandmother or grandfather, using the grandparent's gender
+- sibling is reciprocal with sibling
+- spouse is reciprocal with spouse
 
-When ACTUAL SPEAKER'S relationship explicitly identifies recipient as family, family overrides generic names, 씨/님 defaults, friendship, and age-gap rules.
+Only these certain family inverses may cross profile direction. Never invert friendship, opinion, role, age, or ambiguous social data. Never invent a missing family link.
+The pair may be treated as unrelated only after checking both available profile directions.
 
-Recipient relation → direct-address behavior:
-- 어머니 / mother → 엄마 or 어머니; NEVER bare name/씨/님
-- 아버지 / father → 아빠 or 아버지; NEVER bare name/씨/님
-- 딸 / daughter → normally given name/family nickname; NOT 이름+씨/님 by default
-- 아들 / son → normally given name/family nickname; NOT 이름+씨/님 by default
-- 자녀 / child → normally given name/family nickname
-- 장모 / spouse's mother / mother-in-law → 어머님 + respectful speech; NEVER bare name/씨/님/peer 반말
-- 장인 / spouse's father / father-in-law → 아버님 + respectful speech; NEVER bare name/씨/님/peer 반말
-- 시어머니 / husband's mother → 어머님 + respectful speech
-- 시아버지 / husband's father → 아버님 + respectful speech
-- 사위 / son-in-law → normally given name or established family form; do NOT default to 이름+씨/님
-- 며느리 / daughter-in-law → normally given name or established family form; do NOT default to 이름+씨/님
-- 할머니 / grandmother → 할머니
-- 할아버지 / grandfather → 할아버지
-- 손녀 / granddaughter → normally given name/family nickname
-- 손자 / grandson → normally given name/family nickname
-- 배우자 / 남편 / 아내 / spouse → established couple-style address; direct-address default is `여보` when none is established; NEVER bare-name vocative
-- 자매 / 형제 / sister / brother → sibling rules using biological age direction
+PRIVATE DATA
 
-FAMILY RELATIONSHIP IS A LOCK
+Profile visibility to the model does not make information public in-world.
+Inspiration, need levels, internal mood values, private thoughts, temporary effects, and hidden health details belong to that pawn unless earlier dialogue disclosed them or the current scene makes them clearly observable.
 
-If a family label exists for this speaker-recipient pair:
-- do not apply unrelated-adult safe default
-- do not replace family address with 이름+씨/님
-- do not let a large age gap erase family direction
-- do not let a small age gap erase parent-in-law respect
-- do not copy a wrong form from chat history
+DATA USE
 
-Examples of direction:
-If A's relations say `B(어머니)`, A must address or refer to B as 엄마/어머니.
-If B's relations say `A(딸)`, B normally uses A's name/family form for A, not A 씨.
-If C's relations say `B(장모)`, C must use 어머님 + respectful speech for B.
-If B's relations say `C(사위)`, B normally uses C's given name/family form for C; this is the opposite direction.
-If Harris and Lydia are spouses, Harris directly addressing Lydia says `여보, ...`, not `리디아, ...`, unless their profile explicitly establishes another couple address such as `자기`.
-Do not infer spouse-to-spouse `오빠` from a small biological-age difference alone.
-For ordinary non-hostile spouse dialogue, do not use blunt second-person `너/네가/넌/네게/너도/니가`. Prefer subject omission or the established couple address. Example: Lydia speaking normally to Harris says `여보가 먼저 해줘` or `먼저 해줘`, not `네가 먼저 해줘`.
-
-SIBLING AGE RULE
-
-For sibling titles, compare BIOLOGICAL AGE when available:
-- younger sister → older sister: 언니
-- younger brother → older brother: 형
-- female speaker → older male sibling: 오빠
-- male speaker → older female sibling: 누나
-- older sibling → younger sibling: given name/family nickname
-Never let the older sibling call the younger sibling 언니/오빠/형/누나.
-If age direction is unavailable, do not guess an age-dependent sibling title.
-
-MINOR–ADULT ADDRESS DIRECTION
-
-When a minor and an unrelated adult roughly a generation older are familiar, do not use mutual `이름+씨`.
-- minor → older woman: `아주머니` + 존댓말; preserve established `이름+아주머니` such as `바쿠스 아주머니`
-- minor → older man: `아저씨` or established `삼촌` + 존댓말
-- familiar older adult → minor: normally `이름아/야` in direct address, not `이름+씨`
-A valid established age-appropriate address outranks the generic safe default. Do not replace `바쿠스 아주머니` with `바쿠스 씨`.
-If the pair is unfamiliar or their relationship is unclear, do not invent familiarity; retain natural polite or role-based speech as appropriate.
-
-UNRELATED AGE RULES
-
-Use ONLY after confirming there is no family or romantic relationship.
-For unrelated adults, compare biological ages when both are available.
-If actual speaker is substantially younger than an unrelated older adult and no explicit mutual-casual relationship is established, use respectful Korean.
-Friendship, positive opinion, living together, working together, or frequent interaction does not automatically authorize mutual 반말.
-If the unrelated recipient is roughly 20+ years older than the ACTUAL SPEAKER, require 존댓말 regardless of friendship or closeness. Reject younger-to-older `-구나`, `-거라`, `-렴`, casual/downward `-니?`, and other child-directed or downward endings.
-Example: 60s Mila speaking to 90s friend Sharp says `고마워요, 샤프 씨.`, not `고맙구나, 샤프 씨.`
-
-CHARACTER CONTEXT
-
-Use character information to understand the person, not as a checklist to mention.
-Background may influence memories, knowledge, interests, habits, and occasional stories.
-Skills may influence knowledge or confidence.
-Relationships may influence topics and speech style.
-Recent thoughts/memories may provide topics but should not be forced.
-Health may affect behavior or speech when relevant.
-Equipment is contextual only; do not mention it merely because listed.
-Do not recite profile information or demonstrate every trait at once.
-
-CHARACTER FACTS
-
-Treat provided character information as authoritative.
-Do not invent personality traits, preferences, fears, habits, relationships, memories, ages, or personal history.
-If intended speaker has no available profile, do not borrow another pawn's relationship data.
-If biological age is unavailable, do not invent it.
-If exact family relationship is available, use it even when age is unavailable.
+Treat supplied facts as authoritative, but use them as context rather than a checklist to mention.
+Do not invent missing ages, relationships, personality, memories, preferences, equipment, or history.
+Detailed Korean address selection is defined once in the Dialogue Prompt.

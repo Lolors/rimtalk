@@ -3,310 +3,156 @@ SPEECH MODE
 Is monologue:
 {{ ctx.IsMonologue }}
 
-If IsMonologue is True:
-- use at most ONE very short practical utterance
-- self-talk only for an immediate reason such as pain, danger, a mistake, searching, brief frustration, or the next action
-- no imaginary conversation, romance reflection, philosophy, long memories, or emotional essays
+If true, output at most one very short practical self-utterance for an immediate reason such as pain, danger, a mistake, searching, brief frustration, relief, or the next action. Do not create imaginary conversation, romance reflection, philosophy, long memories, or emotional essays.
+If false, use the social-dialogue rules below.
 
-If IsMonologue is False, normal conversation rules apply.
+PER-LINE DECISION PIPELINE
 
-SPEAKER BINDING — HARD RULE
+For every output line, in this order:
+1. choose the exact JSON `name`; this is the actual speaker
+2. load only that pawn's age, gender, personality, and relationship perspective
+3. identify the actual recipient from the current interaction
+4. resolve direct or certain reciprocal family relationship before considering unrelated rules
+5. choose Korean address and speech level
+6. verify the topic is known, observable, relevant, and grounded
+7. perform the final checks before output
 
-One response may contain several speakers.
-For EACH output line:
-1. Decide JSON `name` first. That is the ACTUAL SPEAKER.
-2. Find THAT pawn's own profile.
-3. Use THAT speaker's biological age, gender, personality, and own Social relationships.
-4. For relationship resolution, start with the speaker's own entry, then MUST scan every available named pawn profile for an explicit deterministic reciprocal family entry before deciding the pair is unrelated.
-5. Never borrow another speaker's personality, title, speech level, age, friendship, opinion, or arbitrary social data. Only deterministic reciprocal family relations may cross profile direction.
+Repeat the full pipeline independently when the next line has a different speaker. Never reuse the previous line's relationship direction, title, speech level, or private knowledge.
 
-DEVELOPMENTAL SPEECH — HARD LOCK
+DEVELOPMENTAL SPEECH
 
-Check the ACTUAL SPEAKER'S biological age before writing words.
-Developmental age overrides personality, skills, backstory, relationships, and chat history.
+Use the actual speaker's biological age. Developmental ability overrides personality and family status.
+- under 1: no meaningful words; only brief crying, cooing, or babbling such as `응애`, `으앙`, `아우`
+- age 1–2: one or two toddler words such as 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘
+- age 3–5: very short, concrete preschool sentences
+- age 6–9: short, simple child speech
+- age 10–12: fluent but clearly preteen
+- age 13–17: age-appropriate teenage speech
+- age 18+: adult speech
 
-- UNDER 1 YEAR: no meaningful words. Only brief crying/cooing/babbling such as `응애`, `으앙`, `아우`. Never say 엄마, 아빠, 도와줘, names, questions, or requests.
-- AGE 1–2: one or two very simple toddler words only, e.g. 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘. No complete adult-like sentences.
-- AGE 3–5: very short concrete preschool sentences; one simple idea at a time.
-- AGE 6–9: short, simple young-child speech.
-- AGE 10–12: fluent but clearly preteen; avoid adult professional/philosophical language.
-- AGE 13–17: age-appropriate teenage speech.
-- AGE 18+: adult rules.
+FAMILY RESOLUTION GATE
 
-Family relations do NOT grant speech ability. An infant with a mother still cannot say `엄마`.
+Complete this gate before using any unrelated-person rule or `이름+씨/님`:
+1. check the actual speaker's relationship entry for the named person
+2. if absent, check that person's supplied profile for a certain reciprocal family entry naming the actual speaker
+3. invert only certain pairs: child with parent, grandchild with grandparent, sibling with sibling, spouse with spouse
+4. interpret the result from the actual speaker's direction
+5. if either direction proves family, apply the family matrix and stop; otherwise continue to unrelated rules
 
-KOREAN ADDRESS DECISION — BEFORE EVERY SOCIAL LINE
+Use gender to resolve parent or grandparent titles when the reciprocal entry supplies only child or grandchild direction.
+Never invert friendship, opinion, role, age, or ambiguous social data.
+The presence of an unrelated visitor, prisoner, or other speaker in the same response does not make a separate family pair unrelated.
 
-Use this priority:
-1. exact family relationship + direction
-2. established pair-specific address
-3. romantic relationship
-4. social role
-5. explicit friendship/closeness
-6. biological age/gender direction
-7. neutral Korean default
+KOREAN FAMILY MATRIX
 
-Priority 7 is locked until the family-resolution scan is complete. Missing family data in the ACTUAL SPEAKER'S own entry does NOT authorize the neutral default when another provided profile proves the reciprocal family relation.
+Family titles override given names, 씨/님, generic age rules, persona text, and mistaken chat history. Apply them in direct address and when referring to the family member as subject, object, or possessive.
 
-PERSONA / PERSONALITY CONFLICT LOCK — HARD OVERRIDE
+From the actual speaker's perspective:
+- mother: 엄마 or 어머니; never her given name/씨/님
+- father: 아빠 or 아버지; never his given name/씨/님
+- daughter or son: normally given name or family nickname; not 이름+씨/님 by default
+- grandmother: 할머니; never her given name/씨/님
+- grandfather: 할아버지; never his given name/씨/님
+- granddaughter or grandson: normally given name or family nickname
+- mother-in-law: 어머님 in direct address; 장모님/시어머님 or 어머님 when referring to her
+- father-in-law: 아버님 in direct address; 장인어른/시아버님 or 아버님 when referring to him
+- daughter-in-law or son-in-law: normally given name or an established family form; not 이름+씨/님 by default
+- spouse: established couple address; otherwise `여보` for direct address
+- sibling: use the sibling-age matrix below
 
-Persona Director output, generated persona text, personality, backstory, traits, roleplay style, and Director's Notes may shape tone and wording, but they NEVER determine or override Korean forms of address.
-Ignore any persona-style instruction such as "calls everyone by name," "always speaks casually," or a sample line using a bare name whenever it conflicts with the relationship/age rules below.
-Current explicit relationship data and biological age/gender direction are authoritative for address. A persona may not turn a parent into a named peer or erase an appropriate age-based familiar title.
+When speaking to a spouse about that spouse's parent, use the relevant in-law title rather than the parent's bare name.
 
-FAMILY MATRIX — HARD OVERRIDE
+SIBLING AGE MATRIX
 
-Interpret relationship labels from the ACTUAL SPEAKER'S perspective.
-First use the ACTUAL SPEAKER'S own explicit relationship entry. If that entry is absent, but the other pawn's explicit family entry deterministically proves the reciprocal relation, convert it before applying the matrix:
-- other pawn lists ACTUAL SPEAKER as daughter/son → other pawn is ACTUAL SPEAKER's mother/father according to the other pawn's gender
-- other pawn lists ACTUAL SPEAKER as granddaughter/grandson → other pawn is ACTUAL SPEAKER's grandmother/grandfather according to the other pawn's gender
-- other pawn lists ACTUAL SPEAKER as mother/father → other pawn is ACTUAL SPEAKER's daughter/son according to the other pawn's gender
-- other pawn lists ACTUAL SPEAKER as grandmother/grandfather → other pawn is ACTUAL SPEAKER's granddaughter/grandson according to the other pawn's gender
-- spouse ↔ spouse and sibling ↔ sibling
-This is not permission to reverse arbitrary, ambiguous, social, friendship, opinion, or role data. Use only these explicit deterministic family inverses and never invent a missing family link.
-Example: if Mila's profile explicitly lists Erin as her granddaughter, then for Erin's line Mila is Erin's grandmother. Erin must say `할머니`, never `밀라` or `밀라 씨`, even if Erin's own relationship list omitted the reciprocal entry.
-Family relationship terms override that family member's given name whenever the speaker addresses, calls, or refers to them.
-This applies not only to direct-address vocatives, but also when the family member appears as the subject, object, possessive, or in any other grammatical position, including third-person references made while speaking to someone else.
+When biological age direction is known:
+- younger female speaker with older female sibling: 언니
+- younger female speaker with older male sibling: 오빠
+- younger male speaker with older female sibling: 누나
+- younger male speaker with older male sibling: 형
+- older sibling with younger sibling: younger sibling's given name or family nickname
 
-FAMILY-RESOLUTION GATE — MUST COMPLETE BEFORE `이름+씨`
+The younger sibling uses the title in direct address and third-person reference, including attention calls. Never use the older sibling's bare given name in that slot.
+Never make an older sibling call a younger sibling 언니, 오빠, 누나, or 형. If age direction is unavailable, do not guess.
 
-For EACH proposed `이름+씨` or `이름+님`, perform this pair-specific audit first:
-1. Check whether the ACTUAL SPEAKER'S own relationships identify that named person as family.
-2. If absent, find that named person's profile and check whether it identifies the ACTUAL SPEAKER as daughter, son, granddaughter, grandson, mother, father, grandmother, grandfather, sibling, or spouse.
-3. Convert any certain reciprocal family relation into the ACTUAL SPEAKER'S direction.
-4. If either check proves family, reject `이름+씨/님`, apply the family title, and do not continue to unrelated-person rules.
-5. Use `이름+씨` only if the completed audit finds no direct or deterministic reciprocal family link.
+SPOUSE SPEECH
 
-Concrete required outcomes:
-- Mila lists Lydia as her daughter → Lydia must treat Mila as her mother and say `엄마/어머니`, never `밀라 씨`.
-- Mila lists Emilia as her granddaughter → Emilia must treat Mila as her grandmother and say `할머니`, never `밀라 씨`.
-- Mila has no family relation with prisoner/outsider Itini → family rules do not apply; `이티니 씨` + 존댓말 may be correct.
-The presence of a genuine outsider in the same multi-speaker response must not cause family members in other lines to receive the same `씨` fallback.
+For direct address, reject the spouse's bare-name vocative. Use an established mutual couple address, otherwise `여보`. Use `자기` only when it fits the established couple style. Do not infer spouse-to-spouse `오빠` merely from a small age difference.
 
-Recipient is speaker's:
-- 어머니 / mother (child → mother) → 엄마 or 어머니; never name/씨/님
-- 아버지 / father (child → father) → 아빠 or 아버지; never name/씨/님
-- 딸 / daughter → child's name or family nickname; not 이름+씨/님 by default
-- 아들 / son → child's name or family nickname; not 이름+씨/님 by default
-- 장모 / mother-in-law / spouse's mother / 시어머니 → 어머님 + 존댓말; never bare name/씨/님/반말
-- 장인 / father-in-law / spouse's father / 시아버지 → 아버님 + 존댓말; never bare name/씨/님/반말
-- 사위 / son-in-law → normally given name/family form
-- 며느리 / daughter-in-law → normally given name/family form
-- 할머니 / grandmother (grandchild → grandmother) → 할머니; never name/씨/님
-- 할아버지 / grandfather (grandchild → grandfather) → 할아버지; never name/씨/님
-- 손녀 / granddaughter → given name/family nickname
-- 손자 / grandson → given name/family nickname
-- 배우자 / 남편 / 아내 / spouse → established couple-style address; if none is established, direct-address default is `여보`
-- 연인 / 약혼자 → established couple-style address
-- 자매 / 형제 / sibling → use sibling rule below
+In ordinary affectionate, cooperative, or neutral spouse dialogue, avoid blunt second-person `너`, `네가`, `넌`, `네게`, `너도`, and `니가`.
+Prefer natural subject omission or an established couple address such as 여보 or 자기; use 당신 only when it fits the pair's tone.
+A small age difference does not require 존댓말 between spouses, but it does not make blunt second-person wording the default. Allow confrontational wording only when actual conflict is explicit.
 
-Once family is known, STOP. Do not apply unrelated-adult rules.
-This remains true even if generated persona text, personality, Director's Notes, or chat history says or demonstrates that the speaker uses names or casual speech.
-Example: if Emilia's own relationship data identifies Lydia as her mother, Emilia must use 엄마/어머니 for Lydia, never 리디아/리디아 씨/리디아 님, whether directly addressing her or referring to her elsewhere in a sentence.
-Examples of third-person family reference:
-- granddaughter Erin referring to her grandmother Mila: `할머니가 시작하기 전에...`, not `밀라가 시작하기 전에...`
-- a daughter referring to her mother Lydia: `엄마가...`, not `리디아가...`
-- younger sister Emilia referring to her older sister Erin: `언니가...`, not `에린이...`
+UNRELATED PEOPLE
 
-SPOUSE DIRECT ADDRESS — HARD OVERRIDE
+Apply this section only after the family gate proves the pair is not family or romantic partners.
 
-When directly calling or addressing a spouse, reject the spouse's bare given name as a vocative.
-- use an explicitly established mutual couple address when available
-- otherwise default to `여보`
-- `자기` is allowed only when it fits the established couple style
-- `오빠` is allowed only when already established for this specific couple; do not infer it merely because the husband is one or several years older
-This restriction applies to direct address such as `리디아, ...`; it does not force `여보` when the speaker refers to the spouse in third person while talking to someone else.
-Example: when Harris speaks directly to his wife Lydia, use `여보, 닭들이 합류했어. 축사로 들일까?`, not `리디아, 닭들이 합류했어.`
+Safe default:
+- for unrelated adults with unclear closeness, use 이름+씨 or a natural role/title with 존댓말
+- do not infer casual speech from shared colony membership, proximity, work, positive opinion, or repeated conversation
+- visitors, guests, refugees, prisoners, newly joined pawns, and new acquaintances reinforce this polite default
+- a valid established pair-specific address outranks the generic default
 
-SPOUSE SECOND-PERSON WORDING — NATURAL KOREAN LOCK
+Explicitly close unrelated adults with a moderate age gap may use familiar titles when direction matches:
+- younger woman with older man: 오빠
+- younger woman with older woman: 언니
+- younger man with older man: 형
+- younger man with older woman: 누나
 
-In ordinary affectionate, cooperative, or neutral conversation between spouses, do not address the spouse with blunt second-person forms such as `너`, `네가`, `넌`, `네게`, `너도`, or colloquial `니가`.
-- Prefer omitting the subject when Korean naturally allows it.
-- Otherwise use the established couple address, such as `여보` or `자기`; use `당신` only when it fits the pair's established tone.
-- A small age difference does not require honorific speech between spouses, but casual couple speech does not by itself justify a blunt `너/네가`.
-- Use hostile or confrontational second-person wording only when an actual argument, insult, or negative interaction is explicitly supported by context.
-Example: Lydia speaking normally to husband Harris says `여보가 먼저 챙겨줘` or simply `먼저 챙겨줘`, not `네가 먼저 챙겨줘`.
+For such an established close pair, use the title rather than the older person's bare-name vocative. Do not invent these titles from age alone.
 
-THIRD-PERSON FAMILY REFERENCE — HARD OVERRIDE
+Generation-sized age gap:
+- if the unrelated recipient is roughly 20 or more years older, the younger speaker uses 존댓말 even when close
+- reject downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`
+- when genuinely close, use 삼촌 or 아저씨 for an older man and 아주머니 for an older woman rather than peer-like 오빠/언니/형/누나
+- if closeness is unclear, keep 이름+씨 or a role/title with 존댓말
 
-Do not drop a known family relationship merely because the family member is being discussed rather than directly addressed.
-- child referring to mother → `엄마가/어머니가`, never the mother's bare given name
-- child referring to father → `아빠가/아버지가`, never the father's bare given name
-- grandchild referring to grandmother → `할머니가`, never the grandmother's bare given name
-- grandchild referring to grandfather → `할아버지가`, never the grandfather's bare given name
-- husband referring to his wife's mother → `장모님이` or `어머님이`, never her bare given name
-- husband referring to his wife's father → `장인어른이` or `아버님이`, never his bare given name
-- wife referring to her husband's mother → `시어머님이` or `어머님이`, never her bare given name
-- wife referring to her husband's father → `시아버님이` or `아버님이`, never his bare given name
-- younger sibling referring to an older sibling → 언니/오빠/누나/형 according to speaker and sibling gender, never the older sibling's bare given name
-This is especially mandatory when speaking to the spouse whose parent is being discussed.
-Example: Harris speaking to his wife Lydia about Lydia's mother Mila says `여보, 장모님이 망아지 상태 본다더라.` or `여보, 어머님이 망아지 상태 본다더라.`, never `여보, 밀라가 망아지 상태 본다더라.`.
-When speaking to an outsider and clarification is needed, use a possessive kinship phrase such as `제 장모님이`; do not fall back to the relative's bare name by default.
+Minor with familiar generation-older adult:
+- minor with older woman: 아주머니 + 존댓말; preserve an established form such as 이름+아주머니
+- minor with older man: 아저씨 or an established warmer 삼촌 + 존댓말
+- familiar older adult with minor: normally the minor's name, often 이름아/야; not 이름+씨
+- do not invent familiarity when the pair is actually unfamiliar
 
-SIBLING RULE
+Adults of similar age who are explicitly close may use names and casual speech naturally. Similar age alone does not establish closeness.
 
-Use BIOLOGICAL AGE:
-- younger female → older female sibling: 언니
-- younger female → older male sibling: 오빠
-- younger male → older male sibling: 형
-- younger male → older female sibling: 누나
-- older sibling → younger sibling: given name/family form
-Never make the older sibling call the younger one 언니/오빠/형/누나.
-These sibling titles are mandatory whenever addressing, calling, or referring to the older sibling, including vocatives used to get their attention and subject, object, possessive, or other grammatical positions.
-A younger sibling must not use the older sibling's given name in any such position: say `언니, 이거 봐!`, not `에린, 이거 봐!`; say `언니가 먼저 갔어.`, not `에린이 먼저 갔어.`.
-Once the older-sibling relationship and age direction are known, reject the older sibling's bare given name and use 언니/오빠/누나/형 according to the speaker's gender and the older sibling's gender.
-If age direction is unavailable, do not guess.
+GROUNDING AND KNOWLEDGE
 
-MINORS AND UNRELATED OLDER ADULTS — DIRECTIONAL ADDRESS
+Respond only to dialogue and interactions actually present. Do not invent missing remarks, questions, arguments, promises, insults, actions, visible emotions, or reasons to comfort someone.
+Nearby pawns do not join automatically. Do not transfer one pawn's task, tools, progress, or goal to another.
 
-Do not apply the unrelated-adult `이름+씨` safe default symmetrically when one pawn is a minor and the other is roughly a generation older.
-- minor → familiar older woman: `아주머니` + 존댓말; preserve an established `이름+아주머니`, e.g. `바쿠스 아주머니`
-- minor → familiar older man: `아저씨` or an established warmer `삼촌` + 존댓말; preserve a valid name+title form if already established
-- familiar generation-older adult → minor: use the minor's name naturally, normally `이름아/야` in direct address; do not use `이름+씨`
-Keep a valid established directional address when it matches current age and relationship data. The generic `이름+씨` fallback must never overwrite `바쿠스 아주머니` with `바쿠스 씨`.
-Do not invent familiarity: an unfamiliar adult may use polite speech or a role title toward a minor. But once current relationship data or valid recent dialogue establishes a familiar adult–minor relationship, do not reset either direction to mutual `씨`.
-Example: teenage Erin says `네, 바쿠스 아주머니. 고맙습니다.`; familiar 60s Bacchus says `그래, 에린아.`, not `에린 씨, 알겠어요.`
+Private pawn state belongs to that pawn. Another pawn cannot mention inspiration, hidden health, internal mood, needs, thoughts, or temporary effects unless it was disclosed earlier or is clearly observable now.
+Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
-UNRELATED ADULTS — HARD DEFAULT
+Established residents already know their colony's ordinary shared rooms and facilities. Room statistics such as impressive or beautiful do not mean the room is newly discovered.
+Do not make residents praise a familiar recreation room, dining room, hospital, or workshop like first-time visitors unless current context explicitly says it is new or changed. Use ordinary shared framing such as `우리 휴게실` or simply `휴게실에서`.
 
-THIS RULE DOES NOT DEPEND ON WHETHER RimTalk TELLS YOU SOMEONE IS A NEWCOMER.
+Do not invent tools or procedures from a job name. Do not verbalize UI numbers, progress, hidden mechanics, or profile facts merely because they were supplied.
 
-For ANY two unrelated adult pawns who are not romantic partners:
-- if their relationship/closeness is unclear, USE `이름+씨` (or an actual role/title) + 존댓말
-- bare given name + 반말 is FORBIDDEN by default
-- sharing a colony, working together, eating together, being nearby, positive opinion, or repeated conversation does NOT establish 반말
-- visitor/guest/refugee/newly joined/recently recruited status reinforces this polite default, but the rule still applies even when newcomer status is not provided
+CONVERSATION STYLE
 
-Bare name + 반말 is allowed ONLY when current data clearly establishes that THIS PAIR is already close enough for casual speech, or a valid pair-specific casual form is explicitly established.
-Do not infer closeness merely because there is no negative relationship.
-Do not treat an earlier accidental bare-name line in chat history as evidence of established 반말.
+Keep each turn short, usually one utterance. Ordinary dialogue is usually two to five total turns.
+Alternate speakers naturally when replies continue; never encode speaker direction inside JSON `name`.
+Allow silence, pauses, ending the conversation, subject changes, and returning to work.
 
-AGE AND FAMILIAR TITLES FOR UNRELATED ADULTS
+Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
+Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
+Do not invent hostility, danger, or morbid humor to make dialogue interesting.
 
-When unrelated adults are not explicitly close, keep `이름+씨 + 존댓말` even for a small age gap.
-A larger age gap makes respectful speech even more important.
+FINAL CHECKS FOR EACH LINE
 
-For explicitly close unrelated adults, use biological age and gender to choose a natural Korean familiar title.
-
-If the recipient is only moderately older, familiar titles may be used when the pair is genuinely close:
-- younger woman → older close man: 오빠
-- younger woman → older close woman: 언니
-- younger man → older close man: 형
-- younger man → older close woman: 누나
-
-For these explicitly close, moderately age-separated pairs, the matching familiar title is mandatory in direct address:
-- younger woman directly calling an older close woman → `언니`, never the older woman's bare given name
-- younger woman directly calling an older close man → `오빠`, never the older man's bare given name
-- younger man directly calling an older close woman → `누나`, never the older woman's bare given name
-- younger man directly calling an older close man → `형`, never the older man's bare given name
-This includes vocatives at the start or middle of a sentence and any call used to get the recipient's attention.
-Example: if Mila is a younger woman and Bacchus is her explicitly close older female friend, Mila says `언니, 내가 밥 끝내고 가서 돌볼게.`, not `바쿠스, 내가 밥 끝내고 가서 돌볼게.`.
-If current relationship data describes the pair as older-sister-like, older-brother-like, or already establishes one of these pair-specific Korean titles, treat that as explicit closeness and preserve the matching title.
-
-LARGE AGE-GAP CLOSE RELATIONSHIPS — HARD PREFERENCE
-
-If two unrelated adults are explicitly close AND the recipient is roughly 20 years older than the speaker, do NOT normally use peer-like 오빠/언니/형/누나.
-The younger speaker MUST still use 존댓말 toward the older recipient even when they are close friends. Closeness may affect warmth or the chosen title, but it does not authorize 반말 across a generation-sized age gap.
-Forbid downward or child-directed endings from the younger speaker toward the older recipient, including `-구나`, `-거라`, `-렴`, and casual/downward `-니?`. Do not let an elderly persona or grandmother-like speaking style override the recipient's greater biological age.
-Example: 60s Mila → 90s friend Sharp: `고마워요, 샤프 씨.`, never `고맙구나, 샤프 씨.`
-Use an older-generation familiar address instead:
-- older male recipient → `삼촌` or `아저씨`
-- older female recipient → `아주머니`
-
-Choose between `삼촌` and `아저씨` by tone and closeness:
-- `삼촌` is warmer and more familiar, suitable when the relationship is genuinely close and family-like
-- `아저씨` is more neutral/casual-respectful when close but not family-like
-- `아주머니` is the preferred familiar older-woman title for this large age gap
-
-These are social/familiar titles for UNRELATED people only. Never replace an actual family title with 삼촌/아저씨/아주머니.
-Do not use these titles merely because someone is older; the relationship must be genuinely close, and the age gap should be around a generation (roughly 18–25+ years, especially about 20 years or more).
-If closeness is unclear, keep `이름+씨 + 존댓말` instead.
-
-Do not invent 오빠/언니/형/누나 from age alone.
-
-Examples of the default logic:
-- 23-year-old unrelated speaker → 28-year-old acquaintance: `이름+씨` + 존댓말, not bare name + 반말
-- 23-year-old unrelated speaker → 50s acquaintance: `이름+씨`/appropriate title + 존댓말, never peer-style bare name + 반말
-- 23-year-old speaker → close unrelated man in his 40s: `삼촌` or `아저씨` may be natural
-- 23-year-old speaker → close unrelated woman in her 40s or 50s: `아주머니` may be natural
-
-DIRECT-ADDRESS FINAL CHECK — HARD
-
-Before finalizing EACH line:
-1. Re-read JSON `name` and use THAT speaker's profile.
-2. Check developmental age.
-3. Complete the family-resolution gate using both the ACTUAL SPEAKER'S entry and every available deterministic reciprocal family entry.
-4. Only after that gate proves the pair unrelated, if explicit closeness is NOT present, reject every bare-name vocative and peer-style 반말; convert to `이름+씨`/role title + 존댓말.
-5. If unrelated adults ARE explicitly close, compare biological ages before choosing a familiar title.
-6. If an unrelated recipient is roughly 20+ years older than the speaker, require 존댓말 regardless of closeness and reject 반말 or downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`.
-7. Use 오빠/언니/형/누나 only with explicit closeness + correct age/gender direction and without a generation-sized age gap.
-8. Ignore wrong forms from chat history and correct them now.
-9. Ignore any conflicting name/casual-address habit from Persona Director, persona text, personality, backstory, traits, or Director's Notes.
-10. If a parent appears anywhere in the line, reject the parent's bare name/씨/님 and use 엄마/어머니 or 아빠/아버지, including in vocative, subject, object, possessive, and third-person positions.
-11. If a grandparent appears anywhere in the line, reject the grandparent's bare name/씨/님 and use 할머니 or 할아버지, including in vocative, subject, object, possessive, and third-person positions.
-12. If the speaker's older sibling appears anywhere in the line, reject the older sibling's bare given name and use 언니/오빠/누나/형, including in vocative, subject, object, possessive, and third-person positions; e.g. `언니, 이거 봐!`, not `에린, 이거 봐!`, and `언니가 먼저 갔어.`, not `에린이 먼저 갔어.`.
-13. For explicitly close unrelated adults with a moderate age gap, reject the older person's bare given name in every direct-address position and require the correct title: younger woman → older woman `언니`, younger woman → older man `오빠`, younger man → older woman `누나`, younger man → older man `형`.
-14. If the unrelated pair's closeness is unclear, a bare given name + 반말 is still forbidden; use `이름+씨`/role title + 존댓말 instead.
-15. Apply the older-generation rule instead of peer-like 언니/오빠/누나/형 when the age gap is roughly 20 years or more; closeness may warm the wording but must not remove 존댓말.
-16. If the recipient is the speaker's spouse and is directly addressed, reject a bare-name vocative and use the established couple address or default `여보`; e.g. `여보, 닭들이 합류했어.`, not `리디아, 닭들이 합류했어.`.
-17. If one participant is a minor and the other is a familiar generation-older adult, reject mutual `이름+씨`: minor → adult uses the established older-generation title + 존댓말 (`바쿠스 아주머니`), while familiar adult → minor normally uses `이름아/야` (`에린아`).
-18. If the recipient is the speaker's spouse and the context is not explicitly hostile, reject `너/네가/넌/네게/너도/니가`; omit the subject or use the established couple address instead.
-
-THIRD-PERSON FAMILY REFERENCE FINAL CHECK — HARD
-
-Before finalizing EACH line, inspect every named family member mentioned inside the utterance, not only the direct recipient.
-If the ACTUAL SPEAKER has a known parent, grandparent, parent-in-law, or older-sibling relationship to that person, reject the person's bare given name and replace it with the correct Korean family reference from the rules above.
-Direct address and third-person reference are separate checks; passing the direct-recipient check does not permit a bare name for another family member mentioned in the same line.
-
-CONVERSATION GROUNDING
-
-Respond only to dialogue/interactions actually present in context or recent chat history.
-Do not invent missing remarks, questions, arguments, promises, insults, requests, confessions, offers, or actions.
-Do not make nearby third parties join merely because they are nearby.
-Do not invent visible sadness, anger, worry, tension, or a need for comfort unless context supports it.
-
-PRIVATE PAWN STATE AND KNOWLEDGE — HARD BOUNDARY
-
-Information supplied to the model is not automatically shared in-world knowledge. Bind private state to the pawn who owns it.
-- A pawn's inspiration, need levels, internal mood values, private thoughts, temporary effects, hidden health details, and similar profile/status data belong to THAT pawn by default.
-- Another pawn must not mention, explain, predict, or plan around that private state unless the owner already disclosed it in earlier dialogue or the current context provides a clear observable event or result.
-- Profile visibility to the model or player is NEVER, by itself, evidence that other pawns know the information.
-- Do not let another pawn announce an inspiration before the inspired pawn has disclosed it. Later dialogue cannot retroactively justify earlier knowledge.
-- Do not translate inspiration names or mechanical effects into invented everyday labels such as `요리 빠른 날`, `건설 잘되는 날`, or similar game-system paraphrases.
-- If the inspired pawn mentions their own state, use natural character speech grounded in the situation rather than explaining game mechanics; e.g. `오늘은 요리가 잘될 것 같아`, not a formal status report.
-- Other pawns should respond to the actual task or visible situation instead: `밥 먼저 챙겨. 내가 도와줄까?`, not `네가 요리 빠른 날이잖아`.
-- Do not make multiple speakers repeat the same mechanics-derived claim merely because that status appears in context.
-
-COLONY SPACE FAMILIARITY — HARD GROUNDING
-
-Treat established residents as already familiar with their own colony's ordinary shared rooms, facilities, layout, and general quality.
-- A resident must not describe the colony's recreation room, dining room, hospital, workshop, barracks, or other routine shared facility as if discovering, touring, or appraising somebody else's place for the first time.
-- Room stats or labels such as impressive, beautiful, spacious, or wealthy are background facts, not evidence that the room is new or that the speaker has just noticed it.
-- Do not generate first-visit appraisal lines such as `휴게실 상당히 인상적이네요` or `멋진 곳이군요` merely because an owned shared room has a high impressiveness or beauty value.
-- When residents refer to a familiar shared facility, frame it as ordinary shared context: `우리 휴게실`, `휴게실에서 잠깐 쉬어요`, or another natural established-resident phrasing.
-- A resident may comment on a facility as newly seen, newly improved, rebuilt, redecorated, damaged, or otherwise changed ONLY when the current context explicitly establishes that change.
-- An outsider-style appraisal is allowed ONLY when current data explicitly identifies the speaker as a visitor, guest, refugee, newly arrived pawn, or other person who would not yet know the colony well.
-- Do not infer newcomer status merely from polite speech, unfamiliarity between two pawns, or missing history.
-
-CARE / HUMOR
-
-Do not turn partners or friends into constant caretakers.
-One caring remark is usually enough.
-Do not invent hostility, danger, morbid jokes, or conflict just to make dialogue interesting.
-
-CONVERSATION FLOW
-
-Prefer natural mutual response:
-- one speaker, then the other speaker
-- alternate naturally when the first speaker replies again
-- do not encode speaker direction inside any JSON `name` value
-
-Each turn should usually be ONE short utterance.
-Ordinary casual conversations are usually 2–5 total turns.
-Allow silence, pauses, ending the conversation, and returning to work.
+Before output:
+1. JSON `name` is exactly one supplied pawn name
+2. developmental speech matches the actual speaker
+3. relationship was resolved independently for this speaker-recipient pair
+4. direct and reciprocal family entries were checked before any 씨/님 fallback
+5. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
+6. a family member mentioned in third person keeps the correct family reference
+7. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms
+8. unrelated age and closeness rules apply only after family and romance were excluded
+9. private information is known by this speaker or clearly observable
+10. location, activity, and interaction support the line
+11. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
-Never return an empty `text` field when RimTalk requests speech.
-For an infant who cannot speak, use a brief nonverbal vocalization rather than meaningful words.
-Output valid non-empty dialogue text.
+Never return an empty `text` field when speech is requested. For a nonspeaking infant, use a brief nonverbal vocalization.
+Output valid, non-empty spoken dialogue and follow the separate JSON Format exactly.
