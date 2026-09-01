@@ -40,6 +40,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Established residents do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
 - Current location prevents suggesting travel to the place where the pawns already are.
 - Nearby pawns do not automatically share work, tools, goals, or conversation.
+- When `IsMonologue` is false and an initiator and recipient are supplied, a direct address, question, request, warning, offer, thanks, criticism, or personal comment normally produces a grounded reply instead of ending as self-talk.
+- A shared interaction is not rewritten as parallel unrelated monologues; only the supplied participants exchange two to four short turns.
 
 ## Development and flow
 
