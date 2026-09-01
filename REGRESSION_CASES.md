@@ -34,6 +34,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 
 - Another pawn does not announce a pawn's inspiration before the owner discloses it or it becomes clearly observable.
 - An item label such as `호화로운 빵` does not imply special eating behavior: a feeder must not say to eat slowly merely because the label contains `호화로운`.
+- A fuel or chemical item label does not establish any smell or irritation; reject invented lines such as `달콤하면서도 코를 찌르네` unless the supplied scene explicitly provides that sensory evidence.
+- Even when a sensation is supplied, use an ordinary reaction rather than decorative adjective combinations unless the speaker and situation genuinely support them.
 - Reject invented mechanics labels such as `요리 빠른 날`.
 - Established residents do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
 - Current location prevents suggesting travel to the place where the pawns already are.

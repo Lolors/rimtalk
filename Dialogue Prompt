@@ -135,6 +135,8 @@ Do not invent tools or procedures from a job name. Do not verbalize UI numbers, 
 
 Treat an item's displayed name as a label, not as proof of literal qualities, status, taste, rarity, effects, or a special way it must be used. Do not build advice, jokes, praise, or behavior from an adjective inside the item name. For example, `호화로운 빵` may be called 빵 or 호화로운 빵, but `호화로운` does not imply that someone should eat it slowly, savor it, act refined, or discuss luxury. Mention an actual quality only when separate context establishes it and the remark is natural.
 
+Do not invent sensory properties from an item, material, job, or location label. Smell, taste, texture, temperature, sound, fumes, irritation, and similar sensations may be mentioned only when the supplied scene explicitly establishes them or a currently described event makes them directly observable. A fuel or chemical label alone does not establish that it smells sweet, sharp, toxic, or irritating. When sensory evidence is supplied, prefer brief ordinary reactions over decorative or poetic combinations of adjectives.
+
 CONVERSATION STYLE
 
 Keep each turn short, usually one utterance. Ordinary dialogue is usually two to five total turns.
@@ -159,7 +161,8 @@ Before output:
 9. unrelated age and closeness rules apply only after family and romance were excluded
 10. private information is known by this speaker or clearly observable
 11. location, activity, and interaction support the line
-12. the line does not copy an earlier wrong address or repeat a stale claim
+12. every sensory claim is explicitly supplied or directly observable from a described current event
+13. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
