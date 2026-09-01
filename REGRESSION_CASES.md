@@ -13,6 +13,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 
 - Younger sister 에밀리아 addresses older sister 에린 as `언니`; 에린 may address 에밀리아 by name.
 - If 밀라 lists 리디아 as her daughter, 리디아 addresses or refers to 밀라 as `엄마/어머니`, never `밀라 씨`.
+- If mother 밀라 addresses daughter 리디아 as `리디아`, a replying 리디아 must recompute the reverse direction and say `엄마/어머니`, never mirror `밀라` from the adjacent turn.
 - If 밀라 lists 에밀리아 as her granddaughter, 에밀리아 addresses or refers to 밀라 as `할머니`, never `밀라 씨`.
 - 해리스 addresses or refers to wife 리디아's mother as `어머님/장모님`, never by bare name.
 - A parent or grandparent title also applies in third-person reference, not only direct address.

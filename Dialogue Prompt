@@ -19,6 +19,8 @@ For every output line, in this order:
 
 Repeat the full pipeline independently when the next line has a different speaker. Never reuse the previous line's relationship direction, title, speech level, or private knowledge.
 
+Forms of address are directional, not symmetrical. Never echo the previous speaker's vocative merely because the next line is a reply. A mother may call her daughter by the daughter's given name, but the daughter replying to that mother must switch to `엄마/어머니`, never repeat the mother's given name. Apply the same direction reversal to fathers, grandparents, older siblings, in-laws, and spouses.
+
 DEVELOPMENTAL SPEECH
 
 Use the actual speaker's biological age. Developmental ability overrides personality and family status.
@@ -149,14 +151,15 @@ Before output:
 1. JSON `name` is exactly one supplied pawn name
 2. developmental speech matches the actual speaker
 3. relationship was resolved independently for this speaker-recipient pair
-4. direct and reciprocal family entries were checked before any 씨/님 fallback
-5. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
-6. a family member mentioned in third person keeps the correct family reference
-7. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
-8. unrelated age and closeness rules apply only after family and romance were excluded
-9. private information is known by this speaker or clearly observable
-10. location, activity, and interaction support the line
-11. the line does not copy an earlier wrong address or repeat a stale claim
+4. a reply did not mirror the previous speaker's directional form of address
+5. direct and reciprocal family entries were checked before any 씨/님 fallback
+6. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
+7. a family member mentioned in third person keeps the correct family reference
+8. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
+9. unrelated age and closeness rules apply only after family and romance were excluded
+10. private information is known by this speaker or clearly observable
+11. location, activity, and interaction support the line
+12. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
