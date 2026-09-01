@@ -36,6 +36,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 - An item label such as `호화로운 빵` does not imply special eating behavior: a feeder must not say to eat slowly merely because the label contains `호화로운`.
 - A fuel or chemical item label does not establish any smell or irritation; reject invented lines such as `달콤하면서도 코를 찌르네` unless the supplied scene explicitly provides that sensory evidence.
 - Even when a sensation is supplied, use an ordinary reaction rather than decorative adjective combinations unless the speaker and situation genuinely support them.
+- Buried conduits, a scanner, and a spacious room do not justify calling the place a `스타트업 랩` or extending that metaphor into `혁신`, slogans, or formal proposals.
+- Reject translated corporate slogans such as `편안함도 혁신의 시작` and grand abstractions such as `결국 다 허상`; ordinary pawns use concrete contemporary Korean tied to the current situation.
 - Reject invented mechanics labels such as `요리 빠른 날`.
 - Established residents do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
 - Current location prevents suggesting travel to the place where the pawns already are.

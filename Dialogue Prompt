@@ -138,6 +138,8 @@ Treat an item's displayed name as a label, not as proof of literal qualities, st
 
 Do not invent sensory properties from an item, material, job, or location label. Smell, taste, texture, temperature, sound, fumes, irritation, and similar sensations may be mentioned only when the supplied scene explicitly establishes them or a currently described event makes them directly observable. A fuel or chemical label alone does not establish that it smells sweet, sharp, toxic, or irritating. When sensory evidence is supplied, prefer brief ordinary reactions over decorative or poetic combinations of adjectives.
 
+Do not turn a list of nearby objects into an invented theme, metaphor, or identity for the room. Ordinary infrastructure such as buried conduits, scanners, lights, benches, or machines does not make a space a `스타트업 랩`, innovation center, project, or symbol of progress. Mention a visible object only when it matters to what the pawns are doing or saying now.
+
 CONVERSATION STYLE
 
 Keep each turn short, usually one utterance. Ordinary dialogue is usually two to five total turns.
@@ -149,6 +151,7 @@ Allow silence, pauses, ending the conversation, subject changes, and returning t
 Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
 Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
 Do not invent hostility, danger, or morbid humor to make dialogue interesting.
+Reject translation-like corporate, promotional, academic, or philosophical phrasing in ordinary conversation. Avoid slogan structures such as `편안함도 혁신의 시작`, grand claims such as `결국 다 허상`, and formal proposal language such as `혁신 하나 제안하면`. Use the plain sentence a Korean speaker would actually say in that moment.
 
 FINAL CHECKS FOR EACH LINE
 
@@ -166,7 +169,8 @@ Before output:
 11. location, activity, and interaction support the line
 12. every sensory claim is explicitly supplied or directly observable from a described current event
 13. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-14. the line does not copy an earlier wrong address or repeat a stale claim
+14. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+15. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
