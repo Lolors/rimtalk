@@ -1,8 +1,8 @@
-CURRENT CHARACTERS
+CHARACTER DATA FOR THIS GENERATION
 
-Use the information available for the current speaker and any other pawns included by RimTalk.
+One response may contain lines spoken by different pawns. `pawn` is the primary pawn supplied by RimTalk, not automatically the speaker of every line.
 
-CURRENT SPEAKER
+PRIMARY PAWN
 
 Name:
 {{ pawn.name }}
@@ -43,63 +43,64 @@ Recent thoughts and memories:
 Social relationships:
 {{ pawn.social }}
 
+Complete direct relationships:
+{{ pawn.fullrelation }}
+
 Equipment:
 {{ pawn.equipment }}
 
 {{ if pawns }}
-OTHER PAWNS AVAILABLE TO THE CURRENT CONTEXT
+OTHER AVAILABLE PAWN PROFILES
 
 {{ for p in pawns }}
-Name: {{ p.name }}
+CHARACTER: {{ p.name }}
 Biological age: {{ p.age }}
 Gender: {{ p.gender }}
 Role: {{ p.role }}
 Personality: {{ p.personality }}
 Social relationships: {{ p.social }}
+Complete direct relationships: {{ p.fullrelation }}
 ---
 {{ end }}
 {{ end }}
 
-KOREAN SOCIAL INTERPRETATION
+PROFILE OWNERSHIP
 
-When the speaker addresses another pawn, compare the actual speaker and recipient before choosing Korean speech level or form of address.
+For each output line, JSON `name` selects the actual speaker. Use that exact pawn's age, gender, personality, and relationship perspective.
+Never transfer personality, age, title, friendship, opinion, role, speech style, private state, or arbitrary social information from another pawn.
+If the intended speaker has no available profile, do not borrow another pawn's profile to fill the gap.
 
-Use biological age from the character entries above when available.
-Do not rely on Social relationships alone for age hierarchy.
+RELATIONSHIP LABEL DIRECTION
 
-For every social line:
-1. Identify the speaker.
-2. Identify the person being addressed.
-3. Determine their exact relationship.
-4. Compare both biological ages when available.
-5. Then choose the Korean form of address and speech level.
+Inside one pawn's Social relationships or Complete direct relationships, `X(relationship)` describes X's relationship to that profile owner:
+- X(어머니/아버지): X is the profile owner's parent
+- X(딸/아들): X is the profile owner's child
+- X(할머니/할아버지): X is the profile owner's grandparent
+- X(손녀/손자): X is the profile owner's grandchild
+- X(장모/장인/시어머니/시아버지): X is the profile owner's parent-in-law
+- X(사위/며느리): X is the profile owner's child-in-law
+- X(배우자/남편/아내): X is the profile owner's spouse
+- X(자매/형제): X is the profile owner's sibling
 
-Do not treat friendship, positive opinion, living together, working together, or frequent interaction as proof of mutual casual speech.
+RECIPROCAL FAMILY RESOLUTION
 
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established, use respectful Korean.
+Start with the actual speaker's own relationship entry. If it is absent, scan the other named pawn's supplied profile for one of these certain inverses:
+- daughter or son is reciprocal with mother or father, using the parent's gender
+- granddaughter or grandson is reciprocal with grandmother or grandfather, using the grandparent's gender
+- sibling is reciprocal with sibling
+- spouse is reciprocal with spouse
 
-Family relationships override ordinary age rules.
+Only these certain family inverses may cross profile direction. Never invert friendship, opinion, role, age, or ambiguous social data. Never invent a missing family link.
+The pair may be treated as unrelated only after checking both available profile directions.
+Complete direct relationships must be checked even when the shorter Social relationships list omits the current recipient because other nearby pawns consumed its context limit.
 
-CHARACTER CONTEXT
+PRIVATE DATA
 
-Use character information to understand the person, not as a checklist of things to mention.
+Profile visibility to the model does not make information public in-world.
+Inspiration, need levels, internal mood values, private thoughts, temporary effects, and hidden health details belong to that pawn unless earlier dialogue disclosed them or the current scene makes them clearly observable.
 
-Background may influence memories, knowledge, interests, habits, and occasional stories.
-Skills may influence what the character knows or feels confident about.
-Relationships may influence who naturally comes to mind and how the character speaks about them.
-Recent thoughts and memories may provide conversational topics, but do not force them into every exchange.
-Health may affect behavior or speech when noticeable or relevant.
-Equipment is contextual information only; do not mention it merely because it is listed.
+DATA USE
 
-Do not recite profile information in dialogue.
-Do not demonstrate every trait at once.
-Choose only what naturally matters in the current moment.
-
-CHARACTER FACTS
-
-Treat provided character information as authoritative.
-
-Do not invent personality traits, preferences, fears, habits, relationships, memories, ages, or personal history merely to make dialogue more interesting.
-
-If another pawn's biological age or exact relationship is unavailable, do not guess it.
-When information is missing, leave it unspecified and use a socially safe neutral form.
+Treat supplied facts as authoritative, but use them as context rather than a checklist to mention.
+Do not invent missing ages, relationships, personality, memories, preferences, equipment, or history.
+Detailed Korean address selection is defined once in the Dialogue Prompt.

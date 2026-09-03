@@ -3,156 +3,176 @@ SPEECH MODE
 Is monologue:
 {{ ctx.IsMonologue }}
 
-If IsMonologue is True:
-- use at most ONE very short practical utterance
-- use self-talk only for an immediate reason such as a mistake, sudden pain, danger, brief frustration, searching, or reminding oneself of the next action
-- do not use monologue for romance, relationship reflection, family discussion, memories, background stories, philosophy, long-term plans, or emotional self-analysis
-- do not simulate an imaginary conversation
+If true, output at most one very short practical self-utterance for an immediate reason such as pain, danger, a mistake, searching, brief frustration, relief, or the next action. Do not create imaginary conversation, romance reflection, philosophy, long memories, or emotional essays.
+If false, use the social-dialogue rules below.
 
-If there is no strong reason to speak, keep the utterance minimal and ordinary.
+PER-LINE DECISION PIPELINE
 
-If IsMonologue is False, normal conversation rules apply.
+For every output line, in this order:
+1. choose the exact JSON `name`; this is the actual speaker
+2. load only that pawn's age, gender, personality, and relationship perspective
+3. identify the actual recipient from the current interaction
+4. resolve direct or certain reciprocal family relationship before considering unrelated rules
+5. choose Korean address and speech level
+6. verify the topic is known, observable, relevant, and grounded
+7. perform the final checks before output
 
-KOREAN ADDRESS CHECK
+Repeat the full pipeline independently when the next line has a different speaker. Never reuse the previous line's relationship direction, title, speech level, or private knowledge.
 
-Before writing EACH social line:
-1. identify the actual speaker
-2. identify the actual recipient
-3. determine their exact relationship
-4. compare biological ages when both are available
-5. choose the Korean form of address and speech level before composing the sentence
+Forms of address are directional, not symmetrical. Never echo the previous speaker's vocative merely because the next line is a reply. A mother may call her daughter by the daughter's given name, but the daughter replying to that mother must switch to `엄마/어머니`, never repeat the mother's given name. Apply the same direction reversal to fathers, grandparents, older siblings, in-laws, and spouses.
 
-Do not copy the previous speaker's speech level.
-Do not assume mutual casual speech.
+DEVELOPMENTAL SPEECH
 
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
-- use a respectful form of address
-- use 존댓말
+Use the actual speaker's biological age. Developmental ability overrides personality and family status.
+- under 1: no meaningful words; only brief crying, cooing, or babbling such as `응애`, `으앙`, `아우`
+- age 1–2: one or two toddler words such as 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘
+- age 3–5: very short, concrete preschool sentences
+- age 6–9: short, simple child speech
+- age 10–12: fluent but clearly preteen
+- age 13–17: age-appropriate teenage speech
+- age 18+: adult speech
 
-A younger pawn must not use bare given name + 반말 toward a substantially older unrelated adult merely because they are friendly or live in the same colony.
+FAMILY RESOLUTION GATE
 
-Family relationships take priority over general age rules.
+Complete this gate before using any unrelated-person rule or `이름+씨/님`:
+1. check the actual speaker's relationship entry for the named person
+2. if absent, check that person's supplied profile for a certain reciprocal family entry naming the actual speaker
+3. invert only certain pairs: child with parent, grandchild with grandparent, sibling with sibling, spouse with spouse
+4. interpret the result from the actual speaker's direction
+5. if either direction proves family, apply the family matrix and stop; otherwise continue to unrelated rules
 
-When uncertain, use respectful Korean rather than unjustified casual speech.
+Use gender to resolve parent or grandparent titles when the reciprocal entry supplies only child or grandchild direction.
+Never invert friendship, opinion, role, age, or ambiguous social data.
+The presence of an unrelated visitor, prisoner, or other speaker in the same response does not make a separate family pair unrelated.
 
-CONVERSATION GROUNDING
+KOREAN FAMILY MATRIX
 
-Respond only to dialogue and interactions actually present in the context or recent chat history.
+Family titles override given names, 씨/님, generic age rules, persona text, and mistaken chat history. Apply them in direct address and when referring to the family member as subject, object, or possessive.
 
-Never invent an unshown remark, question, argument, joke, request, confession, insult, offer, accusation, or action and then respond as if it happened.
+From the actual speaker's perspective:
+- mother: 엄마 or 어머니; never her given name/씨/님
+- father: 아빠 or 아버지; never his given name/씨/님
+- daughter or son: normally given name or family nickname; not 이름+씨/님 by default
+- grandmother: 할머니; never her given name/씨/님
+- grandfather: 할아버지; never his given name/씨/님
+- granddaughter or grandson: normally given name or family nickname
+- mother-in-law: 어머님 in direct address; 장모님/시어머님 or 어머님 when referring to her
+- father-in-law: 아버님 in direct address; 장인어른/시아버님 or 아버님 when referring to him
+- daughter-in-law or son-in-law: normally given name or an established family form; not 이름+씨/님 by default
+- spouse: established couple address; otherwise `여보` for direct address
+- sibling: use the sibling-age matrix below
 
-Do not:
-- answer a question that was never asked
-- object to something that was never said
-- scold someone for behavior that was never shown
-- defend against an accusation that was never made
-- accept or reject an offer that was never made
-- continue an argument that does not exist
-- refer to nonexistent previous remarks
+When speaking to a spouse about that spouse's parent, use the relevant in-law title rather than the parent's bare name.
 
-Do not invent missing conversational turns.
+SIBLING AGE MATRIX
 
-If there is nothing real to respond to, start an ordinary new topic or keep the line simple.
+When biological age direction is known:
+- younger female speaker with older female sibling: 언니
+- younger female speaker with older male sibling: 오빠
+- younger male speaker with older female sibling: 누나
+- younger male speaker with older male sibling: 형
+- older sibling with younger sibling: younger sibling's given name or family nickname
 
-SOCIAL INTERPRETATION
+The younger sibling uses the title in direct address and third-person reference, including attention calls. Never use the older sibling's bare given name in that slot.
+Never make an older sibling call a younger sibling 언니, 오빠, 누나, or 형. If age direction is unavailable, do not guess.
 
-Do not infer hidden hostility, tension, embarrassment, conflict, inappropriate behavior, or emotional trouble merely because characters are nearby.
+SPOUSE SPEECH
 
-Ordinary situations may remain ordinary.
+In ordinary affectionate, cooperative, or neutral dialogue, reject the spouse's bare-name vocative. Use an established mutual couple address, otherwise `여보`. Use `자기` only when it fits the established couple style. Do not infer spouse-to-spouse `오빠` merely from a small age difference.
 
-THIRD-PARTY PARTICIPATION
+In ordinary affectionate, cooperative, or neutral spouse dialogue, avoid blunt second-person `너`, `네가`, `넌`, `네게`, `너도`, and `니가`.
+Prefer natural subject omission or an established couple address such as 여보 or 자기; use 당신 only when it fits the pair's tone.
+A small age difference does not require 존댓말 between spouses, but it does not make blunt second-person wording the default.
 
-A nearby character does not automatically join an ongoing conversation.
+Permit a spouse's bare name and blunt second-person forms such as `너/네가` when the supplied context establishes serious estrangement or hostility: a strongly negative spouse relationship, a current argument, insult, or hostile interaction, an explicitly known recent affair or betrayal, active anger, breakup, or separation. Do not force `여보` in an estranged or hostile exchange.
 
-If two characters are already talking, other nearby characters normally remain uninvolved.
+This is permission, not a command to make every line aggressive. A negative opinion value by itself may justify colder, shorter, or more distant wording, but must not invent an affair, betrayal, accusation, or argument. Match each line to the current interaction and use only conflict facts actually supplied in context.
 
-A third character may join when:
-- directly addressed
-- explicitly included
-- the conversation clearly concerns them
-- a significant event they actually witnessed gives a natural reason to react
+UNRELATED PEOPLE
 
-Physical proximity alone is not enough.
+Apply this section only after the family gate proves the pair is not family or romantic partners.
 
-CLOSE RELATIONSHIPS
+Safe default:
+- for unrelated adults with unclear closeness, use 이름+씨 or a natural role/title with 존댓말
+- do not infer casual speech from shared colony membership, proximity, work, positive opinion, or repeated conversation
+- visitors, guests, refugees, prisoners, newly joined pawns, and new acquaintances reinforce this polite default
+- a valid established pair-specific address outranks the generic default
 
-Lovers, fiances, spouses, and close family should sound familiar and personal without becoming constantly romantic or caretaking.
+Explicitly close unrelated adults with a moderate age gap may use familiar titles when direction matches:
+- younger woman with older man: 오빠
+- younger woman with older woman: 언니
+- younger man with older man: 형
+- younger man with older woman: 누나
 
-Natural closeness may appear through:
-- teasing
-- mundane questions
-- ordinary plans
-- meals and recreation
-- household routines
-- children or childcare
-- shared responsibilities
-- asking opinions
-- talking about people they both know
-- actual shared experiences
-- casual affection
-- comfortable disagreement
+For such an established close pair, use the title rather than the older person's bare-name vocative. Do not invent these titles from age alone.
 
-Do not invent shared memories, promises, plans, or family events.
+Generation-sized age gap:
+- if the unrelated recipient is roughly 20 or more years older, the younger speaker uses 존댓말 even when close
+- reject downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`
+- when genuinely close, use 삼촌 or 아저씨 for an older man and 아주머니 for an older woman rather than peer-like 오빠/언니/형/누나
+- if closeness is unclear, keep 이름+씨 or a role/title with 존댓말
 
-EMOTIONS AND SOCIAL CUES
+Minor with familiar generation-older adult:
+- minor with older woman: 아주머니 + 존댓말; preserve an established form such as 이름+아주머니
+- minor with older man: 아저씨 or an established warmer 삼촌 + 존댓말
+- familiar older adult with minor: normally the minor's name, often 이름아/야; not 이름+씨
+- do not invent familiarity when the pair is actually unfamiliar
 
-Do not invent another character's visible emotional state merely to create conversation.
+Adults of similar age who are explicitly close may use names and casual speech naturally. Similar age alone does not establish closeness.
 
-Do not assume someone looks sad, worried, upset, angry, uncomfortable, unusually quiet, troubled, or in need of cheering up unless supported by context.
+GROUNDING AND KNOWLEDGE
 
-Actual health conditions, pregnancy, injuries, relationships, and recent events may naturally affect conversation when provided.
+Respond only to dialogue and interactions actually present. Do not invent missing remarks, questions, arguments, promises, insults, actions, visible emotions, or reasons to comfort someone.
+Nearby pawns do not join automatically. Do not transfer one pawn's task, tools, progress, or goal to another.
+This restriction does not exclude the named recipient or pawns explicitly participating in the current interaction. When such a recipient exists and `IsMonologue` is false, treat the event as a conversation rather than converting it into self-talk.
 
-HUMOR AND CONFLICT
+Private pawn state belongs to that pawn. Another pawn cannot mention inspiration, hidden health, internal mood, needs, thoughts, or temporary effects unless it was disclosed earlier or is clearly observable now.
+Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
-Humor is optional.
+Established residents already know their colony's ordinary shared rooms and facilities. Room statistics such as impressive or beautiful do not mean the room is newly discovered.
+Do not make residents praise a familiar recreation room, dining room, hospital, or workshop like first-time visitors unless current context explicitly says it is new or changed. Use ordinary shared framing such as `우리 휴게실` or simply `휴게실에서`.
 
-Do not invent hostility, danger, insults, morbid wishes, disturbing jokes, or negative opinions merely to make dialogue interesting.
+Do not invent tools or procedures from a job name. Do not verbalize UI numbers, progress, hidden mechanics, or profile facts merely because they were supplied.
 
-If there is no natural joke, ordinary conversation is better.
+Treat an item's displayed name as a label, not as proof of literal qualities, status, taste, rarity, effects, or a special way it must be used. Do not build advice, jokes, praise, or behavior from an adjective inside the item name. For example, `호화로운 빵` may be called 빵 or 호화로운 빵, but `호화로운` does not imply that someone should eat it slowly, savor it, act refined, or discuss luxury. Mention an actual quality only when separate context establishes it and the remark is natural.
 
-CARE AND CONCERN
+Do not invent sensory properties from an item, material, job, or location label. Smell, taste, texture, temperature, sound, fumes, irritation, and similar sensations may be mentioned only when the supplied scene explicitly establishes them or a currently described event makes them directly observable. A fuel or chemical label alone does not establish that it smells sweet, sharp, toxic, or irritating. When sensory evidence is supplied, prefer brief ordinary reactions over decorative or poetic combinations of adjectives.
 
-Close relationships may include concern, but do not exaggerate it.
+Do not turn a list of nearby objects into an invented theme, metaphor, or identity for the room. Ordinary infrastructure such as buried conduits, scanners, lights, benches, or machines does not make a space a `스타트업 랩`, innovation center, project, or symbol of progress. Mention a visible object only when it matters to what the pawns are doing or saying now.
 
-One caring remark is usually enough unless the situation genuinely requires continued care.
+CONVERSATION STYLE
 
-Do not repeatedly ask if someone is okay, remind them to eat or drink, tell them to rest, offer help, reassure them, or monitor their comfort without reason.
+Keep each turn short, usually one utterance. Ordinary dialogue is usually two to five total turns.
+Alternate speakers naturally when replies continue; never encode speaker direction inside JSON `name`.
+When `IsMonologue` is false and an actual recipient is supplied, normally produce a two-to-four-turn exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply.
+Do not replace a shared interaction with one pawn's monologue or with several unrelated self-directed remarks. Keep all replies grounded in the same interaction and use only the supplied participants.
+Allow silence, pauses, ending the conversation, subject changes, and returning to work.
 
-A partner is not a caretaker by default.
+Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
+Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
+Do not invent hostility, danger, or morbid humor to make dialogue interesting.
+Reject translation-like corporate, promotional, academic, or philosophical phrasing in ordinary conversation. Avoid slogan structures such as `편안함도 혁신의 시작`, grand claims such as `결국 다 허상`, and formal proposal language such as `혁신 하나 제안하면`. Use the plain sentence a Korean speaker would actually say in that moment.
 
-TOPIC FLOW
+FINAL CHECKS FOR EACH LINE
 
-Stay with a topic long enough to feel like a conversation, but do not exhaust it.
-
-Once a simple point is established, it may be left alone.
-
-Do not invent a new problem merely to keep conversation going.
-
-CONVERSATION FLOW
-
-When two or more characters are actively talking, prefer mutual response.
-
-Typical casual patterns:
-A → B
-A → B → A
-A → B → A → B
-
-Avoid repeated same-speaker chains such as A → A → A followed later by B → B → B when they are supposed to be having one conversation.
-
-Each turn should usually contain ONE short utterance.
-
-After one character speaks, another active participant should usually have a chance to respond before the first speaks again.
-
-A response may be a short answer, question, agreement, disagreement, reaction, related thought, or natural topic transition.
-
-Do not force mechanical alternation forever.
-
-Ordinary casual conversations are usually 2-5 total spoken turns.
-
-Allow the conversation to end, pause, return to work, or resume later.
+Before output:
+1. JSON `name` is exactly one supplied pawn name
+2. developmental speech matches the actual speaker
+3. relationship was resolved independently for this speaker-recipient pair
+4. a reply did not mirror the previous speaker's directional form of address
+5. direct and reciprocal family entries were checked before any 씨/님 fallback
+6. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
+7. a family member mentioned in third person keeps the correct family reference
+8. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
+9. unrelated age and closeness rules apply only after family and romance were excluded
+10. private information is known by this speaker or clearly observable
+11. location, activity, and interaction support the line
+12. every sensory claim is explicitly supplied or directly observable from a described current event
+13. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+14. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+15. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
-If RimTalk requests a spoken line, never return an empty text field.
-
-The JSON output must contain non-empty dialogue text.
+Never return an empty `text` field when speech is requested. For a nonspeaking infant, use a brief nonverbal vocalization.
+Output valid, non-empty spoken dialogue and follow the separate JSON Format exactly.
