@@ -43,6 +43,9 @@ Recent thoughts and memories:
 Social relationships:
 {{ pawn.social }}
 
+Complete direct relationships:
+{{ pawn.fullrelation }}
+
 Equipment:
 {{ pawn.equipment }}
 
@@ -56,6 +59,7 @@ Gender: {{ p.gender }}
 Role: {{ p.role }}
 Personality: {{ p.personality }}
 Social relationships: {{ p.social }}
+Complete direct relationships: {{ p.fullrelation }}
 ---
 {{ end }}
 {{ end }}
@@ -68,7 +72,7 @@ If the intended speaker has no available profile, do not borrow another pawn's p
 
 RELATIONSHIP LABEL DIRECTION
 
-Inside one pawn's Social relationships, `X(relationship)` describes X's relationship to that profile owner:
+Inside one pawn's Social relationships or Complete direct relationships, `X(relationship)` describes X's relationship to that profile owner:
 - X(어머니/아버지): X is the profile owner's parent
 - X(딸/아들): X is the profile owner's child
 - X(할머니/할아버지): X is the profile owner's grandparent
@@ -88,6 +92,7 @@ Start with the actual speaker's own relationship entry. If it is absent, scan th
 
 Only these certain family inverses may cross profile direction. Never invert friendship, opinion, role, age, or ambiguous social data. Never invent a missing family link.
 The pair may be treated as unrelated only after checking both available profile directions.
+Complete direct relationships must be checked even when the shorter Social relationships list omits the current recipient because other nearby pawns consumed its context limit.
 
 PRIVATE DATA
 
