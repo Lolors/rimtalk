@@ -27,6 +27,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 ## Unrelated age and familiarity
 
 - A younger woman directly addressing an explicitly close, moderately older woman uses `언니`, not the older woman's bare name.
+- An unrelated woman roughly ten years younger than 리디아 never addresses her as bare `리디아` in casual speech: use `언니` if explicitly close, otherwise `리디아 씨` or a suitable title with 존댓말.
+- Fellow-colonist status, working together, positive opinion, or a cooperative reply does not by itself erase a substantial adult age difference.
 - Familiar minors use an older-generation title plus 존댓말 toward generation-older adults; familiar adults normally use the minor's name rather than 이름+씨.
 - An unrelated recipient roughly 20 or more years older receives 존댓말 even when the pair is close.
 - Newcomers, visitors, guests, refugees, prisoners, and unclear unrelated adults default to 이름+씨 or a role/title with 존댓말.

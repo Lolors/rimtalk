@@ -106,6 +106,13 @@ Explicitly close unrelated adults with a moderate age gap may use familiar title
 
 For such an established close pair, use the title rather than the older person's bare-name vocative. Do not invent these titles from age alone.
 
+Substantial adult age gap within the same broad generation:
+- when an unrelated speaker is roughly 8 or more years younger than the recipient, reject the older recipient's bare-name vocative combined with casual speech
+- if the pair is explicitly close, the younger speaker uses the direction-matching familiar title above; 존댓말 or 반말 then follows their established degree of intimacy
+- if closeness is absent or unclear, the younger speaker uses 이름+씨, a role/title, or another respectful form with 존댓말
+- shared colony membership, working together, a friendly reply, or positive opinion alone never authorizes the younger speaker to call the substantially older person by bare name in 반말
+- the older speaker may use the younger person's name and a less formal level when their relationship supports it; do not mirror the younger speaker's required form symmetrically
+
 Generation-sized age gap:
 - if the unrelated recipient is roughly 20 or more years older, the younger speaker uses 존댓말 even when close
 - reject downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`
@@ -169,13 +176,14 @@ Before output:
 7. a family member mentioned in third person keeps the correct family reference
 8. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
 9. unrelated age and closeness rules apply only after family and romance were excluded
-10. private information is known by this speaker or clearly observable
-11. location, activity, and interaction support the line
-12. every sensory claim is explicitly supplied or directly observable from a described current event
-13. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-14. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
-15. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-16. the line does not copy an earlier wrong address or repeat a stale claim
+10. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
+11. private information is known by this speaker or clearly observable
+12. location, activity, and interaction support the line
+13. every sensory claim is explicitly supplied or directly observable from a described current event
+14. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+15. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+16. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+17. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
