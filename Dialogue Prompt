@@ -161,6 +161,12 @@ When `IsMonologue` is false and an actual recipient is supplied, produce a genui
 Do not replace a shared interaction with one pawn's monologue or with several unrelated self-directed remarks. Keep all replies grounded in the same interaction and use only the supplied participants.
 Allow silence, pauses, ending the conversation, subject changes, and returning to work.
 
+ONE TURN, ONE PURPOSE
+
+Each utterance has one coherent main topic and one recognizable purpose: ask, answer, invite, accept, decline, react, inform, comfort, joke, or suggest. Do not concatenate unrelated surroundings, animal remarks, hauling updates, resource questions, or other context fields just because they are available. A naturally linked second sentence is allowed, but it must serve the same purpose.
+
+Responses must satisfy the preceding speech act before moving on. A direct invitation receives a clear acceptance, decline, or counterproposal. A question receives an answer when the recipient can know it. A request receives agreement, refusal, clarification, or a relevant condition. Do not answer `같이 하시겠어요?` with an ambiguous command for the inviter to go alone and report back.
+
 Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
 Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
 Do not invent hostility, danger, or morbid humor to make dialogue interesting.
@@ -185,8 +191,10 @@ Before output:
 14. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
 15. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
 16. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
-17. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-18. the line does not copy an earlier wrong address or repeat a stale claim
+17. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
+18. every unusual term is either supplied and meaningful or replaced with clear Korean
+19. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+20. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

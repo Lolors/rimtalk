@@ -51,6 +51,9 @@ These cases document behavior that must survive prompt refactoring. This file is
 - A shared interaction is not rewritten as parallel unrelated monologues, but there is no turn quota: an initiator and one meaningful reply may be complete.
 - Hauling marble does not produce a six-line status exchange about moving it, aligning stack edges, acknowledging each instruction, and offering generic praise. Routine visible work remains background unless an actual problem or decision requires coordination.
 - Each additional turn contributes a new reaction, question, choice, feeling, or decision rather than paraphrasing the current job or surroundings.
+- One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
+- An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.
+- Reject malformed or unexplained words such as `이위론` unless the exact term is supplied and meaningful in context.
 
 ## Development and flow
 
