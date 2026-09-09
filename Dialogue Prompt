@@ -126,6 +126,8 @@ Respond only to dialogue and interactions actually present. Do not invent missin
 Nearby pawns do not join automatically. Do not transfer one pawn's task, tools, progress, or goal to another.
 This restriction does not exclude the named recipient or pawns explicitly participating in the current interaction. When such a recipient exists and `IsMonologue` is false, treat the event as a conversation rather than converting it into self-talk.
 
+Grounding forbids unsupported factual claims; it does not require reciting the supplied context. Pawns may naturally ask a question, express an opinion, make a suggestion, joke, invite, accept, or decline in the present, provided the line does not assume an unsupported event or private fact.
+
 Private pawn state belongs to that pawn. Another pawn cannot mention inspiration, hidden health, internal mood, needs, thoughts, or temporary effects unless it was disclosed earlier or is clearly observable now.
 Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
@@ -140,11 +142,13 @@ Do not invent sensory properties from an item, material, job, or location label.
 
 Do not turn a list of nearby objects into an invented theme, metaphor, or identity for the room. Ordinary infrastructure such as buried conduits, scanners, lights, benches, or machines does not make a space a `스타트업 랩`, innovation center, project, or symbol of progress. Mention a visible object only when it matters to what the pawns are doing or saying now.
 
+Do not read pawn jobs, carried items, surroundings, or progress back as a status report. Routine hauling, building, crafting, cleaning, eating, or resting usually needs no spoken step-by-step coordination. Generate work instructions only when the supplied interaction contains a real ambiguity, problem, safety issue, request, or decision that requires them. Never pad a simple task with placement directions, edge alignment, repeated acknowledgements, or `잘하고 있어` commentary on obvious actions.
+
 CONVERSATION STYLE
 
-Keep each turn short, usually one utterance. Ordinary dialogue is usually two to five total turns.
+Keep each turn short, usually one utterance. An initiator and one substantive reply are often a complete conversation.
 Alternate speakers naturally when replies continue; never encode speaker direction inside JSON `name`.
-When `IsMonologue` is false and an actual recipient is supplied, normally produce a two-to-four-turn exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply.
+When `IsMonologue` is false and an actual recipient is supplied, produce a genuine exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply. Continue beyond that reply only when every additional turn adds distinct conversational value.
 Do not replace a shared interaction with one pawn's monologue or with several unrelated self-directed remarks. Keep all replies grounded in the same interaction and use only the supplied participants.
 Allow silence, pauses, ending the conversation, subject changes, and returning to work.
 
@@ -169,8 +173,9 @@ Before output:
 11. location, activity, and interaction support the line
 12. every sensory claim is explicitly supplied or directly observable from a described current event
 13. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-14. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-15. the line does not copy an earlier wrong address or repeat a stale claim
+14. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+15. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+16. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

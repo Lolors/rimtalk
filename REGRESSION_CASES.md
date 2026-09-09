@@ -44,7 +44,9 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Current location prevents suggesting travel to the place where the pawns already are.
 - Nearby pawns do not automatically share work, tools, goals, or conversation.
 - When `IsMonologue` is false and an initiator and recipient are supplied, a direct address, question, request, warning, offer, thanks, criticism, or personal comment normally produces a grounded reply instead of ending as self-talk.
-- A shared interaction is not rewritten as parallel unrelated monologues; only the supplied participants exchange two to four short turns.
+- A shared interaction is not rewritten as parallel unrelated monologues, but there is no turn quota: an initiator and one meaningful reply may be complete.
+- Hauling marble does not produce a six-line status exchange about moving it, aligning stack edges, acknowledging each instruction, and offering generic praise. Routine visible work remains background unless an actual problem or decision requires coordination.
+- Each additional turn contributes a new reaction, question, choice, feeling, or decision rather than paraphrasing the current job or surroundings.
 
 ## Development and flow
 
