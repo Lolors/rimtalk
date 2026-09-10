@@ -12,6 +12,9 @@ Current surroundings:
 Current interaction:
 {{ ctx.DialogueStatus }}
 
+Current conversation trigger or topic:
+{{ ctx.ConversationTopic }}
+
 SCENE TRUTH
 
 The current scene is authoritative.
@@ -125,10 +128,11 @@ GROUNDING PRIORITY
 
 When information conflicts or is ambiguous:
 1. current interaction
-2. current location
-3. current activity
-4. current surroundings
-5. character background, profession, memories, and older information
+2. current conversation trigger or topic
+3. current location
+4. current activity
+5. current surroundings
+6. character background, profession, memories, and older information
 
 Older information may provide conversation topics but must never override what is physically happening now.
 

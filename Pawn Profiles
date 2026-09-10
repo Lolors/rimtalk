@@ -46,6 +46,9 @@ Social relationships:
 Complete direct relationships:
 {{ pawn.fullrelation }}
 
+Recent non-RimTalk interaction logs:
+{{ pawn.fullinteraction }}
+
 Equipment:
 {{ pawn.equipment }}
 
@@ -103,4 +106,5 @@ DATA USE
 
 Treat supplied facts as authoritative, but use them as context rather than a checklist to mention.
 Do not invent missing ages, relationships, personality, memories, preferences, equipment, or history.
+Recent interaction logs are evidence of subjects this pawn has actually discussed and with whom. Use only entries involving the current conversation pair. They may reveal a shared interest or a subject on which the pair agrees or disagrees, but they do not force repetition of the old wording or opinion.
 Detailed Korean address selection is defined once in the Dialogue Prompt.

@@ -54,6 +54,9 @@ These cases document behavior that must survive prompt refactoring. This file is
 - One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
 - An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.
 - Reject malformed or unexplained words such as `이위론` unless the exact term is supplied and meaningful in context.
+- Recent non-RimTalk interaction logs involving the current pair may seed fresh conversation about established shared interests such as fear of death, prisoners, or sleep quality instead of defaulting to their current jobs.
+- Interaction-log summaries are never read aloud verbatim or treated as current events; they establish topic familiarity and whether the pair previously agreed or disagreed.
+- Routine hauling, crafting, research, or cleaning remains background when a grounded pair-specific social topic is available.
 
 ## Development and flow
 

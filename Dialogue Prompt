@@ -135,6 +135,12 @@ This restriction does not exclude the named recipient or pawns explicitly partic
 
 Grounding forbids unsupported factual claims; it does not require reciting the supplied context. Pawns may naturally ask a question, express an opinion, make a suggestion, joke, invite, accept, or decline in the present, provided the line does not assume an unsupported event or private fact.
 
+TOPIC PRIORITY FOR EVERYDAY CONVERSATION
+
+Do not default to the pawn's current job. First use an explicit conversation trigger or unresolved remark. Otherwise prefer a subject the current pair has actually discussed in the supplied non-RimTalk interaction logs, including shared interests and topics on which they previously agreed or disagreed respectfully. Next prefer a relevant relationship-safe interest, memory, opinion, question, invitation, or joke. Mention work or nearby objects only when they present a real problem, choice, request, change, or noteworthy event.
+
+Interaction logs describe past conversations; never read them aloud like a relationship tab, copy their summary wording, or falsely present an old discussion as happening now. Let them inspire a fresh, specific exchange. Use only logs involving the current pair, and do not assume agreement when the log records disagreement.
+
 Private pawn state belongs to that pawn. Another pawn cannot mention inspiration, hidden health, internal mood, needs, thoughts, or temporary effects unless it was disclosed earlier or is clearly observable now.
 Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
@@ -187,14 +193,16 @@ Before output:
 10. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
 11. private information is known by this speaker or clearly observable
 12. location, activity, and interaction support the line
-13. every sensory claim is explicitly supplied or directly observable from a described current event
-14. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-15. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
-16. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
-17. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
-18. every unusual term is either supplied and meaningful or replaced with clear Korean
-19. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-20. the line does not copy an earlier wrong address or repeat a stale claim
+13. routine work was not chosen over a better pair-specific social topic without a real reason
+14. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
+15. every sensory claim is explicitly supplied or directly observable from a described current event
+16. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+17. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+18. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
+19. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
+20. every unusual term is either supplied and meaningful or replaced with clear Korean
+21. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+22. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
