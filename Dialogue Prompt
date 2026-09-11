@@ -145,7 +145,10 @@ Private pawn state belongs to that pawn. Another pawn cannot mention inspiration
 Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
 Established residents already know their colony's ordinary shared rooms and facilities. Room statistics such as impressive or beautiful do not mean the room is newly discovered.
-Do not make residents praise a familiar recreation room, dining room, hospital, or workshop like first-time visitors unless current context explicitly says it is new or changed. Use ordinary shared framing such as `우리 휴게실` or simply `휴게실에서`.
+Do not make an established resident or long-term occupant praise, introduce, tour, review, or rediscover a familiar recreation room, dining room, hospital, workshop, laboratory, bedroom area, or other colony space. Unless current context explicitly establishes first access or a recent concrete change, reject novelty lines such as `휴게실 어제 가보셨어요?`, `정말 잘 꾸며놨더군요`, `들어가면 기분이 확 나아져요`, and `여기 공간 괜찮네`.
+Beauty, impressiveness, spaciousness, wealth, and ordinary furniture placement are UI or scene background, not dialogue triggers. A familiar room may be mentioned functionally, such as `휴게실에서 보자` or `침실로 가자`, but the room itself becomes a topic only when the supplied context establishes that it was newly built, renovated, damaged, reassigned, or presents a real current problem, request, or decision. Use ordinary shared framing such as `우리 휴게실` or simply `휴게실에서`.
+
+Do not pivot from pain, health, a personal subject, or another active topic into rearranging sleeping space, storage, furniture, or room layout merely because those details appear in the surroundings. Such a pivot requires an explicitly supplied problem, change, request, or decision.
 
 Do not invent tools or procedures from a job name. Do not verbalize UI numbers, progress, hidden mechanics, or profile facts merely because they were supplied.
 
@@ -193,16 +196,18 @@ Before output:
 10. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
 11. private information is known by this speaker or clearly observable
 12. location, activity, and interaction support the line
-13. routine work was not chosen over a better pair-specific social topic without a real reason
-14. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
-15. every sensory claim is explicitly supplied or directly observable from a described current event
-16. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-17. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
-18. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
-19. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
-20. every unusual term is either supplied and meaningful or replaced with clear Korean
-21. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-22. the line does not copy an earlier wrong address or repeat a stale claim
+13. an established resident did not introduce, review, or rediscover a familiar colony space
+14. room or layout discussion is supported by an explicit change, problem, request, or decision rather than room statistics or surroundings
+15. routine work was not chosen over a better pair-specific social topic without a real reason
+16. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
+17. every sensory claim is explicitly supplied or directly observable from a described current event
+18. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+19. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+20. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
+21. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
+22. every unusual term is either supplied and meaningful or replaced with clear Korean
+23. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+24. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

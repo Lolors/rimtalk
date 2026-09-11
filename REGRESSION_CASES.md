@@ -44,7 +44,11 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Buried conduits, a scanner, and a spacious room do not justify calling the place a `스타트업 랩` or extending that metaphor into `혁신`, slogans, or formal proposals.
 - Reject translated corporate slogans such as `편안함도 혁신의 시작` and grand abstractions such as `결국 다 허상`; ordinary pawns use concrete contemporary Korean tied to the current situation.
 - Reject invented mechanics labels such as `요리 빠른 날`.
-- Established residents do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
+- Established residents and long-term occupants do not appraise their familiar colony recreation room like first-time visitors merely because its impressiveness stat is high.
+- One established occupant does not ask another `휴게실 어제 가보셨어요?` or announce `정말 잘 꾸며놨더군요` unless the context explicitly establishes first access or a recent concrete change.
+- Room beauty, impressiveness, spaciousness, wealth, and ordinary furniture placement do not produce reviews such as `들어가면 기분이 확 나아져요` or `여기 공간 괜찮네`.
+- Familiar rooms may be referenced functionally, but their layout becomes a topic only for an explicitly supplied construction, renovation, damage, reassignment, problem, request, or decision.
+- A conversation about pain or another active personal subject does not drift into rearranging beds, storage, or furniture merely because room contents appear in the surroundings.
 - Current location prevents suggesting travel to the place where the pawns already are.
 - Nearby pawns do not automatically share work, tools, goals, or conversation.
 - When `IsMonologue` is false and an initiator and recipient are supplied, a direct address, question, request, warning, offer, thanks, criticism, or personal comment normally produces a grounded reply instead of ending as self-talk.
