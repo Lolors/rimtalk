@@ -208,7 +208,8 @@ Before output:
 22. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
 23. every unusual term is either supplied and meaningful or replaced with clear Korean
 24. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-25. the line does not copy an earlier wrong address or repeat a stale claim
+25. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
+26. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

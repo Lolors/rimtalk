@@ -63,6 +63,12 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Interaction-log summaries are never read aloud verbatim or treated as current events; they establish topic familiarity and whether the pair previously agreed or disagreed.
 - Routine hauling, crafting, research, or cleaning remains background when a grounded pair-specific social topic is available.
 
+## Particle and vocative correctness
+
+- A vowel-ending Korean name such as `라이스` takes `와`, not `과`: reject `라이스과의 거래` in favor of `라이스와의 거래`.
+- Particle choice follows the Korean spelling's final syllable, not the sound of the underlying foreign name.
+- A bare name address such as `에밀리아, 밥은 먹었니?` is natural; do not force a vocative onto every line, especially `에밀리아야` where `아야` echoes an unrelated exclamation.
+
 ## Development and flow
 
 - Infants and toddlers remain within their developmental speech limits even when family context supplies meaningful titles.
