@@ -50,6 +50,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Familiar rooms may be referenced functionally, but their layout becomes a topic only for an explicitly supplied construction, renovation, damage, reassignment, problem, request, or decision.
 - A conversation about pain or another active personal subject does not drift into rearranging beds, storage, or furniture merely because room contents appear in the surroundings.
 - Current location prevents suggesting travel to the place where the pawns already are.
+- Sleeping or unconscious prisoners (or any sleeping/unconscious/downed pawns) do not hold a coherent back-and-forth conversation; at most one very short involuntary sound is allowed, and usually silence is correct.
 - Nearby pawns do not automatically share work, tools, goals, or conversation.
 - When `IsMonologue` is false and an initiator and recipient are supplied, a direct address, question, request, warning, offer, thanks, criticism, or personal comment normally produces a grounded reply instead of ending as self-talk.
 - A shared interaction is not rewritten as parallel unrelated monologues, but there is no turn quota: an initiator and one meaningful reply may be complete.
