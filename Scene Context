@@ -63,6 +63,8 @@ If physical details are not provided, keep them general.
 
 A pawn whose current activity is sleeping, unconscious, downed, in a coma, or otherwise incapacitated is not physically capable of a real conversation. This applies to every pawn regardless of colonist, prisoner, or visitor status. Do not generate a coherent back-and-forth exchange, greeting, question, or answer between such pawns. At most, allow one very short involuntary sound such as mumbling, a name spoken in sleep, or a brief nightmare reaction, and only when the scene actually supports it; otherwise stay silent.
 
+A pawn whose health or activity explicitly shows motor paralysis (`운동마비`) cannot produce spoken language in this prompt. Even if conscious and directly addressed, generate no words, names, questions, answers, or self-talk for that pawn. At most one extremely short nonverbal groan such as `으…` or `흐윽…` is allowed when the current scene supports a reaction; otherwise produce no line for the paralyzed pawn. Another pawn may speak to them, but must not receive or invent a verbal reply from them.
+
 SURROUNDINGS
 
 Surroundings describe what is nearby.
