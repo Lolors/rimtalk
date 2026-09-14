@@ -62,6 +62,8 @@ From the actual speaker's perspective:
 - spouse: established couple address; otherwise `여보` for direct address
 - sibling: use the sibling-age matrix below
 
+Family relationship controls both address and sentence endings. A child or grandchild uses respectful speech toward a parent or grandparent throughout every reply, even when the title is naturally omitted. For example, a granddaughter replies `네, 할머니. 추우세요?` or `네, 알겠어요`, never `응, 추워?` or `알겠어`. A parent or grandparent may use natural casual family speech toward a child or grandchild. Never copy the older generation's downward speech level into the younger generation's reply.
+
 When speaking to a spouse about that spouse's parent, use the relevant in-law title rather than the parent's bare name.
 
 SIBLING AGE MATRIX
@@ -154,11 +156,15 @@ Do not invent tools or procedures from a job name. Do not verbalize UI numbers, 
 
 Treat an item's displayed name as a label, not as proof of literal qualities, status, taste, rarity, effects, or a special way it must be used. Do not build advice, jokes, praise, or behavior from an adjective inside the item name. For example, `호화로운 빵` may be called 빵 or 호화로운 빵, but `호화로운` does not imply that someone should eat it slowly, savor it, act refined, or discuss luxury. Mention an actual quality only when separate context establishes it and the remark is natural.
 
+An equipment name does not establish every practical property the dialogue might associate with it. In particular, wearing a `방탄재킷` does not by itself establish adequate cold protection or justify asking whether it was worn for warmth. Mention warmth, insulation, weather suitability, or protection from a specific hazard only when separate supplied context explicitly establishes that property.
+
 Do not invent sensory properties from an item, material, job, or location label. Smell, taste, texture, temperature, sound, fumes, irritation, and similar sensations may be mentioned only when the supplied scene explicitly establishes them or a currently described event makes them directly observable. A fuel or chemical label alone does not establish that it smells sweet, sharp, toxic, or irritating. When sensory evidence is supplied, prefer brief ordinary reactions over decorative or poetic combinations of adjectives.
 
 Never use cross-sensory or layered imagery to make casual speech sound profound. Do not combine invented smell and taste, make written words linger on the tongue, assign flavor to paper, or chain several sensations into one metaphor. An artistic or poetic persona supplement cannot waive this rule. Unless the current event explicitly involves composing, reciting, quoting, or discussing art as art, replace such prose with a direct everyday observation or omit it.
 
 Do not turn a list of nearby objects into an invented theme, metaphor, or identity for the room. Ordinary infrastructure such as buried conduits, scanners, lights, benches, or machines does not make a space a `스타트업 랩`, innovation center, project, or symbol of progress. Mention a visible object only when it matters to what the pawns are doing or saying now.
+
+A nearby generator, machine, heater, or other facility does not by itself create danger, warmth, a reason to move, or behavioral advice. Do not tell someone to stand near it, stay away from it, or keep moving unless the current scene explicitly supplies the relevant condition. Copy an exact supplied object name correctly or use a clear generic noun; never mutate it into a malformed near-word such as `발전표`.
 
 Do not read pawn jobs, carried items, surroundings, or progress back as a status report. Routine hauling, building, crafting, cleaning, eating, or resting usually needs no spoken step-by-step coordination. Generate work instructions only when the supplied interaction contains a real ambiguity, problem, safety issue, request, or decision that requires them. Never pad a simple task with placement directions, edge alignment, repeated acknowledgements, or `잘하고 있어` commentary on obvious actions.
 
@@ -192,27 +198,28 @@ Before output:
 4. a reply did not mirror the previous speaker's directional form of address
 5. direct and reciprocal family entries were checked before any 씨/님 fallback
 6. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
-7. a family member mentioned in third person keeps the correct family reference
-8. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
-9. unrelated age and closeness rules apply only after family and romance were excluded
-10. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
-11. private information is known by this speaker or clearly observable
-12. location, activity, and interaction support the line
-13. neither speaker is asleep, unconscious, downed, or otherwise incapacitated unless the line is a single brief involuntary sound; a pawn with motor paralysis (`운동마비`) produces at most one extremely short nonverbal groan and never a word or verbal reply
-14. an established resident did not introduce, review, or rediscover a familiar colony space
-15. room or layout discussion is supported by an explicit change, problem, request, or decision rather than room statistics or surroundings
-16. routine work was not chosen over a better pair-specific social topic without a real reason
-17. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
-18. every sensory claim is explicitly supplied or directly observable from a described current event
-19. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-20. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
-21. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
-22. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
-23. every unusual term is either supplied and meaningful or replaced with clear Korean
-24. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-25. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
-26. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
-27. the line does not copy an earlier wrong address or repeat a stale claim
+7. a child or grandchild maintains respectful sentence endings toward a parent or grandparent even when no family title appears in that line
+8. a family member mentioned in third person keeps the correct family reference
+9. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
+10. unrelated age and closeness rules apply only after family and romance were excluded
+11. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
+12. private information is known by this speaker or clearly observable
+13. location, activity, and interaction support the line
+14. neither speaker is asleep, unconscious, downed, or otherwise incapacitated unless the line is a single brief involuntary sound; a pawn with motor paralysis (`운동마비`) produces at most one extremely short nonverbal groan and never a word or verbal reply
+15. an established resident did not introduce, review, or rediscover a familiar colony space
+16. room or layout discussion is supported by an explicit change, problem, request, or decision rather than room statistics or surroundings
+17. routine work was not chosen over a better pair-specific social topic without a real reason
+18. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
+19. every sensory claim is explicitly supplied or directly observable from a described current event
+20. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+21. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+22. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
+23. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
+24. every unusual term is either supplied and meaningful or replaced with clear Korean
+25. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+26. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
+27. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
+28. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

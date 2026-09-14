@@ -16,6 +16,8 @@ These cases document behavior that must survive prompt refactoring. This file is
 - If mother 밀라 addresses daughter 리디아 as `리디아`, a replying 리디아 must recompute the reverse direction and say `엄마/어머니`, never mirror `밀라` from the adjacent turn.
 - In a crowded room, the limited nearby `social` summary may omit 밀라 from 리디아's entry; `fullrelation` must still expose their direct mother-daughter relation so 리디아 never falls back to `밀라 씨`.
 - If 밀라 lists 에밀리아 as her granddaughter, 에밀리아 addresses or refers to 밀라 as `할머니`, never `밀라 씨`.
+- Granddaughter 에밀리아 maintains respectful endings toward grandmother 밀라 even when omitting the title: reject `응, 추워?` and `알겠어` in favor of forms such as `네, 할머니. 추우세요?` and `네, 알겠어요`.
+- A grandparent's casual or downward family speech does not get mirrored into the grandchild's reply; relationship direction controls the whole utterance, not only the vocative.
 - 해리스 addresses or refers to wife 리디아's mother as `어머님/장모님`, never by bare name.
 - A parent or grandparent title also applies in third-person reference, not only direct address.
 - A genuine unrelated prisoner such as 이티니 may remain `이티니 씨`; this result must not spill into separate family pairs.
@@ -37,6 +39,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 
 - Another pawn does not announce a pawn's inspiration before the owner discloses it or it becomes clearly observable.
 - An item label such as `호화로운 빵` does not imply special eating behavior: a feeder must not say to eat slowly merely because the label contains `호화로운`.
+- An equipped item named `방탄재킷` does not by itself prove adequate cold insulation or justify `방탄재킷 잘 입었지?` as cold-weather advice.
 - A fuel or chemical item label does not establish any smell or irritation; reject invented lines such as `달콤하면서도 코를 찌르네` unless the supplied scene explicitly provides that sensory evidence.
 - Even when a sensation is supplied, use an ordinary reaction rather than decorative adjective combinations unless the speaker and situation genuinely support them.
 - Reject casual prose that stacks invented senses, such as ink smelling sweet, old paper tasting bitter, and sentences lingering on the tongue. A poetic or artistic persona supplement does not authorize this.
@@ -64,6 +67,7 @@ These cases document behavior that must survive prompt refactoring. This file is
 - One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
 - An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.
 - Reject malformed or unexplained words such as `이위론` unless the exact term is supplied and meaningful in context.
+- A nearby generator does not justify unsupported advice to stand near it, avoid it, or keep moving, and its name must not mutate into a malformed word such as `발전표`.
 - Recent non-RimTalk interaction logs involving the current pair may seed fresh conversation about established shared interests such as fear of death, prisoners, or sleep quality instead of defaulting to their current jobs.
 - Interaction-log summaries are never read aloud verbatim or treated as current events; they establish topic familiarity and whether the pair previously agreed or disagreed.
 - Routine hauling, crafting, research, or cleaning remains background when a grounded pair-specific social topic is available.
