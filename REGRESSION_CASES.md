@@ -55,6 +55,9 @@ These cases document behavior that must survive prompt refactoring. This file is
 - When `IsMonologue` is false and an initiator and recipient are supplied, a direct address, question, request, warning, offer, thanks, criticism, or personal comment normally produces a grounded reply instead of ending as self-talk.
 - A shared interaction is not rewritten as parallel unrelated monologues, but there is no turn quota: an initiator and one meaningful reply may be complete.
 - Hauling marble does not produce a six-line status exchange about moving it, aligning stack edges, acknowledging each instruction, and offering generic praise. Routine visible work remains background unless an actual problem or decision requires coordination.
+- A hauling or stockpile field does not produce `물 더 들어와? 이 스택 하나만 끝내면 쉴게`; `스택` is UI vocabulary, the incoming subject is unclear, and nothing establishes that the recipient controls another delivery.
+- Inventory counts, item piles, incoming resources, and remaining work are not converted into dialogue unless the current interaction explicitly establishes a concrete delivery, shortage, quantity question, or shared hauling decision.
+- When a job or item label would require guessing what is arriving, where it is going, or who is responsible, omit the work remark instead of producing a vague paraphrase.
 - Each additional turn contributes a new reaction, question, choice, feeling, or decision rather than paraphrasing the current job or surroundings.
 - One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
 - An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.

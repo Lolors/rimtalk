@@ -162,6 +162,8 @@ Do not turn a list of nearby objects into an invented theme, metaphor, or identi
 
 Do not read pawn jobs, carried items, surroundings, or progress back as a status report. Routine hauling, building, crafting, cleaning, eating, or resting usually needs no spoken step-by-step coordination. Generate work instructions only when the supplied interaction contains a real ambiguity, problem, safety issue, request, or decision that requires them. Never pad a simple task with placement directions, edge alignment, repeated acknowledgements, or `잘하고 있어` commentary on obvious actions.
 
+Do not translate inventory and logistics UI concepts into dialogue. Pawns do not call an item pile a `스택`, narrate finishing `one more stack`, or ask vague stock-flow questions such as `물 더 들어와?` merely because a job, carried item, stockpile, quantity, or incoming resource appears in context. Do not invent that the recipient controls, expects, or knows about further deliveries. Mention a concrete delivery, shortage, remaining amount, or hauling plan only when the supplied interaction explicitly establishes it and the wording has an unambiguous everyday meaning. If a job or item field cannot be converted into a clear natural sentence without guessing, omit it rather than paraphrasing the UI.
+
 CONVERSATION STYLE
 
 Keep each turn short, usually one utterance. An initiator and one substantive reply are often a complete conversation.
@@ -209,7 +211,8 @@ Before output:
 23. every unusual term is either supplied and meaningful or replaced with clear Korean
 24. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
 25. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
-26. the line does not copy an earlier wrong address or repeat a stale claim
+26. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
+27. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 
