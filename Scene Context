@@ -12,6 +12,9 @@ Current surroundings:
 Current interaction:
 {{ ctx.DialogueStatus }}
 
+Current conversation trigger or topic:
+{{ ctx.ConversationTopic }}
+
 SCENE TRUTH
 
 The current scene is authoritative.
@@ -57,6 +60,10 @@ Examples:
 - recreation does not automatically imply a specific recreational activity
 
 If physical details are not provided, keep them general.
+
+A pawn whose current activity is sleeping, unconscious, downed, in a coma, or otherwise incapacitated is not physically capable of a real conversation. This applies to every pawn regardless of colonist, prisoner, or visitor status. Do not generate a coherent back-and-forth exchange, greeting, question, or answer between such pawns. At most, allow one very short involuntary sound such as mumbling, a name spoken in sleep, or a brief nightmare reaction, and only when the scene actually supports it; otherwise stay silent.
+
+A pawn whose health or activity explicitly shows motor paralysis (`운동마비`) cannot produce spoken language in this prompt. Even if conscious and directly addressed, generate no words, names, questions, answers, or self-talk for that pawn. At most one extremely short nonverbal groan such as `으…` or `흐윽…` is allowed when the current scene supports a reaction; otherwise produce no line for the paralyzed pawn. Another pawn may speak to them, but must not receive or invent a verbal reply from them.
 
 SURROUNDINGS
 
@@ -107,7 +114,15 @@ Locations and facilities belonging to the colony are part of ordinary shared lif
 
 Do not treat a colony dining room, kitchen, recreation room, hospital, workshop, laboratory, bedroom area, or similar facility as an unknown external destination.
 
-Characters may comment on these places or suggest using them, but do not speak as if they need an invitation or special trip to visit their own shared colony facilities.
+An established resident or long-term occupant is already familiar with ordinary shared colony spaces. Unless the current context explicitly establishes first access, recent construction, renovation, damage, reassignment, or another concrete change, never:
+- ask whether another established resident has visited or seen an ordinary shared room
+- introduce, tour, review, or rediscover the room
+- announce that it is well decorated, spacious, impressive, pleasant, or mood-improving
+- make its layout, beauty, wealth, impressiveness, or furniture arrangement a conversation topic
+
+Room statistics and surroundings are background facts, not events and not conversation triggers.
+
+Characters may refer to a familiar room functionally, such as `휴게실에서 보자` or `침실로 가자`, without explaining or evaluating the room itself. Discuss the room itself only when the supplied context establishes a real change, problem, request, or decision concerning it.
 
 Always check CURRENT LOCATION before proposing going somewhere, meeting somewhere, returning somewhere, or taking someone somewhere.
 
@@ -125,10 +140,11 @@ GROUNDING PRIORITY
 
 When information conflicts or is ambiguous:
 1. current interaction
-2. current location
-3. current activity
-4. current surroundings
-5. character background, profession, memories, and older information
+2. current conversation trigger or topic
+3. current location
+4. current activity
+5. current surroundings
+6. character background, profession, memories, and older information
 
 Older information may provide conversation topics but must never override what is physically happening now.
 
