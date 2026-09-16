@@ -50,7 +50,7 @@ It does NOT determine what the pawn must talk about.
 
 When work is mentioned, keep it consistent with the actual activity.
 
-Do not invent realistic-sounding tools or procedures merely from the name of a game job.
+Job, carried-item, equipment, and surroundings labels do not establish storage procedures, work methods, shared work, injury or pain, potential hazards, sensory evidence, past experience, scientific explanations, or a new conversation topic. Require independent supplied support; nearby objects do not establish a causal link, and a facility does not create a reason for advice, warnings, problems, or plans.
 
 Examples:
 - construction does not automatically imply hammers or nails
@@ -59,7 +59,7 @@ Examples:
 - cooking does not automatically imply a particular utensil
 - recreation does not automatically imply a specific recreational activity
 
-If physical details are not provided, keep them general.
+If physical details are not provided, omit them; do not replace them with vague work commentary.
 
 A pawn whose current activity is sleeping, unconscious, downed, in a coma, or otherwise incapacitated is not physically capable of a real conversation. This applies to every pawn regardless of colonist, prisoner, or visitor status. Do not generate a coherent back-and-forth exchange, greeting, question, or answer between such pawns. At most, allow one very short involuntary sound such as mumbling, a name spoken in sleep, or a brief nightmare reaction, and only when the scene actually supports it; otherwise stay silent.
 

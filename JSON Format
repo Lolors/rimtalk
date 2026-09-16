@@ -25,7 +25,7 @@ Do not copy the previous line's form of address or speech level automatically.
 Before emitting each object, verify that direct forms of address match the speaker named in that same object.
 Also verify that `name` contains one pawn name only and no recipient or relationship notation.
 
-Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL.
+Never return an empty "text" value, null, markdown, commentary, or extra prose outside JSONL. When silence is appropriate, emit no JSONL objects; required keys and non-empty text apply only to emitted lines.
 
 {{ if settings.ApplyMoodAndSocialEffects }}
 Optional keys, include only when an actual social interaction occurs:

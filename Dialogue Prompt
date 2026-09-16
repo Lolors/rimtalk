@@ -172,9 +172,9 @@ Do not translate inventory and logistics UI concepts into dialogue. Pawns do not
 
 CONVERSATION STYLE
 
-Keep each turn short, usually one utterance. An initiator and one substantive reply are often a complete conversation.
+Keep each turn short, usually one utterance. An initiator and one short natural reply may complete the conversation; there is no minimum turn or speaker quota.
 Alternate speakers naturally when replies continue; never encode speaker direction inside JSON `name`.
-When `IsMonologue` is false and an actual recipient is supplied, produce a genuine exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply. Continue beyond that reply only when every additional turn adds distinct conversational value.
+When `IsMonologue` is false and an actual recipient is supplied, produce a genuine exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply. A brief acknowledgement or closing is valid without new information. End when the interaction is complete; do not recruit another speaker or invent a topic to continue.
 Do not replace a shared interaction with one pawn's monologue or with several unrelated self-directed remarks. Keep all replies grounded in the same interaction and use only the supplied participants.
 Allow silence, pauses, ending the conversation, subject changes, and returning to work.
 
@@ -184,20 +184,13 @@ Each utterance has one coherent main topic and one recognizable purpose: ask, an
 
 Responses must satisfy the preceding speech act before moving on. A direct invitation receives a clear acceptance, decline, or counterproposal. A question receives an answer when the recipient can know it. A request receives agreement, refusal, clarification, or a relevant condition. Do not answer `같이 하시겠어요?` with an ambiguous command for the inviter to go alone and report back.
 
-SEMANTIC PAYLOAD TEST
+SEMANTIC REJECTION TEST
 
-Before keeping a turn, silently state its concrete contribution in one plain clause. It must do at least one of these:
-- ask or answer a specific intelligible question
-- provide a grounded fact, reason, preference, disagreement, or new information
-- make or resolve a choice, request, invitation, warning, or plan
-- express a reaction whose object and cause are clear from supplied context
-- make a relationship-relevant joke or personal comment with a recognizable point
+Grounding comes before semantic richness. Review an already drafted line only to reject unsupported claims, vague filler, meaningless associations, or incoherent causal links. This is a rejection test, not a generation requirement: no line has to add a fact, reason, explanation, choice, or new topic to qualify.
 
-Reject a turn if its only contribution is a vague impression or a restatement of the previous mood. Ordinary words do not rescue empty content. Phrases such as `손맛이랄까`, `옛날 느낌`, `손에 익네`, `오래된 기술 같아`, and `마음이 편해지네` require a clear supported referent and reason; do not chain them merely to make routine work sound meaningful.
+Never repair a rejected line by inventing details or explaining an unsupported association. Delete it, or retain only a natural grounded response already warranted by the interaction. A brief acknowledgement, acceptance, refusal, or closing is enough even without new information. Ordinary emotional responses need no added causal explanation; claimed sensations, memories, and factual causes still require supplied support.
 
-Never invent prior experience or nostalgia with lines such as `옛날에 해보던 것처럼` unless an actual supplied memory or background supports that experience. Do not force several speakers into successive agreement where each line only renames the same unsupported impression. Once a point has been answered, end the exchange unless the next speaker adds a distinct fact, stance, question, choice, or relationship reaction.
-
-Require understandable causality. If the speaker cannot plainly explain what caused a sensation or feeling, omit it. Reject malformed pseudo-causal lines such as `건초가 풀냄새 비슷하게 눌려서 기분 좋아져요`, which invent sensory evidence and do not express a coherent relation between the object, action, and feeling.
+Do not chain vague impressions or pseudo-profound metaphors to simulate substance. Do not turn a completed exchange into successive agreement by several speakers. If no grounded contribution remains, stop or stay silent instead of finding a richer topic.
 
 Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
 Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
@@ -227,11 +220,11 @@ Before output:
 18. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
 19. every sensory claim is explicitly supplied or directly observable from a described current event
 20. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
-21. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
+21. the exchange stops when complete, without a turn or speaker quota; short natural replies need not add information
 22. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
 23. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
-24. the line has a specific semantic contribution that can be stated in one plain clause, rather than only vague atmosphere, generic agreement, or pseudo-profound wording
-25. every claimed feeling, sensory association, memory, comparison, and causal link has a clear referent and supplied support
+24. the semantic rejection test removed unsupported or meaningless content without inventing details to replace it
+25. no factual claim or causal association was inferred merely from a job, item, equipment, or surroundings label
 26. every unusual term is either supplied and meaningful or replaced with clear Korean
 27. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
 28. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
@@ -240,5 +233,4 @@ Before output:
 
 OUTPUT SAFETY
 
-Never return an empty `text` field when speech is requested. For a nonspeaking infant, use a brief nonverbal vocalization.
-Output valid, non-empty spoken dialogue and follow the separate JSON Format exactly.
+For each emitted line, keep `text` non-empty and follow the separate JSON Format exactly. Silence means emitting no dialogue line, not an empty `text` field or an invented utterance. A nonspeaking infant may make a brief nonverbal vocalization only when the scene supports it.

@@ -63,12 +63,12 @@ These cases document behavior that must survive prompt refactoring. This file is
 - A hauling or stockpile field does not produce `물 더 들어와? 이 스택 하나만 끝내면 쉴게`; `스택` is UI vocabulary, the incoming subject is unclear, and nothing establishes that the recipient controls another delivery.
 - Inventory counts, item piles, incoming resources, and remaining work are not converted into dialogue unless the current interaction explicitly establishes a concrete delivery, shortage, quantity question, or shared hauling decision.
 - When a job or item label would require guessing what is arriving, where it is going, or who is responsible, omit the work remark instead of producing a vague paraphrase.
-- Each additional turn contributes a new reaction, question, choice, feeling, or decision rather than paraphrasing the current job or surroundings.
-- Reject a three-speaker exchange that merely cycles through `손맛이랄까`, `손에 익네`, `오래된 기술이라는 느낌`, and `맘이 편해지네`; familiar words do not create content when no supported fact, opinion, reason, question, or decision is added.
+- Short natural replies need not add information. End a completed exchange rather than paraphrasing the current job or surroundings to fill another turn.
+- Reject a three-speaker exchange that merely cycles through `손맛이랄까`, `손에 익네`, `오래된 기술이라는 느낌`, and `맘이 편해지네`; the unsupported impressions remain empty even when phrased in familiar words. Do not repair them by inventing concrete details.
 - `옛날에 해보던 것처럼` requires a supplied memory or background establishing the speaker's relevant past experience; routine work does not manufacture nostalgia.
 - Reject `건초가 풀냄새 비슷하게 눌려서 기분 좋아져요`: it invents sensory evidence, has no coherent causal relation, and cannot be reduced to an intelligible concrete claim.
-- Several speakers do not automatically agree by successively renaming the same vague feeling. After a point is answered, end the conversation unless the next turn adds a distinct fact, stance, question, choice, or relationship reaction.
-- For every retained line, its new contribution must be expressible in one plain clause. If the only summary is `분위기 있는 감상을 한다` or `앞사람 말에 막연히 동의한다`, omit the line.
+- Several speakers do not automatically agree by successively renaming the same vague feeling. After a point is answered, allow a brief natural closing or end the conversation; no other speaker must take a turn.
+- Semantic review is only a rejection test for an already drafted line. Remove meaningless filler or unsupported claims without adding a fact, reason, or explanation; a contextually natural `네, 알겠어요` is not rejected for lacking new information.
 - One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
 - An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.
 - Reject malformed or unexplained words such as `이위론` unless the exact term is supplied and meaningful in context.
@@ -88,3 +88,16 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Infants and toddlers remain within their developmental speech limits even when family context supplies meaningful titles.
 - Each JSON line rebinds the actual speaker's profile and relationship direction.
 - Multi-speaker dialogue alternates naturally without encoding speaker direction in `name`.
+
+## Grounding before semantic richness
+
+Each negative case assumes only the stated job/object background, with no independent support for the claimed event, condition, procedure, or topic. These are development cases, not runtime prompt examples.
+
+- **Chicken boxes → freezer procedure.** Reject `에밀리아, 닭 고기 박스 잘 쌓아놨네. 그 상태로 냉동고 안쪽에 놔둬도 돼요.` A chicken/item or hauling label does not establish boxes, completed stacking, a freezer destination, or a storage procedure. Omit the invented praise and directions; respond briefly only to an actual supplied interaction, otherwise stay silent.
+- **Manual work → back pain.** Reject `에린, 손 조심해. 허리가 아프면 잠깐 쉬어.` Hand use does not establish an injury, back pain, or a reason for a warning. Conditional wording does not justify introducing an unsupported health concern. Omit the warning instead of substituting another imagined risk.
+- **Bookshelf/bookmark → smell and pleasure metaphor.** Reject `리디아, 이 책장에 끼워둘 작은 다락 하나 더 쓸게요. 책갈피와 작은 즐거움 사이, 냄새로 연결되는 부분으로.` Books and furnishings do not support invented objects, sensory associations, or an intelligible causal relation. Remove the line rather than explain or elaborate its metaphor; a poetic persona does not rescue it.
+- **Amulet/nearby object → science lecture.** Reject `이야기 듣고 싶어요 — 요즘 떠도는 부적 같은 건 실제로 도움이 될까요? 이유랑 효과를 과학적으로 설명해볼게요.` An object label does not establish circulating amulets, their effects, or a reason to introduce a lecture. Do not invent a new topic to make dialogue substantive; use an existing grounded interaction or end silently.
+- **Rice boxes + flour → accident risk.** Reject `에밀리아, 쌀 상자 옮길 때 조심해 — 바닥에 밀가루 묻어 있으면 미끄러워질 수 있어.` Nearby rice and flour do not establish boxes, spilled flour, a slippery floor, or a causal connection to an accident. Omit the invented risk even when expressed conditionally.
+- **Brief response passes.** A supplied invitation or request may receive a short natural acceptance such as `네, 좋아요` or `네, 알겠어요`, with the appropriate relationship-specific speech level. No extra fact or reason is required, and no third speaker is required. Keep the actual recipient; do not rewrite the interaction as self-talk.
+- **Silence passes.** If only routine background is supplied and there is no grounded contribution, emit no dialogue line. Do not emit an empty `text`, a placeholder, or invented speech to meet an output quota. A short ordinary line warranted by the interaction takes precedence over a detailed fabrication.
+- **Supported content still passes.** An explicit request to place an item in a supplied destination may receive a brief answer; independently disclosed pain or an explicitly described spill may receive a relevant response. A supplied pair-specific past discussion may inspire a natural current exchange without presenting the past as a new event. The rejection test does not ban supported topics or require context to be recited.
