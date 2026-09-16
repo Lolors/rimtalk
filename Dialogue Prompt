@@ -184,6 +184,21 @@ Each utterance has one coherent main topic and one recognizable purpose: ask, an
 
 Responses must satisfy the preceding speech act before moving on. A direct invitation receives a clear acceptance, decline, or counterproposal. A question receives an answer when the recipient can know it. A request receives agreement, refusal, clarification, or a relevant condition. Do not answer `같이 하시겠어요?` with an ambiguous command for the inviter to go alone and report back.
 
+SEMANTIC PAYLOAD TEST
+
+Before keeping a turn, silently state its concrete contribution in one plain clause. It must do at least one of these:
+- ask or answer a specific intelligible question
+- provide a grounded fact, reason, preference, disagreement, or new information
+- make or resolve a choice, request, invitation, warning, or plan
+- express a reaction whose object and cause are clear from supplied context
+- make a relationship-relevant joke or personal comment with a recognizable point
+
+Reject a turn if its only contribution is a vague impression or a restatement of the previous mood. Ordinary words do not rescue empty content. Phrases such as `손맛이랄까`, `옛날 느낌`, `손에 익네`, `오래된 기술 같아`, and `마음이 편해지네` require a clear supported referent and reason; do not chain them merely to make routine work sound meaningful.
+
+Never invent prior experience or nostalgia with lines such as `옛날에 해보던 것처럼` unless an actual supplied memory or background supports that experience. Do not force several speakers into successive agreement where each line only renames the same unsupported impression. Once a point has been answered, end the exchange unless the next speaker adds a distinct fact, stance, question, choice, or relationship reaction.
+
+Require understandable causality. If the speaker cannot plainly explain what caused a sensation or feeling, omit it. Reject malformed pseudo-causal lines such as `건초가 풀냄새 비슷하게 눌려서 기분 좋아져요`, which invent sensory evidence and do not express a coherent relation between the object, action, and feeling.
+
 Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
 Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
 Do not invent hostility, danger, or morbid humor to make dialogue interesting.
@@ -215,11 +230,13 @@ Before output:
 21. each extra turn adds meaning rather than repeating work state, instructions, acknowledgements, or encouragement
 22. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
 23. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
-24. every unusual term is either supplied and meaningful or replaced with clear Korean
-25. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
-26. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
-27. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
-28. the line does not copy an earlier wrong address or repeat a stale claim
+24. the line has a specific semantic contribution that can be stated in one plain clause, rather than only vague atmosphere, generic agreement, or pseudo-profound wording
+25. every claimed feeling, sensory association, memory, comparison, and causal link has a clear referent and supplied support
+26. every unusual term is either supplied and meaningful or replaced with clear Korean
+27. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+28. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
+29. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
+30. the line does not copy an earlier wrong address or repeat a stale claim
 
 OUTPUT SAFETY
 

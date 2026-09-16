@@ -64,6 +64,11 @@ These cases document behavior that must survive prompt refactoring. This file is
 - Inventory counts, item piles, incoming resources, and remaining work are not converted into dialogue unless the current interaction explicitly establishes a concrete delivery, shortage, quantity question, or shared hauling decision.
 - When a job or item label would require guessing what is arriving, where it is going, or who is responsible, omit the work remark instead of producing a vague paraphrase.
 - Each additional turn contributes a new reaction, question, choice, feeling, or decision rather than paraphrasing the current job or surroundings.
+- Reject a three-speaker exchange that merely cycles through `손맛이랄까`, `손에 익네`, `오래된 기술이라는 느낌`, and `맘이 편해지네`; familiar words do not create content when no supported fact, opinion, reason, question, or decision is added.
+- `옛날에 해보던 것처럼` requires a supplied memory or background establishing the speaker's relevant past experience; routine work does not manufacture nostalgia.
+- Reject `건초가 풀냄새 비슷하게 눌려서 기분 좋아져요`: it invents sensory evidence, has no coherent causal relation, and cannot be reduced to an intelligible concrete claim.
+- Several speakers do not automatically agree by successively renaming the same vague feeling. After a point is answered, end the conversation unless the next turn adds a distinct fact, stance, question, choice, or relationship reaction.
+- For every retained line, its new contribution must be expressible in one plain clause. If the only summary is `분위기 있는 감상을 한다` or `앞사람 말에 막연히 동의한다`, omit the line.
 - One utterance does not jump from joking about a dog to an unclear term, a scrap-hauling report, and a fuel question. Choose one coherent purpose and omit unrelated context fields.
 - An invitation such as `잠깐 같이 하시겠어요?` receives a clear acceptance, decline, or counterproposal, not `가서 한 판 해봐. 끝나면 와서 말해` without resolving the invitation.
 - Reject malformed or unexplained words such as `이위론` unless the exact term is supplied and meaningful in context.
