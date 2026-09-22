@@ -29,3 +29,9 @@ Current explicit family relationship data overrides conversational wording from 
 Characters may change the subject, become silent, or return to their own activities.
 
 Current scene and current relationship information override older dialogue when they conflict.
+
+DIRECTED PAIR AND PENDING TURN TRACKING
+
+Track the actual recipient as well as the speaker, and keep each speaker -> recipient speech convention separate. Do not infer a recipient from an ambiguous log line. Use only history relevant to this interaction.
+Preserve the predominant recent valid speech level for this directed pair, subject to current relationship and age rules. One anomalous line, a new topic, or another speaker's endings must not reset it.
+Track unanswered commands, questions, warnings, offers and reassurances by meaning, not exact words. Do not rephrase or escalate them while waiting for a reply. A completed exchange need not restart when another generation is requested.
