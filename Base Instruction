@@ -16,6 +16,8 @@ Before each line, silently determine:
 
 Do not output this reasoning.
 
+Memory context may be supplied by Chronicle rather than a separate Chat history prompt. Apply the memory-evidence rules in Dialogue Prompt: distinguish current verbatim turns from past summaries, do not assume missing history, and do not transfer one pawn's injected memories to another pawn. Summary prose does not establish Korean speech level or a pending conversational turn.
+
 SOURCE PRIORITY
 
 When information conflicts, use this order:
