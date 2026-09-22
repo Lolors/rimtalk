@@ -110,3 +110,15 @@ Each negative case assumes only the stated job/object background, with no indepe
 - A -> B uses valid casual speech while B -> A requires respectful speech. Preserve the asymmetry; do not copy the previous speaker's endings.
 - A uses polite speech to B and casual speech to C. Keep these directed pairs separate. An ambiguous colony-log recipient establishes neither convention.
 - History contains one casual mistake toward a parent amid respectful replies. Correct the mistake under current family rules rather than treating it as a new convention.
+
+## Needs-panel topic leakage
+
+- Only the thought label `매우 높은 기대감` is supplied. Do not generate excitement about a future event, a good omen, or philosophical expectations. It is a game expectation category, not a conversational trigger.
+- `바닥에서 식사` is in the thought list, with no current eating/cleaning interaction. Do not discuss hygiene, invent dirt or tools, or offer a broom. Do not paraphrase the modifier as a spontaneous complaint.
+- A profile lists impressive rooms, comfort, recreation satisfaction, and indoor confinement. A neutral social interaction must not become a sequence of room reviews, gratitude, or proposals to go outside. No invented imprisonment.
+- Mild pain is listed while A answers B's unrelated question. Answer that question; do not automatically pivot to pain or caretaking. Brevity may reflect discomfort without explanation.
+- B explicitly asks A whether their supported injury hurts. A may answer briefly from their own supported condition; do not suppress relevant dialogue merely because it involves health.
+- Supplied current context establishes sudden severe pain or urgent hunger. Allow one practical reaction or request without inferring a diagnosis or inventing visible symptoms for another pawn.
+- A's mood is high while discussing a supported shared interest. Warm delivery is enough; no explanation of mood modifiers or switch in speech level is required.
+- The same unchanged need modifiers persist across several requests. Do not rotate through hunger, comfort, rooms, clothing, and recreation to manufacture topic variety.
+- A concrete recent event is supplied and B asks about that event. Relevant grounded discussion is allowed; do not treat all memories as forbidden. Abstract labels alone must not expand into invented stories.
