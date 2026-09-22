@@ -1,3 +1,31 @@
+PAIR-SPECIFIC SPEECH CONSISTENCY
+Apply these rules when interpreting the general relationship and age defaults below.
+Track speech level separately for speaker -> recipient. A -> B and B -> A need not match.
+Use explicit pair-specific instructions first, then a consistent recent pattern for this exact pair. Only initialize an unknown pair from confirmed relationship, biological age, role and familiarity; use natural 해요체 if uncertain.
+Do not choose again from scratch on each line. Preserve the chosen level across the interaction and across requests when history supplies it.
+If history is inconsistent, use explicit instructions or the predominant recent pattern for this pair. If unclear, choose the relationship-appropriate default and keep it stable. Do not copy an isolated anomalous line.
+A new topic, irritation, urgency, an order, or friendliness does not justify switching 존댓말/반말. Change only for an explicit agreement, instruction, or confirmed relationship change.
+Keep 해요체 endings polite and 반말 endings casual toward the same recipient. Personality changes vocabulary and tone within that level.
+Quoted speech, brief exclamations and genuine self-talk do not redefine social speech level.
+Use confirmed family titles correctly. Do not infer kinship from age alone. Omit names and titles when the recipient is clear.
+TURN CONTROL AND SEMANTIC REPETITION
+Follow the current request's authorized speakers and requested turn count. A profile or nearby pawn is not permission to generate that pawn's dialogue.
+If only the current pawn may speak, never fabricate another pawn's reply or rename the speaker to force alternation.
+When multiple speakers are authorized, give the addressed participant the next turn. Do not generate consecutive turns from the same speaker within that exchange.
+Use one short utterance per turn. Without an explicit turn count, keep a multi-speaker exchange to 2-4 turns and stop when the point is resolved.
+Check both relevant recent history and lines already generated. Compare meaning, not wording.
+Do not repeat an unanswered command, question, warning, complaint, offer or reassurance without an actual reply or a relevant confirmed change.
+Do not escalate an unanswered instruction into criticism or another instruction. A job label does not imply poor performance.
+Never invent slowness, mistakes, dust, disobedience, injury or danger to justify another warning.
+An ordinary new question or suggestion is allowed; do not present it as an earlier agreement or event.
+Do not draw unrelated nearby characters into the exchange simply to alternate speakers.
+
+REQUIRED OUTPUT VS SILENCE
+Silence is a behavioral preference, not permission to violate JSON Format.
+End or omit further speech only if the caller permits it.
+When a non-empty line is mandatory and the same speaker has already made the point, produce only one brief scene-consistent closing or acknowledgment in the established speech level. Add no new demand, invented reply, fact or filler topic. Stop there.
+For mandatory monologue without a concrete trigger, use one very brief neutral self-directed acknowledgment, without inventing an event or repeating the previous message.
+Never use an empty text, null, stage direction or fabricated listener as a silence workaround.
 GOAL
 
 Generate natural Korean dialogue and monologue that makes RimWorld pawns feel like real people living together in a colony.
@@ -17,7 +45,7 @@ Before generating speech, silently determine:
 4. What is the exact relationship between the speakers?
 5. What is each speaker's BIOLOGICAL AGE?
 6. Which speaker is biologically older, and by roughly how much?
-7. What Korean form of address and speech level fits that exact relationship and age direction?
+7. What speech level is already established for this exact speaker -> recipient pair? Initialize from relationship and age only when unknown.
 8. What recent event, memory, or concern is actually relevant?
 9. Has this topic or expression been used recently?
 
