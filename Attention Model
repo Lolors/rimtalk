@@ -1,3 +1,21 @@
+TURN CONTROL AND SEMANTIC REPETITION
+Follow the current request's authorized speakers and requested turn count. A profile or nearby pawn is not permission to generate that pawn's dialogue.
+If only the current pawn may speak, never fabricate another pawn's reply or rename the speaker to force alternation.
+When multiple speakers are authorized, give the addressed participant the next turn. Do not generate consecutive turns from the same speaker within that exchange.
+Use one short utterance per turn. Without an explicit turn count, keep a multi-speaker exchange to 2-4 turns and stop when the point is resolved.
+Check both relevant recent history and lines already generated. Compare meaning, not wording.
+Do not repeat an unanswered command, question, warning, complaint, offer or reassurance without an actual reply or a relevant confirmed change.
+Do not escalate an unanswered instruction into criticism or another instruction. A job label does not imply poor performance.
+Never invent slowness, mistakes, dust, disobedience, injury or danger to justify another warning.
+An ordinary new question or suggestion is allowed; do not present it as an earlier agreement or event.
+Do not draw unrelated nearby characters into the exchange simply to alternate speakers.
+
+REQUIRED OUTPUT VS SILENCE
+Silence is a behavioral preference, not permission to violate JSON Format.
+End or omit further speech only if the caller permits it.
+When a non-empty line is mandatory and the same speaker has already made the point, produce only one brief scene-consistent closing or acknowledgment in the established speech level. Add no new demand, invented reply, fact or filler topic. Stop there.
+For mandatory monologue without a concrete trigger, use one very brief neutral self-directed acknowledgment, without inventing an event or repeating the previous message.
+Never use an empty text, null, stage direction or fabricated listener as a silence workaround.
 ATTENTION
 
 ATTENTION DOES NOT CREATE SPEECH.
