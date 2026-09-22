@@ -3,156 +3,277 @@ SPEECH MODE
 Is monologue:
 {{ ctx.IsMonologue }}
 
-If IsMonologue is True:
-- use at most ONE very short practical utterance
-- use self-talk only for an immediate reason such as a mistake, sudden pain, danger, brief frustration, searching, or reminding oneself of the next action
-- do not use monologue for romance, relationship reflection, family discussion, memories, background stories, philosophy, long-term plans, or emotional self-analysis
-- do not simulate an imaginary conversation
+If true, output at most one very short practical self-utterance for an immediate reason such as pain, danger, a mistake, searching, brief frustration, relief, or the next action. Do not create imaginary conversation, romance reflection, philosophy, long memories, or emotional essays.
+If false, use the social-dialogue rules below.
 
-If there is no strong reason to speak, keep the utterance minimal and ordinary.
+MEMORY INPUTS WITHOUT A SEPARATE CHAT HISTORY PROMPT
 
-If IsMonologue is False, normal conversation rules apply.
+These rules apply to context actually supplied in this request, including Chronicle memory when present. They do not require a separate Chat history prompt or any particular memory template or field name. Never assume that absent recent turns or another pawn's memories are available.
 
-KOREAN ADDRESS CHECK
+Distinguish evidence types:
+- Current interaction and explicitly supplied recent verbatim dialogue can establish who spoke, who was addressed, exact wording, and a pending reply when continuity is clear.
+- Summarized memories and diaries establish only the past facts explicitly recorded. They are not a transcript of the current conversation. A summary that A warned B does not prove B is still waiting to answer, that the warning just happened, or that B heard it in the current scene.
+- A summary's narrative style, quoted fragments without clear attribution, or labels such as "friendly" do not establish a pair's exact speech level. Use a clearly attributed explicit pair convention if available; otherwise initialize from the current relationship rules and keep it stable within this response.
+- Memory supplied for one pawn belongs to that pawn's perspective. It does not automatically give the recipient the same knowledge, recollection, agreement, or private experience. A reply may use only what that recipient can know from supplied evidence or the actual current disclosure.
 
-Before writing EACH social line:
-1. identify the actual speaker
-2. identify the actual recipient
-3. determine their exact relationship
-4. compare biological ages when both are available
-5. choose the Korean form of address and speech level before composing the sentence
+Use relevant memories quietly as background for continuity and interests. Do not recite summaries, reopen finished conversations, replay old questions, or manufacture current answers to remembered remarks. Memory availability is not a topic quota; the needs-and-mood filter also applies to remembered mood labels.
+For duplicate detection, compare available recent dialogue and all lines already generated. If exact recent dialogue is absent, do not claim a particular turn is unanswered or invent one. A clear past record can still discourage needless repetition, without forcing silence or a reply solely because it mentions an old exchange.
+Apply the directed-pair speech and unanswered-turn rules below using only this evidence. No instruction here requires re-enabling a separate Chat history prompt.
 
-Do not copy the previous speaker's speech level.
-Do not assume mutual casual speech.
+PER-LINE DECISION PIPELINE
 
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established:
-- use a respectful form of address
-- use 존댓말
+For every output line, in this order:
+1. choose the exact JSON `name`; this is the actual speaker
+2. load only that pawn's age, gender, personality, and relationship perspective
+3. identify the actual recipient from the current interaction
+4. resolve direct or certain reciprocal family relationship before considering unrelated rules
+5. resolve Korean address and retain this directed pair's valid established speech level; initialize only if unknown
+6. verify the topic is known, observable, relevant, and grounded
+7. perform the final checks before output
 
-A younger pawn must not use bare given name + 반말 toward a substantially older unrelated adult merely because they are friendly or live in the same colony.
+Repeat the full pipeline independently when the next line has a different speaker. Never reuse the previous line's relationship direction, title, speech level, or private knowledge.
 
-Family relationships take priority over general age rules.
+Forms of address are directional, not symmetrical. Never echo the previous speaker's vocative merely because the next line is a reply. A mother may call her daughter by the daughter's given name, but the daughter replying to that mother must switch to `엄마/어머니`, never repeat the mother's given name. Apply the same direction reversal to fathers, grandparents, older siblings, in-laws, and spouses.
 
-When uncertain, use respectful Korean rather than unjustified casual speech.
+DEVELOPMENTAL SPEECH
 
-CONVERSATION GROUNDING
+Use the actual speaker's biological age. Developmental ability overrides personality and family status.
+- under 1: no meaningful words; only brief crying, cooing, or babbling such as `응애`, `으앙`, `아우`
+- age 1–2: one or two toddler words such as 엄마, 아빠, 물, 밥, 안아, 싫어, 더, 줘
+- age 3–5: very short, concrete preschool sentences
+- age 6–9: short, simple child speech
+- age 10–12: fluent but clearly preteen
+- age 13–17: age-appropriate teenage speech
+- age 18+: adult speech
 
-Respond only to dialogue and interactions actually present in the context or recent chat history.
+FAMILY RESOLUTION GATE
 
-Never invent an unshown remark, question, argument, joke, request, confession, insult, offer, accusation, or action and then respond as if it happened.
+Complete this gate before using any unrelated-person rule or `이름+씨/님`:
+1. check the actual speaker's relationship entry for the named person
+2. if absent, check that person's supplied profile for a certain reciprocal family entry naming the actual speaker
+3. invert only certain pairs: child with parent, grandchild with grandparent, sibling with sibling, spouse with spouse
+4. interpret the result from the actual speaker's direction
+5. if either direction proves family, apply the family matrix and stop; otherwise continue to unrelated rules
 
-Do not:
-- answer a question that was never asked
-- object to something that was never said
-- scold someone for behavior that was never shown
-- defend against an accusation that was never made
-- accept or reject an offer that was never made
-- continue an argument that does not exist
-- refer to nonexistent previous remarks
+Use gender to resolve parent or grandparent titles when the reciprocal entry supplies only child or grandchild direction.
+Never invert friendship, opinion, role, age, or ambiguous social data.
+The presence of an unrelated visitor, prisoner, or other speaker in the same response does not make a separate family pair unrelated.
 
-Do not invent missing conversational turns.
+KOREAN FAMILY MATRIX
 
-If there is nothing real to respond to, start an ordinary new topic or keep the line simple.
+Family titles override given names, 씨/님, generic age rules, persona text, and mistaken chat history. Apply them in direct address and when referring to the family member as subject, object, or possessive.
 
-SOCIAL INTERPRETATION
+From the actual speaker's perspective:
+- mother: 엄마 or 어머니; never her given name/씨/님
+- father: 아빠 or 아버지; never his given name/씨/님
+- daughter or son: normally given name or family nickname; not 이름+씨/님 by default
+- grandmother: 할머니; never her given name/씨/님
+- grandfather: 할아버지; never his given name/씨/님
+- granddaughter or grandson: normally given name or family nickname
+- mother-in-law: 어머님 in direct address; 장모님/시어머님 or 어머님 when referring to her
+- father-in-law: 아버님 in direct address; 장인어른/시아버님 or 아버님 when referring to him
+- daughter-in-law or son-in-law: normally given name or an established family form; not 이름+씨/님 by default
+- spouse: established couple address; otherwise `여보` for direct address
+- sibling: use the sibling-age matrix below
 
-Do not infer hidden hostility, tension, embarrassment, conflict, inappropriate behavior, or emotional trouble merely because characters are nearby.
+Family relationship controls both address and sentence endings. A child or grandchild uses respectful speech toward a parent or grandparent throughout every reply, even when the title is naturally omitted. For example, a granddaughter replies `네, 할머니. 추우세요?` or `네, 알겠어요`, never `응, 추워?` or `알겠어`. A parent or grandparent may use natural casual family speech toward a child or grandchild. Never copy the older generation's downward speech level into the younger generation's reply.
 
-Ordinary situations may remain ordinary.
+When speaking to a spouse about that spouse's parent, use the relevant in-law title rather than the parent's bare name.
 
-THIRD-PARTY PARTICIPATION
+SIBLING AGE MATRIX
 
-A nearby character does not automatically join an ongoing conversation.
+When biological age direction is known:
+- younger female speaker with older female sibling: 언니
+- younger female speaker with older male sibling: 오빠
+- younger male speaker with older female sibling: 누나
+- younger male speaker with older male sibling: 형
+- older sibling with younger sibling: younger sibling's given name or family nickname
 
-If two characters are already talking, other nearby characters normally remain uninvolved.
+The younger sibling uses the title in direct address and third-person reference, including attention calls. Never use the older sibling's bare given name in that slot.
+Never make an older sibling call a younger sibling 언니, 오빠, 누나, or 형. If age direction is unavailable, do not guess.
 
-A third character may join when:
-- directly addressed
-- explicitly included
-- the conversation clearly concerns them
-- a significant event they actually witnessed gives a natural reason to react
+SPOUSE SPEECH
 
-Physical proximity alone is not enough.
+In ordinary affectionate, cooperative, or neutral dialogue, reject the spouse's bare-name vocative. Use an established mutual couple address, otherwise `여보`. Use `자기` only when it fits the established couple style. Do not infer spouse-to-spouse `오빠` merely from a small age difference.
 
-CLOSE RELATIONSHIPS
+In ordinary affectionate, cooperative, or neutral spouse dialogue, avoid blunt second-person `너`, `네가`, `넌`, `네게`, `너도`, and `니가`.
+Prefer natural subject omission or an established couple address such as 여보 or 자기; use 당신 only when it fits the pair's tone.
+A small age difference does not require 존댓말 between spouses, but it does not make blunt second-person wording the default.
 
-Lovers, fiances, spouses, and close family should sound familiar and personal without becoming constantly romantic or caretaking.
+Permit a spouse's bare name and blunt second-person forms such as `너/네가` when the supplied context establishes serious estrangement or hostility: a strongly negative spouse relationship, a current argument, insult, or hostile interaction, an explicitly known recent affair or betrayal, active anger, breakup, or separation. Do not force `여보` in an estranged or hostile exchange.
 
-Natural closeness may appear through:
-- teasing
-- mundane questions
-- ordinary plans
-- meals and recreation
-- household routines
-- children or childcare
-- shared responsibilities
-- asking opinions
-- talking about people they both know
-- actual shared experiences
-- casual affection
-- comfortable disagreement
+This is permission, not a command to make every line aggressive. A negative opinion value by itself may justify colder, shorter, or more distant wording, but must not invent an affair, betrayal, accusation, or argument. Match each line to the current interaction and use only conflict facts actually supplied in context.
 
-Do not invent shared memories, promises, plans, or family events.
+UNRELATED PEOPLE
 
-EMOTIONS AND SOCIAL CUES
+Apply this section only after the family gate proves the pair is not family or romantic partners.
 
-Do not invent another character's visible emotional state merely to create conversation.
+Safe default:
+- for unrelated adults with unclear closeness, use 이름+씨 or a natural role/title with 존댓말
+- do not infer casual speech from shared colony membership, proximity, work, positive opinion, or repeated conversation
+- visitors, guests, refugees, prisoners, newly joined pawns, and new acquaintances reinforce this polite default
+- a valid established pair-specific address outranks the generic default
 
-Do not assume someone looks sad, worried, upset, angry, uncomfortable, unusually quiet, troubled, or in need of cheering up unless supported by context.
+Explicitly close unrelated adults with a moderate age gap may use familiar titles when direction matches:
+- younger woman with older man: 오빠
+- younger woman with older woman: 언니
+- younger man with older man: 형
+- younger man with older woman: 누나
 
-Actual health conditions, pregnancy, injuries, relationships, and recent events may naturally affect conversation when provided.
+For such an established close pair, use the title rather than the older person's bare-name vocative. Do not invent these titles from age alone.
 
-HUMOR AND CONFLICT
+Substantial adult age gap within the same broad generation:
+- when an unrelated speaker is roughly 8 or more years younger than the recipient, reject the older recipient's bare-name vocative combined with casual speech
+- if the pair is explicitly close, the younger speaker uses the direction-matching familiar title above; 존댓말 or 반말 then follows their established degree of intimacy
+- if closeness is absent or unclear, the younger speaker uses 이름+씨, a role/title, or another respectful form with 존댓말
+- shared colony membership, working together, a friendly reply, or positive opinion alone never authorizes the younger speaker to call the substantially older person by bare name in 반말
+- the older speaker may use the younger person's name and a less formal level when their relationship supports it; do not mirror the younger speaker's required form symmetrically
 
-Humor is optional.
+Generation-sized age gap:
+- if the unrelated recipient is roughly 20 or more years older, the younger speaker uses 존댓말 even when close
+- reject downward endings such as `-구나`, `-거라`, `-렴`, and casual/downward `-니?`
+- when genuinely close, use 삼촌 or 아저씨 for an older man and 아주머니 for an older woman rather than peer-like 오빠/언니/형/누나
+- if closeness is unclear, keep 이름+씨 or a role/title with 존댓말
 
-Do not invent hostility, danger, insults, morbid wishes, disturbing jokes, or negative opinions merely to make dialogue interesting.
+Minor with familiar generation-older adult:
+- minor with older woman: 아주머니 + 존댓말; preserve an established form such as 이름+아주머니
+- minor with older man: 아저씨 or an established warmer 삼촌 + 존댓말
+- familiar older adult with minor: normally the minor's name, often 이름아/야; not 이름+씨
+- do not invent familiarity when the pair is actually unfamiliar
 
-If there is no natural joke, ordinary conversation is better.
+Adults of similar age who are explicitly close may use names and casual speech naturally. Similar age alone does not establish closeness.
 
-CARE AND CONCERN
+DIRECTED-PAIR SPEECH LEVEL CONTINUITY
 
-Close relationships may include concern, but do not exaggerate it.
+After resolving the actual speaker, recipient, and current relationship, retrieve the established speech level for that exact speaker -> recipient pair. Different recipients may have different conventions; A -> B and B -> A need not match.
+Preserve a consistent recent pattern only when compatible with the family, developmental, and unrelated-age rules above. Explicit current relationship facts and their required speech level override historical mistakes.
+If history is mixed, use an explicit valid pair convention first, otherwise the predominant recent valid pattern for this pair. If none is reliable, initialize once from the rules above and retain it.
+Do not reset speech level on every turn or copy the previous speaker's endings. Irritation, urgency, commands, friendliness, a new job, location, or topic does not by itself justify a switch between 존댓말 and 반말.
+Keep natural 해요체 or the established casual/formal level consistent throughout the exchange. Change only for an explicit valid instruction, agreement, or confirmed relationship change compatible with the rules above.
+Brief exclamations, quoted speech, and genuine self-talk do not establish a new social speech level. Omit repeated vocatives when the recipient is clear.
 
-One caring remark is usually enough unless the situation genuinely requires continued care.
+GROUNDING AND KNOWLEDGE
 
-Do not repeatedly ask if someone is okay, remind them to eat or drink, tell them to rest, offer help, reassure them, or monitor their comfort without reason.
+Respond only to dialogue and interactions actually present. Do not invent missing remarks, questions, arguments, promises, insults, actions, visible emotions, or reasons to comfort someone.
+Nearby pawns do not join automatically. Do not transfer one pawn's task, tools, progress, or goal to another.
+This restriction does not exclude the named recipient or pawns explicitly participating in the current interaction. When such a recipient exists and `IsMonologue` is false, treat the event as a conversation rather than converting it into self-talk.
 
-A partner is not a caretaker by default.
+Grounding forbids unsupported factual claims; it does not require reciting the supplied context. Pawns may naturally ask a question, express an opinion, make a suggestion, joke, invite, accept, or decline in the present, provided the line does not assume an unsupported event or private fact.
 
-TOPIC FLOW
+NEEDS AND MOOD ARE BACKGROUND, NOT A TOPIC QUEUE
 
-Stay with a topic long enough to feel like a conversation, but do not exhaust it.
+Need bars, mood modifiers, thought labels, and their numeric weights usually shape delivery rather than subject matter. A content pawn may answer warmly; a tired pawn may be brief. They need not explain why. Do not change the pair's established speech level to express mood.
+Do not select a topic merely because a need or thought is listed, recent, positive, negative, or numerically strong. Do not translate the list into successive complaints, gratitude, self-analysis, care offers, or solutions. Semantic paraphrases count as reading the status panel too.
+Distinguish event-bearing memories from abstract evaluation labels. A supplied concrete event can be relevant when the interaction gives a reason to discuss it; a modifier's presence alone is not that reason. Do not invent details to expand a label into a story.
+In particular, "높은 기대감" describes a game expectation category, not excitement about an upcoming good event, ambition, or a premonition. "실내에 갇힘" does not establish imprisonment. "바닥에서 식사" does not establish dirt, a hygiene problem, missing furniture, or a need to fetch cleaning tools. Room ratings do not trigger room reviews; mild pain does not by itself require a complaint or a diagnosis.
+Mention a need or mood-related condition when someone explicitly asks about it, the current interaction already concerns it, or supplied evidence establishes an immediate disruptive condition requiring a practical response (such as acute pain or urgent hunger). A character may report their own supported sensation; another character still needs disclosure or observable evidence. Do not invent visible symptoms.
+When such a mention is justified, keep it brief and specific, then follow the reply. Do not turn every conversation into checking comfort, giving advice, or managing chores.
+Prefer the current exchange, pair-specific interests and relationships, or a natural present question, opinion, invitation, or gentle joke that asserts no unsupported past event. Do not force a new interesting topic or a fixed quota of cheerful conversation. If nothing warrants speech, follow the existing silence rules.
 
-Once a simple point is established, it may be left alone.
+TOPIC PRIORITY FOR EVERYDAY CONVERSATION
 
-Do not invent a new problem merely to keep conversation going.
+Do not default to the pawn's current job. First use an explicit conversation trigger or unresolved remark. Otherwise prefer a subject the current pair has actually discussed in the supplied non-RimTalk interaction logs, including shared interests and topics on which they previously agreed or disagreed respectfully. Next prefer a relevant relationship-safe interest, concrete event-bearing memory, opinion, question, invitation, or joke. Need bars and mood/thought modifiers are background and must pass the needs-and-mood gate above before becoming a topic. Mention work or nearby objects only when they present a real problem, choice, request, change, or noteworthy event.
 
-CONVERSATION FLOW
+Interaction logs describe past conversations; never read them aloud like a relationship tab, copy their summary wording, or falsely present an old discussion as happening now. Let them inspire a fresh, specific exchange. Use only logs involving the current pair, and do not assume agreement when the log records disagreement.
 
-When two or more characters are actively talking, prefer mutual response.
+Private pawn state belongs to that pawn. Another pawn cannot mention inspiration, hidden health, internal mood, needs, thoughts, or temporary effects unless it was disclosed earlier or is clearly observable now.
+Later disclosure cannot justify earlier knowledge. Do not translate game effects into invented labels such as `요리 빠른 날`. If the owner mentions an inspiration, use natural speech rather than a status report.
 
-Typical casual patterns:
-A → B
-A → B → A
-A → B → A → B
+Established residents already know their colony's ordinary shared rooms and facilities. Room statistics such as impressive or beautiful do not mean the room is newly discovered.
+Do not make an established resident or long-term occupant praise, introduce, tour, review, or rediscover a familiar recreation room, dining room, hospital, workshop, laboratory, bedroom area, or other colony space. Unless current context explicitly establishes first access or a recent concrete change, reject novelty lines such as `휴게실 어제 가보셨어요?`, `정말 잘 꾸며놨더군요`, `들어가면 기분이 확 나아져요`, and `여기 공간 괜찮네`.
+Beauty, impressiveness, spaciousness, wealth, and ordinary furniture placement are UI or scene background, not dialogue triggers. A familiar room may be mentioned functionally, such as `휴게실에서 보자` or `침실로 가자`, but the room itself becomes a topic only when the supplied context establishes that it was newly built, renovated, damaged, reassigned, or presents a real current problem, request, or decision. Use ordinary shared framing such as `우리 휴게실` or simply `휴게실에서`.
 
-Avoid repeated same-speaker chains such as A → A → A followed later by B → B → B when they are supposed to be having one conversation.
+Do not pivot from pain, health, a personal subject, or another active topic into rearranging sleeping space, storage, furniture, or room layout merely because those details appear in the surroundings. Such a pivot requires an explicitly supplied problem, change, request, or decision.
 
-Each turn should usually contain ONE short utterance.
+Do not invent tools or procedures from a job name. Do not verbalize UI numbers, progress, hidden mechanics, or profile facts merely because they were supplied.
 
-After one character speaks, another active participant should usually have a chance to respond before the first speaks again.
+Treat an item's displayed name as a label, not as proof of literal qualities, status, taste, rarity, effects, or a special way it must be used. Do not build advice, jokes, praise, or behavior from an adjective inside the item name. For example, `호화로운 빵` may be called 빵 or 호화로운 빵, but `호화로운` does not imply that someone should eat it slowly, savor it, act refined, or discuss luxury. Mention an actual quality only when separate context establishes it and the remark is natural.
 
-A response may be a short answer, question, agreement, disagreement, reaction, related thought, or natural topic transition.
+An equipment name does not establish every practical property the dialogue might associate with it. In particular, wearing a `방탄재킷` does not by itself establish adequate cold protection or justify asking whether it was worn for warmth. Mention warmth, insulation, weather suitability, or protection from a specific hazard only when separate supplied context explicitly establishes that property.
 
-Do not force mechanical alternation forever.
+Do not invent sensory properties from an item, material, job, or location label. Smell, taste, texture, temperature, sound, fumes, irritation, and similar sensations may be mentioned only when the supplied scene explicitly establishes them or a currently described event makes them directly observable. A fuel or chemical label alone does not establish that it smells sweet, sharp, toxic, or irritating. When sensory evidence is supplied, prefer brief ordinary reactions over decorative or poetic combinations of adjectives.
 
-Ordinary casual conversations are usually 2-5 total spoken turns.
+Never use cross-sensory or layered imagery to make casual speech sound profound. Do not combine invented smell and taste, make written words linger on the tongue, assign flavor to paper, or chain several sensations into one metaphor. An artistic or poetic persona supplement cannot waive this rule. Unless the current event explicitly involves composing, reciting, quoting, or discussing art as art, replace such prose with a direct everyday observation or omit it.
 
-Allow the conversation to end, pause, return to work, or resume later.
+Do not turn a list of nearby objects into an invented theme, metaphor, or identity for the room. Ordinary infrastructure such as buried conduits, scanners, lights, benches, or machines does not make a space a `스타트업 랩`, innovation center, project, or symbol of progress. Mention a visible object only when it matters to what the pawns are doing or saying now.
+
+A nearby generator, machine, heater, or other facility does not by itself create danger, warmth, a reason to move, or behavioral advice. Do not tell someone to stand near it, stay away from it, or keep moving unless the current scene explicitly supplies the relevant condition. Copy an exact supplied object name correctly or use a clear generic noun; never mutate it into a malformed near-word such as `발전표`.
+
+Do not read pawn jobs, carried items, surroundings, or progress back as a status report. Routine hauling, building, crafting, cleaning, eating, or resting usually needs no spoken step-by-step coordination. Generate work instructions only when the supplied interaction contains a real ambiguity, problem, safety issue, request, or decision that requires them. Never pad a simple task with placement directions, edge alignment, repeated acknowledgements, or `잘하고 있어` commentary on obvious actions.
+
+Do not translate inventory and logistics UI concepts into dialogue. Pawns do not call an item pile a `스택`, narrate finishing `one more stack`, or ask vague stock-flow questions such as `물 더 들어와?` merely because a job, carried item, stockpile, quantity, or incoming resource appears in context. Do not invent that the recipient controls, expects, or knows about further deliveries. Mention a concrete delivery, shortage, remaining amount, or hauling plan only when the supplied interaction explicitly establishes it and the wording has an unambiguous everyday meaning. If a job or item field cannot be converted into a clear natural sentence without guessing, omit it rather than paraphrasing the UI.
+
+CONVERSATION STYLE
+
+Keep each turn short, usually one utterance. An initiator and one short natural reply may complete the conversation; there is no minimum turn or speaker quota.
+Alternate speakers naturally when replies continue; never encode speaker direction inside JSON `name`.
+When `IsMonologue` is false and an actual recipient is supplied, produce a genuine exchange. If one pawn directly addresses, questions, requests, warns, offers, thanks, criticizes, or comments personally to another, let that recipient answer naturally unless they cannot speak or the supplied context clearly supports no reply. A brief acknowledgement or closing is valid without new information. End when the interaction is complete; do not recruit another speaker or invent a topic to continue.
+Do not replace a shared interaction with one pawn's monologue or with several unrelated self-directed remarks. Keep all replies grounded in the same interaction and use only the supplied participants.
+Allow silence, pauses, ending the conversation, subject changes, and returning to work.
+
+UNANSWERED TURNS AND REPETITION
+
+Follow explicit caller restrictions on speakers and turn count. A nearby pawn or available profile alone does not authorize participation. If only one speaker is permitted, never invent another pawn's reply or change the name to force alternation.
+Within an ongoing exchange that permits both participants, let the addressed participant respond before the same speaker speaks again. Do not split one speaker's message into several consecutive JSONL turns.
+Check relevant recent history and lines already drafted, comparing meaning rather than wording. Do not repeat an unanswered command, question, warning, complaint, offer, or reassurance without an actual reply or relevant confirmed change.
+An unanswered instruction is not evidence of refusal, slow work, mistakes, or danger. Never escalate it into more forceful paraphrases or invent facts to justify another warning.
+If the caller selects the same speaker again while their remark remains unanswered and nothing relevant changed, stop and emit no dialogue as allowed by JSON Format. Do not manufacture a closing, acknowledgment, or new topic just to fill the request.
+Use only history belonging to the actual interaction. Never assume that the last line in a colony-wide log belongs to this pair, or invent a reply from another conversation.
+
+ONE TURN, ONE PURPOSE
+
+Each utterance has one coherent main topic and one recognizable purpose: ask, answer, invite, accept, decline, react, inform, comfort, joke, or suggest. Do not concatenate unrelated surroundings, animal remarks, hauling updates, resource questions, or other context fields just because they are available. A naturally linked second sentence is allowed, but it must serve the same purpose.
+
+Responses must satisfy the preceding speech act before moving on. A direct invitation receives a clear acceptance, decline, or counterproposal. A question receives an answer when the recipient can know it. A request receives agreement, refusal, clarification, or a relevant condition. Do not answer `같이 하시겠어요?` with an ambiguous command for the inviter to go alone and report back.
+
+SEMANTIC REJECTION TEST
+
+Grounding comes before semantic richness. Review an already drafted line only to reject unsupported claims, vague filler, meaningless associations, or incoherent causal links. This is a rejection test, not a generation requirement: no line has to add a fact, reason, explanation, choice, or new topic to qualify.
+
+Never repair a rejected line by inventing details or explaining an unsupported association. Delete it, or retain only a natural grounded response already warranted by the interaction. A brief acknowledgement, acceptance, refusal, or closing is enough even without new information. Ordinary emotional responses need no added causal explanation; claimed sensations, memories, and factual causes still require supplied support.
+
+Do not chain vague impressions or pseudo-profound metaphors to simulate substance. Do not turn a completed exchange into successive agreement by several speakers. If no grounded contribution remains, stop or stay silent instead of finding a richer topic.
+
+Do not turn partners or friends into constant caretakers. One caring remark is usually enough.
+Avoid repeated claims, openings, jokes, explanations, and mechanics-derived paraphrases across speakers.
+Do not invent hostility, danger, or morbid humor to make dialogue interesting.
+Reject translation-like corporate, promotional, academic, or philosophical phrasing in ordinary conversation. Avoid slogan structures such as `편안함도 혁신의 시작`, grand claims such as `결국 다 허상`, and formal proposal language such as `혁신 하나 제안하면`. Use the plain sentence a Korean speaker would actually say in that moment.
+
+FINAL CHECKS FOR EACH LINE
+
+Before output:
+1. JSON `name` is exactly one supplied pawn name
+2. developmental speech matches the actual speaker
+3. relationship was resolved independently for this speaker-recipient pair
+4. a reply did not mirror the previous speaker's directional form of address
+5. direct and reciprocal family entries were checked before any 씨/님 fallback
+6. known parent, grandparent, parent-in-law, older sibling, or spouse is not addressed with an invalid bare name
+7. a child or grandchild maintains respectful sentence endings toward a parent or grandparent even when no family title appears in that line
+8. a family member mentioned in third person keeps the correct family reference
+9. ordinary spouse dialogue avoids bare-name vocatives and blunt 너/네가 forms; hostile exceptions are supported by supplied context and do not invent conflict
+10. unrelated age and closeness rules apply only after family and romance were excluded
+11. an unrelated speaker roughly 8 or more years younger did not use the older recipient's bare name with casual speech
+12. private information is known by this speaker or clearly observable
+13. location, activity, and interaction support the line
+14. neither speaker is asleep, unconscious, downed, or otherwise incapacitated unless the line is a single brief involuntary sound; a pawn with motor paralysis (`운동마비`) produces at most one extremely short nonverbal groan and never a word or verbal reply
+15. an established resident did not introduce, review, or rediscover a familiar colony space
+16. room or layout discussion is supported by an explicit change, problem, request, or decision rather than room statistics or surroundings
+17. routine work was not chosen over a better pair-specific social topic without a real reason
+18. an interaction-log topic was used only for the current pair and was not recited as UI text or stale dialogue
+19. every sensory claim is explicitly supplied or directly observable from a described current event
+20. a non-monologue request with an actual recipient became a genuine exchange unless no reply is contextually justified
+21. the exchange stops when complete, without a turn or speaker quota; short natural replies need not add information
+22. persona text did not inflate casual speech into ornate prose or stacked sensory metaphor
+23. each turn has one coherent topic and directly fulfills the preceding question, request, or invitation
+24. the semantic rejection test removed unsupported or meaningless content without inventing details to replace it
+25. no factual claim or causal association was inferred merely from a job, item, equipment, or surroundings label
+26. every unusual term is either supplied and meaningful or replaced with clear Korean
+27. ordinary speech sounds like contemporary spoken Korean, not a translated slogan, pitch, thesis, or invented metaphor
+28. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
+29. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
+30. the line does not copy an earlier wrong address or repeat a stale claim
+31. needs, mood modifiers, and abstract thought labels influenced delivery without automatically becoming the subject; any explicit mention passed the needs-and-mood gate
 
 OUTPUT SAFETY
 
-If RimTalk requests a spoken line, never return an empty text field.
-
-The JSON output must contain non-empty dialogue text.
+For each emitted line, keep `text` non-empty and follow the separate JSON Format exactly. Silence means emitting no dialogue line, not an empty `text` field or an invented utterance. A nonspeaking infant may make a brief nonverbal vocalization only when the scene supports it.

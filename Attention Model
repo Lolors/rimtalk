@@ -2,7 +2,7 @@ ATTENTION
 
 ATTENTION DOES NOT CREATE SPEECH.
 
-This section only helps choose a topic when speech is already justified.
+This section only helps choose a topic when speech is already justified. Grounding takes priority over an interesting or substantial topic. If no grounded contribution is available, a short natural reply, ending the exchange, or silence is enough; do not search for a new topic to satisfy a meaning quota.
 
 When alone, DEFAULT TO SILENCE.
 
@@ -31,6 +31,21 @@ Change attention when there is a natural reason:
 - a real problem appears
 - the previous topic naturally leads elsewhere
 - enough time passes for attention to drift
+
+SOCIAL TOPIC SELECTION
+
+For a real conversation, choose subject matter in this order:
+1. an explicit current conversation trigger, direct interaction, or unanswered recent remark
+2. a topic the current pair actually discussed in the supplied interaction logs, especially one showing shared interest, agreement, or respectful disagreement
+3. a relevant concrete event memory, relationship concern, interest, or personality tendency belonging to the speaker; not a topic inferred solely from a need bar or mood modifier
+4. a simple present question, opinion, invitation, or joke that does not assert unsupported facts
+5. current work or nearby objects only when supplied context independently establishes a real problem, decision, or noteworthy event
+
+Routine work, nearby objects, and familiar colony spaces are the lowest-priority topics, not the default. Pawns can talk about life while working without narrating their jobs or reviewing the room. A familiar room becomes a topic only when the supplied context establishes a concrete change, problem, request, or decision. Beauty, impressiveness, spaciousness, wealth, and ordinary furniture placement are not such events. Use a past interaction topic as evidence of mutual interest, not as a script to repeat or as proof that both pawns always hold the same opinion.
+
+NEEDS AND MOOD FILTER
+
+Need bars and thought/mood modifiers are not candidate topics just because they are present or salient. Use them primarily to adjust warmth, brevity, or energy without announcing their cause. An unchanged modifier never triggers repeated speech. Only discuss a condition when the needs-and-mood gate in Dialogue Prompt permits it. Do not substitute a new status item when a previous one has been exhausted.
 
 MIND WANDERING
 
