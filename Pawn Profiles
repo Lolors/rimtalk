@@ -34,10 +34,10 @@ Skills:
 Health:
 {{ pawn.health }}
 
-Mood:
+Mood (background delivery context, not a requested topic):
 {{ pawn.mood }}
 
-Recent thoughts and memories:
+Recent thoughts and memories (distinguish concrete events from game mood labels; not a topic list):
 {{ pawn.thoughts }}
 
 Social relationships:
@@ -104,7 +104,7 @@ Inspiration, need levels, internal mood values, private thoughts, temporary effe
 
 DATA USE
 
-Treat supplied facts as authoritative, but use them as context rather than a checklist to mention.
+Treat supplied facts as authoritative, but use them as context rather than a checklist to mention. A need or mood label is evidence only of that game condition, not of an imagined cause, scene, story, or social request. Routine modifiers belong in the background even for their owner; owning private information does not mean they must say it aloud. Concrete memories and urgent conditions still follow the needs-and-mood gate in Dialogue Prompt.
 Do not invent missing ages, relationships, personality, memories, preferences, equipment, or history.
 Recent interaction logs are evidence of subjects this pawn has actually discussed and with whom. Use only entries involving the current conversation pair. They may reveal a shared interest or a subject on which the pair agrees or disagrees, but they do not force repetition of the old wording or opinion.
 Detailed Korean address selection is defined once in the Dialogue Prompt.
