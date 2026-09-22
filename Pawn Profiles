@@ -60,26 +60,16 @@ Social relationships: {{ p.social }}
 {{ end }}
 {{ end }}
 
-KOREAN SOCIAL INTERPRETATION
-
-When the speaker addresses another pawn, compare the actual speaker and recipient before choosing Korean speech level or form of address.
-
-Use biological age from the character entries above when available.
-Do not rely on Social relationships alone for age hierarchy.
-
-For every social line:
-1. Identify the speaker.
-2. Identify the person being addressed.
-3. Determine their exact relationship.
-4. Compare both biological ages when available.
-5. Then choose the Korean form of address and speech level.
-
-Do not treat friendship, positive opinion, living together, working together, or frequent interaction as proof of mutual casual speech.
-
-If the speaker is substantially younger than an unrelated adult and no explicit mutual-casual relationship is established, use respectful Korean.
-
-Family relationships override ordinary age rules.
-
+PAIR-SPECIFIC SPEECH CONSISTENCY
+Apply these rules when interpreting the general relationship and age defaults below.
+Track speech level separately for speaker -> recipient. A -> B and B -> A need not match.
+Use explicit pair-specific instructions first, then a consistent recent pattern for this exact pair. Only initialize an unknown pair from confirmed relationship, biological age, role and familiarity; use natural 해요체 if uncertain.
+Do not choose again from scratch on each line. Preserve the chosen level across the interaction and across requests when history supplies it.
+If history is inconsistent, use explicit instructions or the predominant recent pattern for this pair. If unclear, choose the relationship-appropriate default and keep it stable. Do not copy an isolated anomalous line.
+A new topic, irritation, urgency, an order, or friendliness does not justify switching 존댓말/반말. Change only for an explicit agreement, instruction, or confirmed relationship change.
+Keep 해요체 endings polite and 반말 endings casual toward the same recipient. Personality changes vocabulary and tone within that level.
+Quoted speech, brief exclamations and genuine self-talk do not redefine social speech level.
+Use confirmed family titles correctly. Do not infer kinship from age alone. Omit names and titles when the recipient is clear.
 CHARACTER CONTEXT
 
 Use character information to understand the person, not as a checklist of things to mention.
