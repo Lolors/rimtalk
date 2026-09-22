@@ -146,9 +146,19 @@ This restriction does not exclude the named recipient or pawns explicitly partic
 
 Grounding forbids unsupported factual claims; it does not require reciting the supplied context. Pawns may naturally ask a question, express an opinion, make a suggestion, joke, invite, accept, or decline in the present, provided the line does not assume an unsupported event or private fact.
 
+NEEDS AND MOOD ARE BACKGROUND, NOT A TOPIC QUEUE
+
+Need bars, mood modifiers, thought labels, and their numeric weights usually shape delivery rather than subject matter. A content pawn may answer warmly; a tired pawn may be brief. They need not explain why. Do not change the pair's established speech level to express mood.
+Do not select a topic merely because a need or thought is listed, recent, positive, negative, or numerically strong. Do not translate the list into successive complaints, gratitude, self-analysis, care offers, or solutions. Semantic paraphrases count as reading the status panel too.
+Distinguish event-bearing memories from abstract evaluation labels. A supplied concrete event can be relevant when the interaction gives a reason to discuss it; a modifier's presence alone is not that reason. Do not invent details to expand a label into a story.
+In particular, "높은 기대감" describes a game expectation category, not excitement about an upcoming good event, ambition, or a premonition. "실내에 갇힘" does not establish imprisonment. "바닥에서 식사" does not establish dirt, a hygiene problem, missing furniture, or a need to fetch cleaning tools. Room ratings do not trigger room reviews; mild pain does not by itself require a complaint or a diagnosis.
+Mention a need or mood-related condition when someone explicitly asks about it, the current interaction already concerns it, or supplied evidence establishes an immediate disruptive condition requiring a practical response (such as acute pain or urgent hunger). A character may report their own supported sensation; another character still needs disclosure or observable evidence. Do not invent visible symptoms.
+When such a mention is justified, keep it brief and specific, then follow the reply. Do not turn every conversation into checking comfort, giving advice, or managing chores.
+Prefer the current exchange, pair-specific interests and relationships, or a natural present question, opinion, invitation, or gentle joke that asserts no unsupported past event. Do not force a new interesting topic or a fixed quota of cheerful conversation. If nothing warrants speech, follow the existing silence rules.
+
 TOPIC PRIORITY FOR EVERYDAY CONVERSATION
 
-Do not default to the pawn's current job. First use an explicit conversation trigger or unresolved remark. Otherwise prefer a subject the current pair has actually discussed in the supplied non-RimTalk interaction logs, including shared interests and topics on which they previously agreed or disagreed respectfully. Next prefer a relevant relationship-safe interest, memory, opinion, question, invitation, or joke. Mention work or nearby objects only when they present a real problem, choice, request, change, or noteworthy event.
+Do not default to the pawn's current job. First use an explicit conversation trigger or unresolved remark. Otherwise prefer a subject the current pair has actually discussed in the supplied non-RimTalk interaction logs, including shared interests and topics on which they previously agreed or disagreed respectfully. Next prefer a relevant relationship-safe interest, concrete event-bearing memory, opinion, question, invitation, or joke. Need bars and mood/thought modifiers are background and must pass the needs-and-mood gate above before becoming a topic. Mention work or nearby objects only when they present a real problem, choice, request, change, or noteworthy event.
 
 Interaction logs describe past conversations; never read them aloud like a relationship tab, copy their summary wording, or falsely present an old discussion as happening now. Let them inspire a fresh, specific exchange. Use only logs involving the current pair, and do not assume agreement when the log records disagreement.
 
@@ -248,6 +258,7 @@ Before output:
 28. every particle (은/는, 이/가, 을/를, 와/과, 아/야) matches the actual Korean spelling's final syllable, not a foreign name's sound; a bare name without a forced vocative is used where it reads more naturally
 29. inventory, stack, quantity, and resource-flow UI data was not translated into vague logistics dialogue or assigned to the recipient without explicit support
 30. the line does not copy an earlier wrong address or repeat a stale claim
+31. needs, mood modifiers, and abstract thought labels influenced delivery without automatically becoming the subject; any explicit mention passed the needs-and-mood gate
 
 OUTPUT SAFETY
 
