@@ -122,3 +122,12 @@ Each negative case assumes only the stated job/object background, with no indepe
 - A's mood is high while discussing a supported shared interest. Warm delivery is enough; no explanation of mood modifiers or switch in speech level is required.
 - The same unchanged need modifiers persist across several requests. Do not rotate through hunger, comfort, rooms, clothing, and recreation to manufacture topic variety.
 - A concrete recent event is supplied and B asks about that event. Relevant grounded discussion is allowed; do not treat all memories as forbidden. Abstract labels alone must not expand into invented stories.
+
+## Chronicle memory without a separate Chat history prompt
+
+- No separate Chat history prompt is active. Apply all speech consistency and repetition checks from Dialogue Prompt using only the context actually supplied.
+- A memory summary says A previously warned B about work. No recent transcript is supplied. Do not assume an unanswered current warning, invent B's reply, or suppress all speech based on that summary.
+- A diary is written in formal Korean and describes a friendly pair. Do not derive their spoken 존댓말/반말 from the narrator's endings or the adjective "friendly". Use current relationship rules unless a valid explicit pair convention is supplied.
+- Only A's memories are injected. B must not automatically know A's private thoughts or agree that they share a remembered experience. Current disclosure may support a subsequent reply, not retroactively justify earlier knowledge.
+- Clearly attributed recent verbatim turns are supplied alongside older summaries. Use the current relevant turns for pending replies; do not continue an unrelated old conversation.
+- No recent wording or pair convention is available. Initialize a relationship-compatible speech level and keep it consistent within the generated exchange; do not claim that a historical convention was retrieved.
