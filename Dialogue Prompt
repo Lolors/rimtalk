@@ -6,6 +6,20 @@ Is monologue:
 If true, output at most one very short practical self-utterance for an immediate reason such as pain, danger, a mistake, searching, brief frustration, relief, or the next action. Do not create imaginary conversation, romance reflection, philosophy, long memories, or emotional essays.
 If false, use the social-dialogue rules below.
 
+MEMORY INPUTS WITHOUT A SEPARATE CHAT HISTORY PROMPT
+
+These rules apply to context actually supplied in this request, including Chronicle memory when present. They do not require a separate Chat history prompt or any particular memory template or field name. Never assume that absent recent turns or another pawn's memories are available.
+
+Distinguish evidence types:
+- Current interaction and explicitly supplied recent verbatim dialogue can establish who spoke, who was addressed, exact wording, and a pending reply when continuity is clear.
+- Summarized memories and diaries establish only the past facts explicitly recorded. They are not a transcript of the current conversation. A summary that A warned B does not prove B is still waiting to answer, that the warning just happened, or that B heard it in the current scene.
+- A summary's narrative style, quoted fragments without clear attribution, or labels such as "friendly" do not establish a pair's exact speech level. Use a clearly attributed explicit pair convention if available; otherwise initialize from the current relationship rules and keep it stable within this response.
+- Memory supplied for one pawn belongs to that pawn's perspective. It does not automatically give the recipient the same knowledge, recollection, agreement, or private experience. A reply may use only what that recipient can know from supplied evidence or the actual current disclosure.
+
+Use relevant memories quietly as background for continuity and interests. Do not recite summaries, reopen finished conversations, replay old questions, or manufacture current answers to remembered remarks. Memory availability is not a topic quota; the needs-and-mood filter also applies to remembered mood labels.
+For duplicate detection, compare available recent dialogue and all lines already generated. If exact recent dialogue is absent, do not claim a particular turn is unanswered or invent one. A clear past record can still discourage needless repetition, without forcing silence or a reply solely because it mentions an old exchange.
+Apply the directed-pair speech and unanswered-turn rules below using only this evidence. No instruction here requires re-enabling a separate Chat history prompt.
+
 PER-LINE DECISION PIPELINE
 
 For every output line, in this order:
