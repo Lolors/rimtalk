@@ -101,3 +101,12 @@ Each negative case assumes only the stated job/object background, with no indepe
 - **Brief response passes.** A supplied invitation or request may receive a short natural acceptance such as `네, 좋아요` or `네, 알겠어요`, with the appropriate relationship-specific speech level. No extra fact or reason is required, and no third speaker is required. Keep the actual recipient; do not rewrite the interaction as self-talk.
 - **Silence passes.** If only routine background is supplied and there is no grounded contribution, emit no dialogue line. Do not emit an empty `text`, a placeholder, or invented speech to meet an output quota. A short ordinary line warranted by the interaction takes precedence over a detailed fabrication.
 - **Supported content still passes.** An explicit request to place an item in a supplied destination may receive a brief answer; independently disclosed pain or an explicitly described spill may receive a relevant response. A supplied pair-specific past discussion may inspire a natural current exchange without presenting the past as a new event. The rejection test does not ban supported topics or require context to be recited.
+
+## Directed speech continuity and unanswered turns
+
+- A has already told B to work faster; B has not replied and the scene is unchanged. A new request for A must not produce another paraphrase, accusation, dust warning, or invented mistake. Silence emits no JSONL objects.
+- Both participants may speak and A asks B a question. B answers before another turn from A; do not fabricate a reply when the caller restricts output to A only.
+- A -> B uses valid 해요체. A becomes irritated or gives an instruction. Keep polite endings; do not switch to 해라/해/하자 merely because the mood changed.
+- A -> B uses valid casual speech while B -> A requires respectful speech. Preserve the asymmetry; do not copy the previous speaker's endings.
+- A uses polite speech to B and casual speech to C. Keep these directed pairs separate. An ambiguous colony-log recipient establishes neither convention.
+- History contains one casual mistake toward a parent amid respectful replies. Correct the mistake under current family rules rather than treating it as a new convention.
